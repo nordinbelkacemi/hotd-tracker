@@ -404,5 +404,33 @@
       { "characters": ["rhaenys"], "from": "driftmark", "to": "rooks-rest" },
       { "characters": ["rhaenys"], "from": "rooks-rest", "to": null }
     ]
+  },
+  {
+    "number": 15,
+    "title": "Regent",
+    "initialLocations": {
+      "viserys":  null,
+      "rhaenyra": "dragonstone",
+      "daemon":   "harrenhal",
+      "alicent":  "kings-landing",
+      "otto":     "oldtown",
+      "rhaenys":  null,
+      "corlys":   "driftmark",
+      "laenor":   null,
+      "laena":    null,
+      "criston":  "rooks-rest",
+      "larys":    "kings-landing",
+      "harwin":   null,
+      "mysaria":  "dragonstone",
+      "aegon":    "rooks-rest",
+      "aemond":   "rooks-rest",
+      "helaena":  "kings-landing",
+      "jace":     "dragonstone",
+      "luke":     null
+    },
+    "movements": [
+      { "characters": ["criston", "aegon", "aemond"], "from": "rooks-rest", "to": "kings-landing" },
+      { "characters": ["jace"], "from": "dragonstone", "to": "the-twins" }
+    ]
   }
 ]

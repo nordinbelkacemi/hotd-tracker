@@ -89,5 +89,12 @@
     "x": 2150,
     "y": 3150,
     "region": "crownlands"
+  },
+  {
+    "id": "the-twins",
+    "name": "The Twins",
+    "x": 1700,
+    "y": 2600,
+    "region": "riverlands"
   }
 ]
