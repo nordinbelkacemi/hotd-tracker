@@ -4,97 +4,111 @@
     "name": "Winterfell",
     "x": 1630,
     "y": 1680,
-    "region": "north"
+    "region": "north",
+    "importance": 80
   },
   {
     "id": "the-eyrie",
     "name": "The Eyrie",
     "x": 2080,
     "y": 2760,
-    "region": "vale"
+    "region": "vale",
+    "importance": 70
   },
   {
     "id": "harrenhal",
     "name": "Harrenhal",
     "x": 1830,
     "y": 3080,
-    "region": "riverlands"
+    "region": "riverlands",
+    "importance": 75
   },
   {
     "id": "casterly-rock",
     "name": "Casterly Rock",
     "x": 1025,
     "y": 3280,
-    "region": "westerlands"
+    "region": "westerlands",
+    "importance": 70
   },
   {
     "id": "highgarden",
     "name": "Highgarden",
     "x": 1270,
     "y": 3870,
-    "region": "reach"
+    "region": "reach",
+    "importance": 70
   },
   {
     "id": "oldtown",
     "name": "Oldtown",
     "x": 1030,
     "y": 4155,
-    "region": "reach"
+    "region": "reach",
+    "importance": 70
   },
   {
     "id": "kings-landing",
     "name": "King's Landing",
     "x": 1960,
     "y": 3415,
-    "region": "crownlands"
+    "region": "crownlands",
+    "importance": 100
   },
   {
     "id": "dragonstone",
     "name": "Dragonstone",
     "x": 2350,
     "y": 3210,
-    "region": "crownlands"
+    "region": "crownlands",
+    "importance": 90
   },
   {
     "id": "driftmark",
     "name": "Driftmark",
     "x": 2255,
     "y": 3228,
-    "region": "crownlands"
+    "region": "crownlands",
+    "importance": 85
   },
   {
     "id": "storms-end",
     "name": "Storm's End",
     "x": 2255,
     "y": 3760,
-    "region": "stormlands"
+    "region": "stormlands",
+    "importance": 70
   },
   {
     "id": "stepstones",
     "name": "The Stepstones",
     "x": 2500,
     "y": 4200,
-    "region": "stepstones"
+    "region": "stepstones",
+    "importance": 20
   },
   {
     "id": "pentos",
     "name": "Pentos",
     "x": 2905,
     "y": 3385,
-    "region": "essos"
+    "region": "essos",
+    "importance": 60
   },
   {
     "id": "rooks-rest",
     "name": "Rook's Rest",
-    "x": 2150,
-    "y": 3150,
-    "region": "crownlands"
+    "x": 2185,
+    "y": 3175,
+    "region": "crownlands",
+    "importance": 50
   },
   {
     "id": "the-twins",
     "name": "The Twins",
-    "x": 1700,
-    "y": 2600,
-    "region": "riverlands"
+    "x": 1590,
+    "y": 2650,
+    "region": "riverlands",
+    "importance": 65
   }
 ]

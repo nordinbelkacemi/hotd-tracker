@@ -30,7 +30,6 @@ interface WesterosMapProps {
 
 export default function WesterosMap({ characterPositions, paths }: WesterosMapProps) {
   const svgHtml = useMemo(() => svgOpen, []);
-  const arrowId = 'hotd-arrow';
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   // Track the zoom scale by observing the CSS transform on TransformComponent's content div.
@@ -60,6 +59,47 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
         const scale = parseFloat(scaleMatch[1]);
         if (scale > 0 && isFinite(scale)) {
           wrapper.style.setProperty('--counter-scale', (1 / scale).toString());
+          
+          // Collision detection for labels
+          const labels = Array.from(wrapper.querySelectorAll('.location-label-group')) as HTMLElement[];
+          
+          // Sort by importance descending
+          labels.sort((a, b) => {
+            const impA = parseInt(a.dataset.importance || '0', 10);
+            const impB = parseInt(b.dataset.importance || '0', 10);
+            return impB - impA;
+          });
+
+          const occupied: DOMRect[] = [];
+          for (const label of labels) {
+            const rect = label.getBoundingClientRect();
+            
+            // Skip invalid rects
+            if (rect.width === 0 || rect.height === 0) continue;
+            
+            let collision = false;
+            // Padding around labels to prevent them from looking too cramped
+            const padding = 10;
+            
+            for (const occ of occupied) {
+              if (
+                rect.left - padding < occ.right + padding &&
+                rect.right + padding > occ.left - padding &&
+                rect.top - padding < occ.bottom + padding &&
+                rect.bottom + padding > occ.top - padding
+              ) {
+                collision = true;
+                break;
+              }
+            }
+
+            if (collision) {
+              label.style.opacity = '0';
+            } else {
+              label.style.opacity = '1';
+              occupied.push(rect);
+            }
+          }
         }
       }
     };
@@ -116,24 +156,12 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
             xmlns="http://www.w3.org/2000/svg"
             style={{ overflow: 'visible' }}
           >
-            <defs>
-              <marker
-                id={arrowId}
-                markerWidth={3}
-                markerHeight={3}
-                refX={2.7}
-                refY={1.5}
-                orient="auto"
-                markerUnits="strokeWidth"
-              >
-                <path d="M0,0 L0,3 L3,1.5 z" fill="rgba(255,255,255,0.5)" />
-              </marker>
-            </defs>
+
 
             {/* Path layer */}
             <g id="path-layer">
               {paths.map((path) => (
-                <AnimatedPath key={path.characterId} path={path} arrowId={arrowId} />
+                <AnimatedPath key={path.characterId} path={path} />
               ))}
             </g>
 
@@ -158,7 +186,15 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
                       </g>
                     )}
                     {/* Label — counter-scale around city position */}
-                    <g style={{ transform: 'scale(var(--counter-scale, 1))', transformOrigin: `${loc.x}px ${loc.y}px` }}>
+                    <g 
+                      className="location-label-group"
+                      data-importance={(loc as any).importance ?? 0}
+                      style={{ 
+                        transform: 'scale(var(--counter-scale, 1))', 
+                        transformOrigin: `${loc.x}px ${loc.y}px`,
+                        transition: 'opacity 0.2s ease-in-out'
+                      }}
+                    >
                       <text
                         x={loc.x + labelDx}
                         y={loc.y + labelDy}

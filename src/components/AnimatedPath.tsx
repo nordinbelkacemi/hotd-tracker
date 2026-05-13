@@ -5,10 +5,9 @@ import type { CharacterPath } from '../types';
 
 interface AnimatedPathProps {
   path: CharacterPath;
-  arrowId: string;
 }
 
-export default function AnimatedPath({ path, arrowId }: AnimatedPathProps) {
+export default function AnimatedPath({ path }: AnimatedPathProps) {
   const measureRef = useRef<SVGPathElement>(null);
   const prevLengthRef = useRef(0);
   const [anim, setAnim] = useState<{ d: string; length: number; startOffset: number } | null>(null);
@@ -45,7 +44,6 @@ export default function AnimatedPath({ path, arrowId }: AnimatedPathProps) {
           strokeOpacity={0.38}
           strokeLinecap="round"
           strokeLinejoin="round"
-          markerEnd={`url(#${arrowId})`}
           strokeDasharray={anim.length}
           initial={{ strokeDashoffset: anim.startOffset }}
           animate={{ strokeDashoffset: 0 }}
