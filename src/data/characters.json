@@ -1,0 +1,20 @@
+[
+  { "id": "viserys",  "name": "Viserys I",      "shortName": "Viserys",  "house": "Targaryen", "faction": "neutral", "color": "#C4A44A" },
+  { "id": "rhaenyra", "name": "Rhaenyra",        "shortName": "Rhaenyra", "house": "Targaryen", "faction": "blacks",  "color": "#E63946" },
+  { "id": "daemon",   "name": "Daemon",          "shortName": "Daemon",   "house": "Targaryen", "faction": "blacks",  "color": "#9B2226" },
+  { "id": "alicent",  "name": "Alicent",         "shortName": "Alicent",  "house": "Hightower", "faction": "greens",  "color": "#2D6A4F" },
+  { "id": "otto",     "name": "Otto Hightower",  "shortName": "Otto",     "house": "Hightower", "faction": "greens",  "color": "#40916C" },
+  { "id": "rhaenys",  "name": "Rhaenys",         "shortName": "Rhaenys",  "house": "Velaryon",  "faction": "blacks",  "color": "#457B9D" },
+  { "id": "corlys",   "name": "Corlys Velaryon", "shortName": "Corlys",   "house": "Velaryon",  "faction": "blacks",  "color": "#1D3557" },
+  { "id": "laenor",   "name": "Laenor Velaryon", "shortName": "Laenor",   "house": "Velaryon",  "faction": "blacks",  "color": "#5E93B8" },
+  { "id": "laena",    "name": "Laena Velaryon",  "shortName": "Laena",    "house": "Velaryon",  "faction": "blacks",  "color": "#7FB3D3" },
+  { "id": "criston",  "name": "Criston Cole",    "shortName": "Criston",  "house": "Cole",      "faction": "greens",  "color": "#606C38" },
+  { "id": "larys",    "name": "Larys Strong",    "shortName": "Larys",    "house": "Strong",    "faction": "greens",  "color": "#6B705C" },
+  { "id": "harwin",   "name": "Harwin Strong",   "shortName": "Harwin",   "house": "Strong",    "faction": "blacks",  "color": "#8B7355" },
+  { "id": "mysaria",  "name": "Mysaria",         "shortName": "Mysaria",  "house": "—",         "faction": "blacks",  "color": "#B5838D" },
+  { "id": "aegon",    "name": "Aegon II",        "shortName": "Aegon II", "house": "Targaryen", "faction": "greens",  "color": "#52796F" },
+  { "id": "aemond",   "name": "Aemond",          "shortName": "Aemond",   "house": "Targaryen", "faction": "greens",  "color": "#354F52" },
+  { "id": "helaena",  "name": "Helaena",         "shortName": "Helaena",  "house": "Targaryen", "faction": "greens",  "color": "#84A98C" },
+  { "id": "jace",     "name": "Jacaerys",        "shortName": "Jace",     "house": "Targaryen", "faction": "blacks",  "color": "#D4A373" },
+  { "id": "luke",     "name": "Lucerys",         "shortName": "Luke",     "house": "Targaryen", "faction": "blacks",  "color": "#E9C46A" }
+]

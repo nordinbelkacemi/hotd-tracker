@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #C4A44A;
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #C4A44A;
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+/* Map SVG styling */
+.land { fill: #2a3441; }
+.ocean { fill: #0d1e2c; }
+.river { fill: none; stroke: #1a3a55; stroke-width: 3; }
+.lake { fill: #1a3a55; }
