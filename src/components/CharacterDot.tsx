@@ -4,13 +4,12 @@ import type { CharacterPosition } from '../types';
 
 interface CharacterDotProps {
   position: CharacterPosition;
-  counterScale: number;
 }
 
 const DOT_RADIUS = 45;
 const TOOLTIP_W = 400;
 
-export default function CharacterDot({ position, counterScale: s }: CharacterDotProps) {
+export default function CharacterDot({ position }: CharacterDotProps) {
   const [hovered, setHovered] = useState(false);
 
   const { x, y, offsetX, offsetY, color, name, house, locationName } = position;
@@ -30,7 +29,7 @@ export default function CharacterDot({ position, counterScale: s }: CharacterDot
       onMouseLeave={() => setHovered(false)}
     >
       {/* Counter-scale group: scales around origin (0,0) which is the dot center */}
-      <g transform={`scale(${s})`}>
+      <g style={{ transform: 'scale(var(--counter-scale, 1))' }}>
         {/* Glow ring */}
         <motion.circle
           fill={color}
