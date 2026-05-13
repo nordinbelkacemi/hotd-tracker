@@ -1,4 +1,4 @@
-import { useMemo, useRef, useEffect } from 'react';
+import { useMemo, useRef, useState, useEffect } from 'react';
 import type { CharacterPosition, CharacterPath } from '../types';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import CharacterDot from './CharacterDot';
@@ -34,13 +34,18 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   // Track the zoom scale by observing the CSS transform on TransformComponent's content div.
-  // Using a CSS variable avoids expensive React re-renders during zoom/pan.
+  // This is more reliable than callbacks because it reads the actual applied transform.
+  const [counterScale, setCounterScale] = useState(1);
+
   useEffect(() => {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
 
     // TransformComponent renders: wrapper > content div (with CSS transform)
+    // The react-zoom-pan-pinch library applies transform to a child div of its wrapper
     const findContentDiv = () => {
+      // The TransformComponent wrapper has a specific class pattern
+      // The content div is the one with a CSS transform
       const transformWrapperEl = wrapper.querySelector('.react-transform-wrapper');
       if (!transformWrapperEl) return null;
       const contentEl = transformWrapperEl.querySelector('.react-transform-component');
@@ -59,7 +64,7 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
       if (scaleMatch) {
         const scale = parseFloat(scaleMatch[1]);
         if (scale > 0 && isFinite(scale)) {
-          wrapper.style.setProperty('--counter-scale', (1 / scale).toString());
+          setCounterScale(1 / scale);
         }
       }
     };
@@ -86,6 +91,8 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
       observer.disconnect();
     };
   }, []);
+
+  const s = counterScale;
 
   return (
     <div ref={wrapperRef} className="relative w-full h-full overflow-hidden cursor-grab active:cursor-grabbing">
@@ -119,21 +126,21 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
             <defs>
               <marker
                 id={arrowId}
-                markerWidth={3}
-                markerHeight={3}
-                refX={2.7}
-                refY={1.5}
+                markerWidth={100 * s}
+                markerHeight={100 * s}
+                refX={90 * s}
+                refY={50 * s}
                 orient="auto"
-                markerUnits="strokeWidth"
+                markerUnits="userSpaceOnUse"
               >
-                <path d="M0,0 L0,3 L3,1.5 z" fill="rgba(255,255,255,0.5)" />
+                <path d={`M0,0 L0,${100 * s} L${100 * s},${50 * s} z`} fill="rgba(255,255,255,0.5)" />
               </marker>
             </defs>
 
             {/* Path layer */}
             <g id="path-layer">
               {paths.map((path) => (
-                <AnimatedPath key={path.characterId} path={path} arrowId={arrowId} />
+                <AnimatedPath key={path.characterId} path={path} arrowId={arrowId} strokeScale={s} />
               ))}
             </g>
 
@@ -147,7 +154,7 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
                   <g key={loc.id}>
                     {/* City marker — counter-scale around city center */}
                     {loc.id !== 'stepstones' && (
-                      <g style={{ transform: 'scale(var(--counter-scale, 1))', transformOrigin: `${loc.x}px ${loc.y}px` }}>
+                      <g transform={`translate(${loc.x}, ${loc.y}) scale(${s}) translate(${-loc.x}, ${-loc.y})`}>
                         <polygon
                           points={`${loc.x},${loc.y - 30} ${loc.x + 25},${loc.y} ${loc.x},${loc.y + 30} ${loc.x - 25},${loc.y}`}
                           fill="rgba(0,0,0,0.75)"
@@ -158,7 +165,7 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
                       </g>
                     )}
                     {/* Label — counter-scale around city position */}
-                    <g style={{ transform: 'scale(var(--counter-scale, 1))', transformOrigin: `${loc.x}px ${loc.y}px` }}>
+                    <g transform={`translate(${loc.x}, ${loc.y}) scale(${s}) translate(${-loc.x}, ${-loc.y})`}>
                       <text
                         x={loc.x + labelDx}
                         y={loc.y + labelDy}
@@ -193,7 +200,7 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
             {/* Character layer */}
             <g id="character-layer">
               {characterPositions.map((pos) => (
-                <CharacterDot key={pos.characterId} position={pos} />
+                <CharacterDot key={pos.characterId} position={pos} counterScale={s} />
               ))}
             </g>
           </svg>
