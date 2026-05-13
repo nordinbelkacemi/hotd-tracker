@@ -101,7 +101,7 @@
   Red: #c12838
 */
 #westeros {
-  fill: #feffe9;
+  fill: #c12838;
 }
   </style>
   <g id="ocean" class="ocean">

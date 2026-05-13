@@ -6,7 +6,7 @@ const ALL_CHARACTER_IDS = new Set(characters.map((c) => c.id));
 
 const useStore = create<AppState>((set) => ({
   selectedCharacters: ALL_CHARACTER_IDS,
-  currentEpisode: 1,
+  currentStepIndex: 0,
   isPlaying: false,
 
   toggleCharacter: (id) =>
@@ -20,7 +20,7 @@ const useStore = create<AppState>((set) => ({
   selectAll: () => set({ selectedCharacters: new Set(ALL_CHARACTER_IDS) }),
   deselectAll: () => set({ selectedCharacters: new Set() }),
 
-  setEpisode: (n) => set({ currentEpisode: n }),
+  setStep: (n) => set({ currentStepIndex: n }),
 
   togglePlaying: () => set((state) => ({ isPlaying: !state.isPlaying })),
 }));

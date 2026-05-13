@@ -1,14 +1,93 @@
 [
-  { "id": "winterfell",   "name": "Winterfell",      "x": 1500, "y": 1900, "region": "north" },
-  { "id": "the-eyrie",   "name": "The Eyrie",        "x": 2100, "y": 2450, "region": "vale" },
-  { "id": "harrenhal",   "name": "Harrenhal",        "x": 1700, "y": 2680, "region": "riverlands" },
-  { "id": "casterly-rock","name": "Casterly Rock",   "x": 910,  "y": 2960, "region": "westerlands" },
-  { "id": "highgarden",  "name": "Highgarden",       "x": 1120, "y": 3480, "region": "reach" },
-  { "id": "oldtown",     "name": "Oldtown",          "x": 910,  "y": 3880, "region": "reach" },
-  { "id": "kings-landing","name": "King's Landing",  "x": 1900, "y": 3220, "region": "crownlands" },
-  { "id": "dragonstone", "name": "Dragonstone",      "x": 2390, "y": 3210, "region": "crownlands" },
-  { "id": "driftmark",   "name": "Driftmark",        "x": 2270, "y": 3260, "region": "crownlands" },
-  { "id": "storms-end",  "name": "Storm's End",      "x": 2180, "y": 3800, "region": "stormlands" },
-  { "id": "stepstones",  "name": "The Stepstones",   "x": 2630, "y": 4220, "region": "stepstones" },
-  { "id": "pentos",      "name": "Pentos",           "x": 3020, "y": 3080, "region": "essos" }
+  {
+    "id": "winterfell",
+    "name": "Winterfell",
+    "x": 1630,
+    "y": 1680,
+    "region": "north"
+  },
+  {
+    "id": "the-eyrie",
+    "name": "The Eyrie",
+    "x": 2080,
+    "y": 2760,
+    "region": "vale"
+  },
+  {
+    "id": "harrenhal",
+    "name": "Harrenhal",
+    "x": 1830,
+    "y": 3080,
+    "region": "riverlands"
+  },
+  {
+    "id": "casterly-rock",
+    "name": "Casterly Rock",
+    "x": 1025,
+    "y": 3280,
+    "region": "westerlands"
+  },
+  {
+    "id": "highgarden",
+    "name": "Highgarden",
+    "x": 1270,
+    "y": 3870,
+    "region": "reach"
+  },
+  {
+    "id": "oldtown",
+    "name": "Oldtown",
+    "x": 1030,
+    "y": 4155,
+    "region": "reach"
+  },
+  {
+    "id": "kings-landing",
+    "name": "King's Landing",
+    "x": 1960,
+    "y": 3415,
+    "region": "crownlands"
+  },
+  {
+    "id": "dragonstone",
+    "name": "Dragonstone",
+    "x": 2350,
+    "y": 3210,
+    "region": "crownlands"
+  },
+  {
+    "id": "driftmark",
+    "name": "Driftmark",
+    "x": 2255,
+    "y": 3228,
+    "region": "crownlands"
+  },
+  {
+    "id": "storms-end",
+    "name": "Storm's End",
+    "x": 2255,
+    "y": 3760,
+    "region": "stormlands"
+  },
+  {
+    "id": "stepstones",
+    "name": "The Stepstones",
+    "x": 2500,
+    "y": 4200,
+    "region": "stepstones"
+  },
+  {
+    "id": "pentos",
+    "name": "Pentos",
+    "x": 2905,
+    "y": 3385,
+    "region": "essos"
+  },
+  {
+    "id": "rooks-rest",
+    "name": "Rook's Rest",
+    "x": 2150,
+    "y": 3150,
+    "region": "crownlands"
+  }
 ]

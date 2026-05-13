@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useState, useLayoutEffect } from 'react';
 import { motion } from 'framer-motion';
 import { buildPathD } from '../utils/getPaths';
 import type { CharacterPath } from '../types';
@@ -9,34 +9,45 @@ interface AnimatedPathProps {
 }
 
 export default function AnimatedPath({ path, arrowId }: AnimatedPathProps) {
-  const pathRef = useRef<SVGPathElement>(null);
-  const [length, setLength] = useState<number | null>(null);
+  const measureRef = useRef<SVGPathElement>(null);
+  const prevLengthRef = useRef(0);
+  const [anim, setAnim] = useState<{ d: string; length: number; startOffset: number } | null>(null);
 
   const d = buildPathD(path.points);
-  if (!d) return null;
 
-  useEffect(() => {
-    if (pathRef.current) {
-      setLength(pathRef.current.getTotalLength());
+  useLayoutEffect(() => {
+    if (!d || !measureRef.current) {
+      prevLengthRef.current = 0;
+      setAnim(null);
+      return;
     }
+    const newLength = measureRef.current.getTotalLength();
+    const startOffset = Math.max(0, newLength - prevLengthRef.current);
+    prevLengthRef.current = newLength;
+    setAnim({ d, length: newLength, startOffset });
   }, [d]);
+
+  if (!d) return null;
 
   return (
     <>
       {/* Invisible path used to measure length */}
-      <path ref={pathRef} d={d} fill="none" stroke="transparent" />
+      <path ref={measureRef} d={d} fill="none" stroke="transparent" />
 
-      {length !== null && (
+      {anim && (
         <motion.path
-          d={d}
+          key={anim.d}
+          d={anim.d}
           fill="none"
           stroke={path.color}
-          strokeWidth={14}
+          strokeWidth={35}
+          style={{ strokeWidth: 'calc(35px * var(--counter-scale, 1))' }}
           strokeOpacity={0.38}
           strokeLinecap="round"
           strokeLinejoin="round"
           markerEnd={`url(#${arrowId})`}
-          initial={{ strokeDashoffset: length, strokeDasharray: length }}
+          strokeDasharray={anim.length}
+          initial={{ strokeDashoffset: anim.startOffset }}
           animate={{ strokeDashoffset: 0 }}
           transition={{ duration: 1.2, ease: 'easeInOut' }}
         />

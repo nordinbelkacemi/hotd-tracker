@@ -1,13 +1,13 @@
 import type { CharacterPath } from '../types';
 import locationsData from '../data/locations.json';
 import charactersData from '../data/characters.json';
-import episodesData from '../data/episodes.json';
+import { timelineSteps } from './timeline';
 
 const locationMap = new Map(locationsData.map((l) => [l.id, l]));
 const characterMap = new Map(charactersData.map((c) => [c.id, c]));
 
 export function getPaths(
-  currentEpisode: number,
+  currentStepIndex: number,
   selectedCharacters: Set<string>
 ): CharacterPath[] {
   const paths: CharacterPath[] = [];
@@ -18,12 +18,11 @@ export function getPaths(
     const points: { x: number; y: number }[] = [];
     let lastLocId: string | null = null;
 
-    for (let ep = 1; ep <= currentEpisode; ep++) {
-      const episode = episodesData.find((e) => e.number === ep);
-      if (!episode) continue;
+    for (let stepIdx = 0; stepIdx <= currentStepIndex; stepIdx++) {
+      const step = timelineSteps[stepIdx];
+      if (!step) continue;
 
-      const locations = episode.characterLocations as Record<string, string | null>;
-      const locId = locations[char.id] ?? null;
+      const locId = step.locations[char.id] ?? null;
       if (!locId) continue;
       if (locId === lastLocId) continue;
 

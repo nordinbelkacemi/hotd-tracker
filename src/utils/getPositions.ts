@@ -1,7 +1,7 @@
 import type { CharacterPosition } from '../types';
 import locationsData from '../data/locations.json';
 import charactersData from '../data/characters.json';
-import episodesData from '../data/episodes.json';
+import { timelineSteps } from './timeline';
 
 const locationMap = new Map(locationsData.map((l) => [l.id, l]));
 const characterMap = new Map(charactersData.map((c) => [c.id, c]));
@@ -10,15 +10,15 @@ const CLUSTER_RADIUS = 28;
 const CLUSTER_INNER_RADIUS = 14;
 
 export function getPositions(
-  episodeNumber: number,
+  currentStepIndex: number,
   selectedCharacters: Set<string>
 ): CharacterPosition[] {
-  const episode = episodesData.find((e) => e.number === episodeNumber);
-  if (!episode) return [];
+  const step = timelineSteps[currentStepIndex];
+  if (!step) return [];
 
   // Group visible characters by location
   const byLocation = new Map<string, string[]>();
-  for (const [charId, locId] of Object.entries(episode.characterLocations)) {
+  for (const [charId, locId] of Object.entries(step.locations)) {
     if (!locId) continue;
     if (!selectedCharacters.has(charId)) continue;
     const existing = byLocation.get(locId) ?? [];

@@ -2,120 +2,12 @@
   {
     "number": 1,
     "title": "The Heirs of the Dragon",
-    "characterLocations": {
-      "viserys":  "kings-landing",
-      "rhaenyra": "kings-landing",
-      "daemon":   "dragonstone",
-      "alicent":  "kings-landing",
-      "otto":     "kings-landing",
-      "rhaenys":  "kings-landing",
-      "corlys":   "kings-landing",
-      "laenor":   "kings-landing",
-      "laena":    "kings-landing",
-      "criston":  "kings-landing",
-      "larys":    "kings-landing",
-      "harwin":   "kings-landing",
-      "mysaria":  "dragonstone",
-      "aegon":    null,
-      "aemond":   null,
-      "helaena":  null,
-      "jace":     null,
-      "luke":     null
-    },
-    "movements": [
-      { "character": "daemon", "from": "kings-landing", "to": "dragonstone" }
-    ]
-  },
-  {
-    "number": 2,
-    "title": "The Rogue Prince",
-    "characterLocations": {
-      "viserys":  "kings-landing",
-      "rhaenyra": "kings-landing",
-      "daemon":   "dragonstone",
-      "alicent":  "kings-landing",
-      "otto":     "kings-landing",
-      "rhaenys":  "kings-landing",
-      "corlys":   "kings-landing",
-      "laenor":   null,
-      "laena":    null,
-      "criston":  "kings-landing",
-      "larys":    "kings-landing",
-      "harwin":   "kings-landing",
-      "mysaria":  "dragonstone",
-      "aegon":    null,
-      "aemond":   null,
-      "helaena":  null,
-      "jace":     null,
-      "luke":     null
-    },
-    "movements": []
-  },
-  {
-    "number": 3,
-    "title": "Second of His Name",
-    "characterLocations": {
-      "viserys":  "kings-landing",
-      "rhaenyra": "kings-landing",
-      "daemon":   "stepstones",
-      "alicent":  "kings-landing",
-      "otto":     "kings-landing",
-      "rhaenys":  "driftmark",
-      "corlys":   "stepstones",
-      "laenor":   "stepstones",
-      "laena":    "kings-landing",
-      "criston":  "kings-landing",
-      "larys":    "kings-landing",
-      "harwin":   "kings-landing",
-      "mysaria":  null,
-      "aegon":    null,
-      "aemond":   null,
-      "helaena":  null,
-      "jace":     null,
-      "luke":     null
-    },
-    "movements": [
-      { "character": "daemon", "from": "dragonstone", "to": "stepstones" },
-      { "character": "corlys", "from": "kings-landing", "to": "stepstones" },
-      { "character": "laenor", "from": "kings-landing", "to": "stepstones" }
-    ]
-  },
-  {
-    "number": 4,
-    "title": "King of the Narrow Sea",
-    "characterLocations": {
+    "initialLocations": {
       "viserys":  "kings-landing",
       "rhaenyra": "kings-landing",
       "daemon":   "kings-landing",
       "alicent":  "kings-landing",
       "otto":     "kings-landing",
-      "rhaenys":  "driftmark",
-      "corlys":   "driftmark",
-      "laenor":   "driftmark",
-      "laena":    null,
-      "criston":  "kings-landing",
-      "larys":    "kings-landing",
-      "harwin":   "kings-landing",
-      "mysaria":  null,
-      "aegon":    null,
-      "aemond":   null,
-      "helaena":  null,
-      "jace":     null,
-      "luke":     null
-    },
-    "movements": [
-      { "character": "daemon", "from": "stepstones", "to": "kings-landing" }
-    ]
-  },
-  {
-    "number": 5,
-    "title": "We Light the Way",
-    "characterLocations": {
-      "viserys":  "kings-landing",
-      "rhaenyra": "kings-landing",
-      "daemon":   "kings-landing",
-      "alicent":  "kings-landing",
-      "otto":     null,
       "rhaenys":  "kings-landing",
       "corlys":   "kings-landing",
       "laenor":   "kings-landing",
@@ -130,12 +22,127 @@
       "jace":     null,
       "luke":     null
     },
+    "movements": [
+      { "characters": ["daemon", "mysaria"], "from": "kings-landing", "to": "dragonstone" }
+    ]
+  },
+  {
+    "number": 2,
+    "title": "The Rogue Prince",
+    "initialLocations": {
+      "viserys":  "kings-landing",
+      "rhaenyra": "kings-landing",
+      "daemon":   "dragonstone",
+      "alicent":  "kings-landing",
+      "otto":     "kings-landing",
+      "rhaenys":  "kings-landing",
+      "corlys":   "kings-landing",
+      "laenor":   "kings-landing",
+      "laena":    "kings-landing",
+      "criston":  "kings-landing",
+      "larys":    "kings-landing",
+      "harwin":   "kings-landing",
+      "mysaria":  "dragonstone",
+      "aegon":    null,
+      "aemond":   null,
+      "helaena":  null,
+      "jace":     null,
+      "luke":     null
+    },
+    "movements": [
+      { "characters": ["otto", "criston"], "from": "kings-landing", "to": "dragonstone" },
+      { "characters": ["rhaenyra"], "from": "kings-landing", "to": "dragonstone" },
+      { "characters": ["otto", "criston", "rhaenyra"], "from": "dragonstone", "to": "kings-landing" },
+      { "characters": ["corlys"], "from": "kings-landing", "to": "driftmark" },
+      { "characters": ["daemon"], "from": "dragonstone", "to": "driftmark" }
+    ]
+  },
+  {
+    "number": 3,
+    "title": "Second of His Name",
+    "initialLocations": {
+      "viserys":  "kings-landing",
+      "rhaenyra": "kings-landing",
+      "daemon":   "stepstones",
+      "alicent":  "kings-landing",
+      "otto":     "kings-landing",
+      "rhaenys":  "kings-landing",
+      "corlys":   "stepstones",
+      "laenor":   "stepstones",
+      "laena":    "kings-landing",
+      "criston":  "kings-landing",
+      "larys":    "kings-landing",
+      "harwin":   "kings-landing",
+      "mysaria":  "kings-landing",
+      "aegon":    "kings-landing",
+      "aemond":   null,
+      "helaena":  null,
+      "jace":     null,
+      "luke":     null
+    },
     "movements": []
+  },
+  {
+    "number": 4,
+    "title": "King of the Narrow Sea",
+    "initialLocations": {
+      "viserys":  "kings-landing",
+      "rhaenyra": "kings-landing",
+      "daemon":   "stepstones",
+      "alicent":  "kings-landing",
+      "otto":     "kings-landing",
+      "rhaenys":  "driftmark",
+      "corlys":   "driftmark",
+      "laenor":   "driftmark",
+      "laena":    "driftmark",
+      "criston":  "kings-landing",
+      "larys":    "kings-landing",
+      "harwin":   "kings-landing",
+      "mysaria":  "kings-landing",
+      "aegon":    "kings-landing",
+      "aemond":   null,
+      "helaena":  null,
+      "jace":     null,
+      "luke":     null
+    },
+    "movements": [
+      { "characters": ["daemon"], "from": "stepstones", "to": "kings-landing" }
+    ]
+  },
+  {
+    "number": 5,
+    "title": "We Light the Way",
+    "initialLocations": {
+      "viserys":  "kings-landing",
+      "rhaenyra": "kings-landing",
+      "daemon":   "the-eyrie",
+      "alicent":  "kings-landing",
+      "otto":     "kings-landing",
+      "rhaenys":  "driftmark",
+      "corlys":   "driftmark",
+      "laenor":   "driftmark",
+      "laena":    "driftmark",
+      "criston":  "kings-landing",
+      "larys":    "kings-landing",
+      "harwin":   "kings-landing",
+      "mysaria":  "kings-landing",
+      "aegon":    "kings-landing",
+      "aemond":   null,
+      "helaena":  null,
+      "jace":     null,
+      "luke":     null
+    },
+    "movements": [
+      { "characters": ["otto"], "from": "kings-landing", "to": "oldtown" },
+      { "characters": ["viserys", "rhaenyra", "criston", "harwin", "larys"], "from": "kings-landing", "to": "driftmark" },
+      { "characters": ["viserys", "rhaenyra", "criston", "harwin", "larys", "corlys", "rhaenys", "laenor", "laena"], "from": "driftmark", "to": "kings-landing" },
+      { "characters": ["daemon"], "from": "the-eyrie", "to": "kings-landing" }
+    ]
   },
   {
     "number": 6,
     "title": "The Princess and the Queen",
-    "characterLocations": {
+    "initialLocations": {
       "viserys":  "kings-landing",
       "rhaenyra": "kings-landing",
       "daemon":   "pentos",
@@ -147,8 +154,8 @@
       "laena":    "pentos",
       "criston":  "kings-landing",
       "larys":    "kings-landing",
-      "harwin":   "harrenhal",
-      "mysaria":  null,
+      "harwin":   "kings-landing",
+      "mysaria":  "kings-landing",
       "aegon":    "kings-landing",
       "aemond":   "kings-landing",
       "helaena":  "kings-landing",
@@ -156,20 +163,21 @@
       "luke":     "kings-landing"
     },
     "movements": [
-      { "character": "daemon", "from": "kings-landing", "to": "pentos" },
-      { "character": "laena",  "from": "kings-landing", "to": "pentos" },
-      { "character": "harwin", "from": "kings-landing", "to": "harrenhal" }
+      { "characters": ["harwin"], "from": "kings-landing", "to": "harrenhal" },
+      { "characters": ["harwin"], "from": "harrenhal", "to": null },
+      { "characters": ["rhaenyra", "laenor", "jace", "luke"], "from": "kings-landing", "to": "dragonstone" },
+      { "characters": ["laena"], "from": "pentos", "to": null }
     ]
   },
   {
     "number": 7,
     "title": "Driftmark",
-    "characterLocations": {
+    "initialLocations": {
       "viserys":  "driftmark",
       "rhaenyra": "driftmark",
       "daemon":   "driftmark",
       "alicent":  "driftmark",
-      "otto":     "oldtown",
+      "otto":     "driftmark",
       "rhaenys":  "driftmark",
       "corlys":   "driftmark",
       "laenor":   "driftmark",
@@ -185,21 +193,22 @@
       "luke":     "driftmark"
     },
     "movements": [
-      { "character": "daemon", "from": "pentos",   "to": "driftmark" },
-      { "character": "laenor", "from": "driftmark", "to": "pentos" }
+      { "characters": ["laenor"], "from": "driftmark", "to": null },
+      { "characters": ["rhaenyra", "daemon", "jace", "luke"], "from": "driftmark", "to": "dragonstone" },
+      { "characters": ["viserys", "alicent", "otto", "criston", "larys", "aegon", "aemond", "helaena"], "from": "driftmark", "to": "kings-landing" }
     ]
   },
   {
     "number": 8,
     "title": "The Lord of the Tides",
-    "characterLocations": {
+    "initialLocations": {
       "viserys":  "kings-landing",
-      "rhaenyra": "kings-landing",
-      "daemon":   "kings-landing",
+      "rhaenyra": "dragonstone",
+      "daemon":   "dragonstone",
       "alicent":  "kings-landing",
       "otto":     "kings-landing",
-      "rhaenys":  "kings-landing",
-      "corlys":   "kings-landing",
+      "rhaenys":  "driftmark",
+      "corlys":   "stepstones",
       "laenor":   null,
       "laena":    null,
       "criston":  "kings-landing",
@@ -209,20 +218,47 @@
       "aegon":    "kings-landing",
       "aemond":   "kings-landing",
       "helaena":  "kings-landing",
-      "jace":     "kings-landing",
-      "luke":     "kings-landing"
+      "jace":     "dragonstone",
+      "luke":     "dragonstone"
     },
     "movements": [
-      { "character": "rhaenyra", "from": "driftmark",    "to": "kings-landing" },
-      { "character": "daemon",   "from": "driftmark",    "to": "kings-landing" },
-      { "character": "otto",     "from": "oldtown",      "to": "kings-landing" },
-      { "character": "rhaenys",  "from": "driftmark",    "to": "kings-landing" }
+      { "characters": ["rhaenys"], "from": "driftmark", "to": "kings-landing" },
+      { "characters": ["rhaenyra", "daemon", "jace", "luke"], "from": "dragonstone", "to": "kings-landing" },
+      { "characters": ["viserys"], "from": "kings-landing", "to": null },
+      { "characters": ["rhaenyra", "daemon", "jace", "luke"], "from": "kings-landing", "to": "dragonstone" }
     ]
   },
   {
     "number": 9,
     "title": "The Green Council",
-    "characterLocations": {
+    "initialLocations": {
+      "viserys":  null,
+      "rhaenyra": "dragonstone",
+      "daemon":   "dragonstone",
+      "alicent":  "kings-landing",
+      "otto":     "kings-landing",
+      "rhaenys":  "kings-landing",
+      "corlys":   "driftmark",
+      "laenor":   null,
+      "laena":    null,
+      "criston":  "kings-landing",
+      "larys":    "kings-landing",
+      "harwin":   null,
+      "mysaria":  "kings-landing",
+      "aegon":    "kings-landing",
+      "aemond":   "kings-landing",
+      "helaena":  "kings-landing",
+      "jace":     "dragonstone",
+      "luke":     "dragonstone"
+    },
+    "movements": [
+      { "characters": ["rhaenys"], "from": "kings-landing", "to": "dragonstone" }
+    ]
+  },
+  {
+    "number": 10,
+    "title": "The Black Queen",
+    "initialLocations": {
       "viserys":  null,
       "rhaenyra": "dragonstone",
       "daemon":   "dragonstone",
@@ -243,19 +279,25 @@
       "luke":     "dragonstone"
     },
     "movements": [
-      { "character": "rhaenys", "from": "kings-landing", "to": "dragonstone" }
+      { "characters": ["corlys"], "from": "driftmark", "to": "dragonstone" },
+      { "characters": ["otto"], "from": "kings-landing", "to": "dragonstone" },
+      { "characters": ["otto"], "from": "dragonstone", "to": "kings-landing" },
+      { "characters": ["jace"], "from": "dragonstone", "to": "the-eyrie" },
+      { "characters": ["luke"], "from": "dragonstone", "to": "storms-end" },
+      { "characters": ["aemond"], "from": "kings-landing", "to": "storms-end" },
+      { "characters": ["luke"], "from": "storms-end", "to": null }
     ]
   },
   {
-    "number": 10,
-    "title": "The Black Queen",
-    "characterLocations": {
+    "number": 11,
+    "title": "A Son for a Son",
+    "initialLocations": {
       "viserys":  null,
       "rhaenyra": "dragonstone",
       "daemon":   "dragonstone",
       "alicent":  "kings-landing",
       "otto":     "kings-landing",
-      "rhaenys":  "dragonstone",
+      "rhaenys":  "driftmark",
       "corlys":   "driftmark",
       "laenor":   null,
       "laena":    null,
@@ -266,12 +308,101 @@
       "aegon":    "kings-landing",
       "aemond":   "storms-end",
       "helaena":  "kings-landing",
+      "jace":     "the-eyrie",
+      "luke":     null
+    },
+    "movements": [
+      { "characters": ["jace"], "from": "the-eyrie", "to": "winterfell" },
+      { "characters": ["aemond"], "from": "storms-end", "to": "kings-landing" },
+      { "characters": ["mysaria"], "from": "kings-landing", "to": "dragonstone" },
+      { "characters": ["daemon"], "from": "dragonstone", "to": "kings-landing" },
+      { "characters": ["daemon"], "from": "kings-landing", "to": "dragonstone" }
+    ]
+  },
+  {
+    "number": 12,
+    "title": "Rhaenyra the Cruel",
+    "initialLocations": {
+      "viserys":  null,
+      "rhaenyra": "dragonstone",
+      "daemon":   "dragonstone",
+      "alicent":  "kings-landing",
+      "otto":     "kings-landing",
+      "rhaenys":  "driftmark",
+      "corlys":   "driftmark",
+      "laenor":   null,
+      "laena":    null,
+      "criston":  "kings-landing",
+      "larys":    "kings-landing",
+      "harwin":   null,
+      "mysaria":  "dragonstone",
+      "aegon":    "kings-landing",
+      "aemond":   "kings-landing",
+      "helaena":  "kings-landing",
+      "jace":     "winterfell",
+      "luke":     null
+    },
+    "movements": [
+      { "characters": ["jace"], "from": "winterfell", "to": "dragonstone" },
+      { "characters": ["daemon"], "from": "dragonstone", "to": "harrenhal" }
+    ]
+  },
+  {
+    "number": 13,
+    "title": "The Burning Mill",
+    "initialLocations": {
+      "viserys":  null,
+      "rhaenyra": "dragonstone",
+      "daemon":   "harrenhal",
+      "alicent":  "kings-landing",
+      "otto":     "kings-landing",
+      "rhaenys":  "driftmark",
+      "corlys":   "driftmark",
+      "laenor":   null,
+      "laena":    null,
+      "criston":  "kings-landing",
+      "larys":    "kings-landing",
+      "harwin":   null,
+      "mysaria":  "dragonstone",
+      "aegon":    "kings-landing",
+      "aemond":   "kings-landing",
+      "helaena":  "kings-landing",
       "jace":     "dragonstone",
       "luke":     null
     },
     "movements": [
-      { "character": "luke",  "from": "dragonstone", "to": "storms-end" },
-      { "character": "aemond","from": "kings-landing","to": "storms-end" }
+      { "characters": ["otto"], "from": "kings-landing", "to": "oldtown" },
+      { "characters": ["rhaenyra"], "from": "dragonstone", "to": "kings-landing" },
+      { "characters": ["rhaenyra"], "from": "kings-landing", "to": "dragonstone" }
+    ]
+  },
+  {
+    "number": 14,
+    "title": "The Red Dragon and the Gold",
+    "initialLocations": {
+      "viserys":  null,
+      "rhaenyra": "dragonstone",
+      "daemon":   "harrenhal",
+      "alicent":  "kings-landing",
+      "otto":     "oldtown",
+      "rhaenys":  "driftmark",
+      "corlys":   "driftmark",
+      "laenor":   null,
+      "laena":    null,
+      "criston":  "kings-landing",
+      "larys":    "kings-landing",
+      "harwin":   null,
+      "mysaria":  "dragonstone",
+      "aegon":    "kings-landing",
+      "aemond":   "kings-landing",
+      "helaena":  "kings-landing",
+      "jace":     "dragonstone",
+      "luke":     null
+    },
+    "movements": [
+      { "characters": ["criston", "aegon", "aemond"], "from": "kings-landing", "to": "rooks-rest" },
+      { "characters": ["rhaenys"], "from": "driftmark", "to": "rooks-rest" },
+      { "characters": ["rhaenys"], "from": "rooks-rest", "to": null }
     ]
   }
 ]

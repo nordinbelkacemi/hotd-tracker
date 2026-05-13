@@ -16,15 +16,15 @@ export interface Character {
 }
 
 export interface Movement {
-  character: string;
-  from: string;
-  to: string;
+  characters: string[];
+  from: string | null;
+  to: string | null;
 }
 
 export interface Episode {
   number: number;
   title: string;
-  characterLocations: Record<string, string | null>;
+  initialLocations: Record<string, string | null>;
   movements: Movement[];
 }
 
@@ -49,11 +49,11 @@ export interface CharacterPath {
 
 export interface AppState {
   selectedCharacters: Set<string>;
-  currentEpisode: number;
+  currentStepIndex: number;
   isPlaying: boolean;
   toggleCharacter: (id: string) => void;
   selectAll: () => void;
   deselectAll: () => void;
-  setEpisode: (n: number) => void;
+  setStep: (index: number) => void;
   togglePlaying: () => void;
 }

@@ -6,31 +6,32 @@ import EpisodeSlider from './components/EpisodeSlider';
 import useStore from './store/useStore';
 import { getPositions } from './utils/getPositions';
 import { getPaths } from './utils/getPaths';
+import { timelineSteps } from './utils/timeline';
 
 export default function App() {
-  const { currentEpisode, selectedCharacters, setEpisode, togglePlaying } = useStore();
+  const { currentStepIndex, selectedCharacters, setStep, togglePlaying } = useStore();
 
   const characterPositions = useMemo(
-    () => getPositions(currentEpisode, selectedCharacters),
-    [currentEpisode, selectedCharacters]
+    () => getPositions(currentStepIndex, selectedCharacters),
+    [currentStepIndex, selectedCharacters]
   );
 
   const paths = useMemo(
-    () => getPaths(currentEpisode, selectedCharacters),
-    [currentEpisode, selectedCharacters]
+    () => getPaths(currentStepIndex, selectedCharacters),
+    [currentStepIndex, selectedCharacters]
   );
 
   // Keyboard shortcuts
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement) return;
-      if (e.key === 'ArrowLeft') setEpisode(Math.max(1, currentEpisode - 1));
-      if (e.key === 'ArrowRight') setEpisode(Math.min(10, currentEpisode + 1));
+      if (e.key === 'ArrowLeft') setStep(Math.max(0, currentStepIndex - 1));
+      if (e.key === 'ArrowRight') setStep(Math.min(timelineSteps.length - 1, currentStepIndex + 1));
       if (e.key === ' ') { e.preventDefault(); togglePlaying(); }
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [currentEpisode, setEpisode, togglePlaying]);
+  }, [currentStepIndex, setStep, togglePlaying]);
 
   return (
     <motion.div
@@ -50,7 +51,7 @@ export default function App() {
             House of the Dragon
           </span>
           <span className="ml-3 text-xs text-white/35 tracking-wider uppercase">
-            Season 1 · Character Tracker
+            Seasons 1-2 · Character Tracker
           </span>
         </div>
       </header>
@@ -58,7 +59,7 @@ export default function App() {
       {/* Main content */}
       <div className="flex flex-1 overflow-hidden flex-col md:flex-row">
         {/* Map area */}
-        <div className="flex-1 overflow-hidden relative">
+        <div className="flex-1 overflow-hidden relative" style={{ backgroundColor: '#c6ecff' }}>
           <WesterosMap characterPositions={characterPositions} paths={paths} />
         </div>
 
