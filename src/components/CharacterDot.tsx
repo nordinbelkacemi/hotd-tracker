@@ -4,29 +4,51 @@ import type { CharacterPosition } from '../types';
 
 interface CharacterDotProps {
   position: CharacterPosition;
+  onHoverChange?: (hovered: boolean) => void;
 }
 
-const DOT_RADIUS = 45;
-const TOOLTIP_W = 1200;
+const DOT_RADIUS = 50;
 
-export default function CharacterDot({ position }: CharacterDotProps) {
+export default function CharacterDot({ position, onHoverChange }: CharacterDotProps) {
   const [hovered, setHovered] = useState(false);
 
-  const { x, y, offsetX, offsetY, color, name, house, locationName } = position;
+  const handleMouseEnter = () => {
+    setHovered(true);
+    onHoverChange?.(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+    onHoverChange?.(false);
+  };
+
+  const { x, y, offsetX, offsetY, color, name, house, locationName, characterId } = position;
 
   const tx = x;
   const ty = y;
 
+  const houseLocationStr = [house !== '—' ? house : null, locationName].filter(Boolean).join(' · ');
+  
+  // Dynamically calculate tooltip width based on text length
+  const estimatedNameWidth = name.length * 85;
+  const estimatedDescWidth = houseLocationStr.length * 55;
+  const maxTextWidth = Math.max(estimatedNameWidth, estimatedDescWidth);
+  const tooltipWidth = Math.max(1400, 680 + maxTextWidth + 120);
+
+  // We use ui-avatars as a clean placeholder since the user will replace them later.
+  // We can format it nicely.
+  const placeholderUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=222222&color=ffffff&size=300&font-size=0.33`;
+
   return (
     <motion.g
-      key={position.characterId}
+      key={characterId}
       initial={{ opacity: 0, scale: 0.3 }}
       animate={{ opacity: 1, scale: 1, x: tx, y: ty }}
       exit={{ opacity: 0, scale: 0.2 }}
       transition={{ type: 'spring', stiffness: 130, damping: 22 }}
       style={{ cursor: 'pointer' }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Counter-scale group: scales around origin (0,0) which is the dot center */}
       <g style={{ transform: 'scale(var(--counter-scale, 1))' }}>
@@ -48,36 +70,58 @@ export default function CharacterDot({ position }: CharacterDotProps) {
             transition={{ type: 'spring', stiffness: 320, damping: 22 }}
           />
 
-        {/* Tooltip */}
-        <AnimatePresence>
-          {hovered && (
-            <motion.g
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 12 }}
-              transition={{ duration: 0.12 }}
-              transform={`translate(${DOT_RADIUS + 24}, ${-DOT_RADIUS - 30})`}
-            >
-              <rect
-                x={0}
-                y={-300}
-                width={TOOLTIP_W}
-                height={420}
-                rx={45}
-                fill="rgba(13,17,23,0.93)"
-                stroke="rgba(255,255,255,0.15)"
-                strokeWidth={3}
-              />
-              <line x1={0} y1={-300} x2={TOOLTIP_W} y2={-300} stroke={color} strokeWidth={18} strokeOpacity={0.8} />
-              <text x={75} y={-150} fontSize={105} fill="white" fontFamily="Cinzel, serif" fontWeight={600}>
-                {name}
-              </text>
-              <text x={75} y={-30} fontSize={84} fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif">
-                {[house !== '—' ? house : null, locationName].filter(Boolean).join(' · ')}
-              </text>
-            </motion.g>
-          )}
-        </AnimatePresence>
+          {/* Tooltip */}
+          <AnimatePresence>
+            {hovered && (
+              <g transform={`translate(${DOT_RADIUS + 124}, ${-DOT_RADIUS - 30})`}>
+                <motion.g
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 12 }}
+                  transition={{ duration: 0.12 }}
+                >
+                  <rect
+                    x={0}
+                    y={-480}
+                    width={tooltipWidth}
+                    height={640}
+                    rx={60}
+                    fill="rgba(13,17,23,0.93)"
+                    stroke="rgba(255,255,255,0.15)"
+                    strokeWidth={4}
+                  />
+                  {/* Highlight line on top */}
+                  <line x1={0} y1={-480} x2={tooltipWidth} y2={-480} stroke={color} strokeWidth={24} strokeOpacity={0.8} />
+
+                  {/* Character Image */}
+                  <clipPath id={`clip-${characterId}`}>
+                    <rect x={60} y={-440} width={560} height={560} rx={50} />
+                  </clipPath>
+                  <image
+                    href={`/characters/${characterId}.png`}
+                    x={60}
+                    y={-440}
+                    width={560}
+                    height={560}
+                    clipPath={`url(#clip-${characterId})`}
+                    preserveAspectRatio="xMidYMid slice"
+                    onError={(e) => {
+                      // Fallback to placeholder if the image hasn't been added yet
+                      e.currentTarget.setAttribute('href', placeholderUrl);
+                    }}
+                  />
+
+                  {/* Text Information */}
+                  <text x={680} y={-200} fontSize={140} fill="white" fontFamily="Cinzel, serif" fontWeight={600}>
+                    {name}
+                  </text>
+                  <text x={680} y={-20} fontSize={100} fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif">
+                    {houseLocationStr}
+                  </text>
+                </motion.g>
+              </g>
+            )}
+          </AnimatePresence>
         </g>
       </g>
     </motion.g>

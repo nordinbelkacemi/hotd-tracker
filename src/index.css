@@ -4,7 +4,9 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -19,7 +21,7 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   background: #C4A44A;
   cursor: pointer;
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 input[type="range"]::-moz-range-thumb {
@@ -28,11 +30,36 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 50%;
   background: #C4A44A;
   cursor: pointer;
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Map SVG styling */
-.land { fill: #2a3441; }
-.ocean { fill: #0d1e2c; }
-.river { fill: none; stroke: #1a3a55; stroke-width: 3; }
-.lake { fill: #1a3a55; }
+.land, .lake, .river {
+  stroke: #1a3a55 !important;
+  /* Base stroke is 4 SVG units. Multiply by counter-scale to keep thickness constant when zooming */
+  stroke-width: calc(4px * var(--counter-scale, 1)) !important;
+}
+
+.major-border {
+  stroke-width: calc(12px * var(--counter-scale, 1)) !important;
+}
+
+.minor-border {
+  stroke-width: calc(6px * var(--counter-scale, 1)) !important;
+}
+
+.land {
+  fill: #2a3441;
+}
+
+.ocean {
+  fill: #0d1e2c;
+}
+
+.river {
+  fill: none;
+}
+
+.lake {
+  fill: #1a3a55;
+}

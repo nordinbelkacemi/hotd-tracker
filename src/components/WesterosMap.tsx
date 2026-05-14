@@ -1,16 +1,14 @@
-import { useMemo, useRef, useEffect } from 'react';
+import { useMemo, useRef, useEffect, useState } from 'react';
 import type { CharacterPosition, CharacterPath } from '../types';
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+import { TransformWrapper, TransformComponent, type ReactZoomPanPinchContentRef } from 'react-zoom-pan-pinch';
 import CharacterDot from './CharacterDot';
 import AnimatedPath from './AnimatedPath';
+import LocationMarker from './LocationMarker';
 import westerosRaw from '../assets/westeros.svg?raw';
 import locationsData from '../data/locations.json';
 
-const SHOW_LOCATION_LABELS = true;
-
 const VIEWBOX = '0 0 10000 6667';
 
-// Preprocess: set dimensions to 100%, keep viewBox + preserveAspectRatio
 const processedSvg = westerosRaw
   .replace(/width="[^"]*"/, 'width="100%"')
   .replace(/height="[^"]*"/, 'height="100%"')
@@ -21,111 +19,124 @@ const processedSvg = westerosRaw
     return `<svg${attrs}>`;
   });
 
-const svgOpen = processedSvg.replace(/<\/svg>\s*$/, '');
-
 interface WesterosMapProps {
   characterPositions: CharacterPosition[];
   paths: CharacterPath[];
 }
 
 export default function WesterosMap({ characterPositions, paths }: WesterosMapProps) {
-  const svgHtml = useMemo(() => svgOpen, []);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const transformRef = useRef<ReactZoomPanPinchContentRef | null>(null);
+  const [hoveredCharId, setHoveredCharId] = useState<string | null>(null);
 
-  // Track the zoom scale by observing the CSS transform on TransformComponent's content div.
-  // Using a CSS variable avoids expensive React re-renders during zoom/pan.
+  const sortedPositions = useMemo(() => {
+    return [...characterPositions].sort((a, b) => {
+      if (a.characterId === hoveredCharId) return 1;
+      if (b.characterId === hoveredCharId) return -1;
+      return 0;
+    });
+  }, [characterPositions, hoveredCharId]);
+
+  // Stable collision-detection function — stored in a ref so effects can call it safely
+  const runCollisionDetection = useRef((wrapper: HTMLDivElement) => {
+    const labels = Array.from(
+      wrapper.querySelectorAll('.location-label-group')
+    ) as HTMLElement[];
+
+    labels.sort((a, b) => {
+      const impA = parseInt(a.dataset.importance || '0', 10);
+      const impB = parseInt(b.dataset.importance || '0', 10);
+      return impB - impA;
+    });
+
+    const occupied: DOMRect[] = [];
+    for (const label of labels) {
+      const rect = label.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) continue;
+
+      let collision = false;
+      const padding = 10;
+
+      for (const occ of occupied) {
+        if (
+          rect.left - padding < occ.right + padding &&
+          rect.right + padding > occ.left - padding &&
+          rect.top - padding < occ.bottom + padding &&
+          rect.bottom + padding > occ.top - padding
+        ) {
+          collision = true;
+          break;
+        }
+      }
+
+      label.style.opacity = collision ? '0' : '1';
+      if (!collision) occupied.push(rect);
+    }
+  }).current;
+
+  // Google Maps zoom model — log2 space, deltaY normalized, CSS var set inline
+  useEffect(() => {
+    const container = wrapperRef.current;
+    if (!container) return;
+
+    const ZOOM_SPEED = 1 / 100;
+    const MIN_SCALE = 1;
+    const MAX_SCALE = 20;
+    const MIN_ZOOM = Math.log2(MIN_SCALE);
+    const MAX_ZOOM = Math.log2(MAX_SCALE);
+
+    let collisionTimer: ReturnType<typeof setTimeout> | null = null;
+
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const ref = transformRef.current;
+      if (!ref) return;
+
+      const { scale, positionX, positionY } = ref.state;
+
+      // Normalize deltaY across deltaMode variants (pixels / lines / pages)
+      let deltaY = e.deltaY;
+      if (e.deltaMode === 1) deltaY *= 16;
+      if (e.deltaMode === 2) deltaY *= 400;
+
+      // Move in log2 space — equal steps feel equal at every zoom level
+      const currentZoom = Math.log2(scale);
+      const newZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, currentZoom - deltaY * ZOOM_SPEED));
+      const newScale = Math.pow(2, newZoom);
+
+      // Zoom toward the cursor position
+      const rect = container.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+
+      const ratio = newScale / scale;
+      const newPositionX = mouseX - (mouseX - positionX) * ratio;
+      const newPositionY = mouseY - (mouseY - positionY) * ratio;
+
+      ref.setTransform(newPositionX, newPositionY, newScale, 0);
+
+      // Update CSS counter-scale synchronously — no MutationObserver needed
+      container.style.setProperty('--counter-scale', (1 / newScale).toString());
+
+      // Debounce collision detection — only runs after scroll settles
+      if (collisionTimer) clearTimeout(collisionTimer);
+      collisionTimer = setTimeout(() => runCollisionDetection(container), 150);
+    };
+
+    container.addEventListener('wheel', onWheel, { passive: false });
+    return () => {
+      container.removeEventListener('wheel', onWheel);
+      if (collisionTimer) clearTimeout(collisionTimer);
+    };
+  }, [runCollisionDetection]);
+
+  // Initial collision detection on mount
   useEffect(() => {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
-
-    // TransformComponent renders: wrapper > content div (with CSS transform)
-    const findContentDiv = () => {
-      const transformWrapperEl = wrapper.querySelector('.react-transform-wrapper');
-      if (!transformWrapperEl) return null;
-      const contentEl = transformWrapperEl.querySelector('.react-transform-component');
-      return contentEl as HTMLElement | null;
-    };
-
-    let contentDiv: HTMLElement | null = null;
-
-    const extractScale = () => {
-      if (!contentDiv) contentDiv = findContentDiv();
-      if (!contentDiv) return;
-
-      const style = contentDiv.style.transform;
-      // Parse "translate(-123px, -456px) scale(2.5)"
-      const scaleMatch = style.match(/scale\(([^)]+)\)/);
-      if (scaleMatch) {
-        const scale = parseFloat(scaleMatch[1]);
-        if (scale > 0 && isFinite(scale)) {
-          wrapper.style.setProperty('--counter-scale', (1 / scale).toString());
-          
-          // Collision detection for labels
-          const labels = Array.from(wrapper.querySelectorAll('.location-label-group')) as HTMLElement[];
-          
-          // Sort by importance descending
-          labels.sort((a, b) => {
-            const impA = parseInt(a.dataset.importance || '0', 10);
-            const impB = parseInt(b.dataset.importance || '0', 10);
-            return impB - impA;
-          });
-
-          const occupied: DOMRect[] = [];
-          for (const label of labels) {
-            const rect = label.getBoundingClientRect();
-            
-            // Skip invalid rects
-            if (rect.width === 0 || rect.height === 0) continue;
-            
-            let collision = false;
-            // Padding around labels to prevent them from looking too cramped
-            const padding = 10;
-            
-            for (const occ of occupied) {
-              if (
-                rect.left - padding < occ.right + padding &&
-                rect.right + padding > occ.left - padding &&
-                rect.top - padding < occ.bottom + padding &&
-                rect.bottom + padding > occ.top - padding
-              ) {
-                collision = true;
-                break;
-              }
-            }
-
-            if (collision) {
-              label.style.opacity = '0';
-            } else {
-              label.style.opacity = '1';
-              occupied.push(rect);
-            }
-          }
-        }
-      }
-    };
-
-    // Use MutationObserver to watch for style changes on the content div
-    const observer = new MutationObserver(() => {
-      extractScale();
-    });
-
-    // We need to wait a tick for TransformComponent to mount its internal divs
-    const timer = setTimeout(() => {
-      contentDiv = findContentDiv();
-      if (contentDiv) {
-        observer.observe(contentDiv, {
-          attributes: true,
-          attributeFilter: ['style'],
-        });
-        extractScale(); // Initial read
-      }
-    }, 100);
-
-    return () => {
-      clearTimeout(timer);
-      observer.disconnect();
-    };
-  }, []);
+    const timer = setTimeout(() => runCollisionDetection(wrapper), 200);
+    return () => clearTimeout(timer);
+  }, [runCollisionDetection]);
 
   return (
     <div ref={wrapperRef} className="relative w-full h-full overflow-hidden cursor-grab active:cursor-grabbing">
@@ -134,106 +145,68 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
         minScale={1}
         maxScale={20}
         centerOnInit={true}
-        wheel={{ step: 0.05 }}
         smooth={false}
+        wheel={{ disabled: true }}
       >
-        <TransformComponent
-          wrapperStyle={{ width: '100%', height: '100%' }}
-          contentStyle={{ width: '100%', height: '100%', position: 'relative' }}
-        >
-          {/* Base map — inlined SVG */}
-          <div
-            className="absolute inset-0 w-full h-full"
-            dangerouslySetInnerHTML={{ __html: svgHtml + '</svg>' }}
-            style={{ lineHeight: 0 }}
-          />
+        {(utils) => {
+          transformRef.current = utils;
+          return (
+            <TransformComponent
+              wrapperStyle={{ width: '100%', height: '100%' }}
+              contentStyle={{ width: '100%', height: '100%', position: 'relative' }}
+            >
+              {/* Base map — inlined SVG */}
+              <div
+                className="absolute inset-0 w-full h-full"
+                dangerouslySetInnerHTML={{ __html: processedSvg }}
+                style={{ lineHeight: 0 }}
+              />
 
-          {/* Overlay SVG — inside TransformComponent for position tracking */}
-          <svg
-            className="absolute inset-0 w-full h-full z-10"
-            viewBox={VIEWBOX}
-            preserveAspectRatio="xMaxYMid meet"
-            xmlns="http://www.w3.org/2000/svg"
-            style={{ overflow: 'visible' }}
-          >
+              {/* Overlay SVG — inside TransformComponent for position tracking */}
+              <svg
+                className="absolute inset-0 w-full h-full z-10"
+                viewBox={VIEWBOX}
+                preserveAspectRatio="xMaxYMid meet"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ overflow: 'visible' }}
+              >
+                {/* Path layer */}
+                <g id="path-layer">
+                  {paths.map((path) => (
+                    <AnimatedPath key={path.characterId} path={path} />
+                  ))}
+                </g>
 
+                {/* Location labels */}
+                <g id="location-layer">
+                  {locationsData.map((loc) => (
+                    <LocationMarker
+                      key={loc.id}
+                      id={loc.id}
+                      name={loc.name}
+                      x={loc.x}
+                      y={loc.y}
+                      labelDx={(loc as any).labelOffsetX ?? 45}
+                      labelDy={(loc as any).labelOffsetY ?? 15}
+                      importance={(loc as any).importance ?? 0}
+                    />
+                  ))}
+                </g>
 
-            {/* Path layer */}
-            <g id="path-layer">
-              {paths.map((path) => (
-                <AnimatedPath key={path.characterId} path={path} />
-              ))}
-            </g>
-
-            {/* Location labels */}
-            <g id="location-layer">
-              {SHOW_LOCATION_LABELS && locationsData.map((loc) => {
-                const labelDx = (loc as any).labelOffsetX ?? 45;
-                const labelDy = (loc as any).labelOffsetY ?? 15;
-
-                return (
-                  <g key={loc.id}>
-                    {/* City marker — counter-scale around city center */}
-                    {loc.id !== 'stepstones' && (
-                      <g style={{ transform: 'scale(var(--counter-scale, 1))', transformOrigin: `${loc.x}px ${loc.y}px` }}>
-                        <polygon
-                          points={`${loc.x},${loc.y - 30} ${loc.x + 25},${loc.y} ${loc.x},${loc.y + 30} ${loc.x - 25},${loc.y}`}
-                          fill="rgba(0,0,0,0.75)"
-                          stroke="rgba(255,255,255,0.6)"
-                          strokeWidth={6}
-                        />
-                        <circle cx={loc.x} cy={loc.y} r={30} fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.7)" strokeWidth={6} />
-                      </g>
-                    )}
-                    {/* Label — counter-scale around city position */}
-                    <g 
-                      className="location-label-group"
-                      data-importance={(loc as any).importance ?? 0}
-                      style={{ 
-                        transform: 'scale(var(--counter-scale, 1))', 
-                        transformOrigin: `${loc.x}px ${loc.y}px`,
-                        transition: 'opacity 0.2s ease-in-out'
-                      }}
-                    >
-                      <text
-                        x={loc.x + labelDx}
-                        y={loc.y + labelDy}
-                        fontSize={100}
-                        fill="none"
-                        stroke="#000"
-                        strokeWidth={15}
-                        fontFamily="Cinzel, serif"
-                        fontWeight={600}
-                        style={{ pointerEvents: 'none' }}
-                        paintOrder="stroke"
-                      >
-                        {loc.name}
-                      </text>
-                      <text
-                        x={loc.x + labelDx}
-                        y={loc.y + labelDy}
-                        fontSize={100}
-                        fill="rgba(255,240,180,0.95)"
-                        fontFamily="Cinzel, serif"
-                        fontWeight={600}
-                        style={{ pointerEvents: 'none' }}
-                      >
-                        {loc.name}
-                      </text>
-                    </g>
-                  </g>
-                );
-              })}
-            </g>
-
-            {/* Character layer */}
-            <g id="character-layer">
-              {characterPositions.map((pos) => (
-                <CharacterDot key={pos.characterId} position={pos} />
-              ))}
-            </g>
-          </svg>
-        </TransformComponent>
+                {/* Character layer */}
+                <g id="character-layer">
+                  {sortedPositions.map((pos) => (
+                    <CharacterDot
+                      key={pos.characterId}
+                      position={pos}
+                      onHoverChange={(isHovered) => setHoveredCharId(isHovered ? pos.characterId : null)}
+                    />
+                  ))}
+                </g>
+              </svg>
+            </TransformComponent>
+          );
+        }}
       </TransformWrapper>
     </div>
   );
