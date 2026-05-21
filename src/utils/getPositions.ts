@@ -57,6 +57,7 @@ export function getPositions(
         locationName: loc.name,
         offsetX,
         offsetY,
+        wikiUrl: char.wikiUrl,
       });
     });
   }

@@ -22,7 +22,7 @@ export default function CharacterDot({ position, onHoverChange }: CharacterDotPr
     onHoverChange?.(false);
   };
 
-  const { x, y, offsetX, offsetY, color, name, house, locationName, characterId } = position;
+  const { x, y, offsetX, offsetY, color, name, house, locationName, characterId, wikiUrl } = position;
 
   const tx = x;
   const ty = y;
@@ -53,22 +53,46 @@ export default function CharacterDot({ position, onHoverChange }: CharacterDotPr
       {/* Counter-scale group: scales around origin (0,0) which is the dot center */}
       <g style={{ transform: 'scale(var(--counter-scale, 1))' }}>
         <g style={{ transform: `translate(${offsetX * 1.8}px, ${offsetY * 1.8}px)` }}>
-          {/* Glow ring */}
-          <motion.circle
-            fill={color}
-            initial={{ opacity: 0.18, r: DOT_RADIUS + 5 }}
-            animate={{ opacity: hovered ? 0.45 : 0.18, r: DOT_RADIUS + 5 }}
-            transition={{ duration: 0.18 }}
-          />
-          {/* Main dot */}
-          <motion.circle
-            fill={color}
-            stroke="rgba(255,255,255,0.85)"
-            strokeWidth={6}
-            initial={{ r: DOT_RADIUS }}
-            animate={{ r: hovered ? DOT_RADIUS * 1.3 : DOT_RADIUS }}
-            transition={{ type: 'spring', stiffness: 320, damping: 22 }}
-          />
+          {/* Wrap main dot in a hyperlink if wikiUrl is available */}
+          {wikiUrl ? (
+            <a href={wikiUrl} target="_blank" rel="noopener noreferrer">
+              {/* Glow ring */}
+              <motion.circle
+                fill={color}
+                initial={{ opacity: 0.18, r: DOT_RADIUS + 5 }}
+                animate={{ opacity: hovered ? 0.45 : 0.18, r: DOT_RADIUS + 5 }}
+                transition={{ duration: 0.18 }}
+              />
+              {/* Main dot */}
+              <motion.circle
+                fill={color}
+                stroke="rgba(255,255,255,0.85)"
+                strokeWidth={6}
+                initial={{ r: DOT_RADIUS }}
+                animate={{ r: hovered ? DOT_RADIUS * 1.3 : DOT_RADIUS }}
+                transition={{ type: 'spring', stiffness: 320, damping: 22 }}
+              />
+            </a>
+          ) : (
+            <>
+              {/* Glow ring */}
+              <motion.circle
+                fill={color}
+                initial={{ opacity: 0.18, r: DOT_RADIUS + 5 }}
+                animate={{ opacity: hovered ? 0.45 : 0.18, r: DOT_RADIUS + 5 }}
+                transition={{ duration: 0.18 }}
+              />
+              {/* Main dot */}
+              <motion.circle
+                fill={color}
+                stroke="rgba(255,255,255,0.85)"
+                strokeWidth={6}
+                initial={{ r: DOT_RADIUS }}
+                animate={{ r: hovered ? DOT_RADIUS * 1.3 : DOT_RADIUS }}
+                transition={{ type: 'spring', stiffness: 320, damping: 22 }}
+              />
+            </>
+          )}
 
           {/* Tooltip */}
           <AnimatePresence>
@@ -97,19 +121,38 @@ export default function CharacterDot({ position, onHoverChange }: CharacterDotPr
                   <clipPath id={`clip-${characterId}`}>
                     <rect x={60} y={-440} width={560} height={560} rx={50} />
                   </clipPath>
-                  <image
-                    href={`/characters/${characterId}.png`}
-                    x={60}
-                    y={-440}
-                    width={560}
-                    height={560}
-                    clipPath={`url(#clip-${characterId})`}
-                    preserveAspectRatio="xMidYMid slice"
-                    onError={(e) => {
-                      // Fallback to placeholder if the image hasn't been added yet
-                      e.currentTarget.setAttribute('href', placeholderUrl);
-                    }}
-                  />
+                  
+                  {wikiUrl ? (
+                    <a href={wikiUrl} target="_blank" rel="noopener noreferrer">
+                      <image
+                        href={`/characters/${characterId}.png`}
+                        x={60}
+                        y={-440}
+                        width={560}
+                        height={560}
+                        clipPath={`url(#clip-${characterId})`}
+                        preserveAspectRatio="xMidYMid slice"
+                        onError={(e) => {
+                          // Fallback to placeholder if the image hasn't been added yet
+                          e.currentTarget.setAttribute('href', placeholderUrl);
+                        }}
+                      />
+                    </a>
+                  ) : (
+                    <image
+                      href={`/characters/${characterId}.png`}
+                      x={60}
+                      y={-440}
+                      width={560}
+                      height={560}
+                      clipPath={`url(#clip-${characterId})`}
+                      preserveAspectRatio="xMidYMid slice"
+                      onError={(e) => {
+                        // Fallback to placeholder if the image hasn't been added yet
+                        e.currentTarget.setAttribute('href', placeholderUrl);
+                      }}
+                    />
+                  )}
 
                   {/* Text Information */}
                   <text x={680} y={-200} fontSize={140} fill="white" fontFamily="Cinzel, serif" fontWeight={600}>

@@ -13,6 +13,7 @@ export interface Character {
   house: string;
   faction: 'blacks' | 'greens' | 'neutral';
   color: string;
+  wikiUrl?: string;
 }
 
 export interface Movement {
@@ -39,6 +40,7 @@ export interface CharacterPosition {
   locationName: string;
   offsetX: number;
   offsetY: number;
+  wikiUrl?: string;
 }
 
 export interface CharacterPath {
