@@ -189,6 +189,7 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
                       labelDx={(loc as any).labelOffsetX ?? 45}
                       labelDy={(loc as any).labelOffsetY ?? 15}
                       importance={(loc as any).importance ?? 0}
+                      wikiUrl={(loc as any).wikiUrl}
                     />
                   ))}
                 </g>

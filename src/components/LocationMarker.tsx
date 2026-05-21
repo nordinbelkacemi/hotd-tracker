@@ -9,11 +9,12 @@ interface LocationMarkerProps {
   labelDx: number;
   labelDy: number;
   importance: number;
+  wikiUrl?: string;
 }
 
 const IMAGE_SIZE = 480;
 
-export default function LocationMarker({ id, name, x, y, labelDx, labelDy, importance }: LocationMarkerProps) {
+export default function LocationMarker({ id, name, x, y, labelDx, labelDy, importance, wikiUrl }: LocationMarkerProps) {
   const [hovered, setHovered] = useState(false);
   const [textWidth, setTextWidth] = useState(0);
   const fillTextRef = useRef<SVGTextElement>(null);
@@ -54,10 +55,11 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
           transform: 'scale(var(--counter-scale, 1))',
           transformOrigin: `${x}px ${y}px`,
           transition: 'opacity 0.2s ease-in-out',
-          cursor: 'pointer',
+          cursor: wikiUrl ? 'pointer' : 'default',
         }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        onClick={() => wikiUrl && window.open(wikiUrl, '_blank', 'noopener,noreferrer')}
       >
         <g transform={`translate(${x + labelDx}, ${y + labelDy})`}>
           {/* Text — CSS transform is more reliable than Framer Motion scale in SVG */}
@@ -104,11 +106,11 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
                   transition={{ duration: 0.12 }}
                 >
                   <clipPath id={`clip-loc-${id}`}>
-                    <rect x={20} y={0} width={IMAGE_SIZE} height={IMAGE_SIZE} rx={50} />
+                    <rect x={100} y={0} width={IMAGE_SIZE} height={IMAGE_SIZE} rx={50} />
                   </clipPath>
                   <image
                     href={`/locations/${id}.png`}
-                    x={20} y={0}
+                    x={100} y={0}
                     width={IMAGE_SIZE} height={IMAGE_SIZE}
                     clipPath={`url(#clip-loc-${id})`}
                     preserveAspectRatio="xMidYMid slice"
