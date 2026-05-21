@@ -104,26 +104,27 @@ export default function CharacterDot({ position, onHoverChange }: CharacterDotPr
                   exit={{ opacity: 0, y: 12 }}
                   transition={{ duration: 0.12 }}
                 >
-                  <rect
-                    x={0}
-                    y={-480}
-                    width={tooltipWidth}
-                    height={640}
-                    rx={60}
-                    fill="rgba(13,17,23,0.93)"
-                    stroke="rgba(255,255,255,0.15)"
-                    strokeWidth={4}
-                  />
-                  {/* Highlight line on top */}
-                  <line x1={0} y1={-480} x2={tooltipWidth} y2={-480} stroke={color} strokeWidth={24} strokeOpacity={0.8} />
-
-                  {/* Character Image */}
+                  {/* Character Image clipPath */}
                   <clipPath id={`clip-${characterId}`}>
                     <rect x={60} y={-440} width={560} height={560} rx={50} />
                   </clipPath>
-                  
+
                   {wikiUrl ? (
-                    <a href={wikiUrl} target="_blank" rel="noopener noreferrer">
+                    <a href={wikiUrl} target="_blank" rel="noopener noreferrer" className="group">
+                      <rect
+                        x={0}
+                        y={-480}
+                        width={tooltipWidth}
+                        height={640}
+                        rx={60}
+                        fill="rgba(13,17,23,0.93)"
+                        stroke="rgba(255,255,255,0.15)"
+                        strokeWidth={4}
+                        className="group-hover:stroke-white/30 transition-all duration-150"
+                      />
+                      {/* Highlight line on top */}
+                      <line x1={0} y1={-480} x2={tooltipWidth} y2={-480} stroke={color} strokeWidth={24} strokeOpacity={0.8} />
+
                       <image
                         href={`${import.meta.env.BASE_URL}characters/${characterId}.png`}
                         x={60}
@@ -137,30 +138,53 @@ export default function CharacterDot({ position, onHoverChange }: CharacterDotPr
                           e.currentTarget.setAttribute('href', placeholderUrl);
                         }}
                       />
+
+                      {/* Text Information */}
+                      <text x={680} y={-200} fontSize={140} fill="white" fontFamily="Cinzel, serif" fontWeight={600}>
+                        {name}
+                      </text>
+                      <text x={680} y={-20} fontSize={100} fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif">
+                        {houseLocationStr}
+                      </text>
                     </a>
                   ) : (
-                    <image
-                      href={`${import.meta.env.BASE_URL}characters/${characterId}.png`}
-                      x={60}
-                      y={-440}
-                      width={560}
-                      height={560}
-                      clipPath={`url(#clip-${characterId})`}
-                      preserveAspectRatio="xMidYMid slice"
-                      onError={(e) => {
-                        // Fallback to placeholder if the image hasn't been added yet
-                        e.currentTarget.setAttribute('href', placeholderUrl);
-                      }}
-                    />
-                  )}
+                    <>
+                      <rect
+                        x={0}
+                        y={-480}
+                        width={tooltipWidth}
+                        height={640}
+                        rx={60}
+                        fill="rgba(13,17,23,0.93)"
+                        stroke="rgba(255,255,255,0.15)"
+                        strokeWidth={4}
+                      />
+                      {/* Highlight line on top */}
+                      <line x1={0} y1={-480} x2={tooltipWidth} y2={-480} stroke={color} strokeWidth={24} strokeOpacity={0.8} />
 
-                  {/* Text Information */}
-                  <text x={680} y={-200} fontSize={140} fill="white" fontFamily="Cinzel, serif" fontWeight={600}>
-                    {name}
-                  </text>
-                  <text x={680} y={-20} fontSize={100} fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif">
-                    {houseLocationStr}
-                  </text>
+                      <image
+                        href={`${import.meta.env.BASE_URL}characters/${characterId}.png`}
+                        x={60}
+                        y={-440}
+                        width={560}
+                        height={560}
+                        clipPath={`url(#clip-${characterId})`}
+                        preserveAspectRatio="xMidYMid slice"
+                        onError={(e) => {
+                          // Fallback to placeholder if the image hasn't been added yet
+                          e.currentTarget.setAttribute('href', placeholderUrl);
+                        }}
+                      />
+
+                      {/* Text Information */}
+                      <text x={680} y={-200} fontSize={140} fill="white" fontFamily="Cinzel, serif" fontWeight={600}>
+                        {name}
+                      </text>
+                      <text x={680} y={-20} fontSize={100} fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif">
+                        {houseLocationStr}
+                      </text>
+                    </>
+                  )}
                 </motion.g>
               </g>
             )}
