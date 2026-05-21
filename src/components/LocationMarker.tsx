@@ -10,11 +10,12 @@ interface LocationMarkerProps {
   labelDy: number;
   importance: number;
   wikiUrl?: string;
+  onHoverChange?: (hovered: boolean) => void;
 }
 
 const IMAGE_SIZE = 480;
 
-export default function LocationMarker({ id, name, x, y, labelDx, labelDy, importance, wikiUrl }: LocationMarkerProps) {
+export default function LocationMarker({ id, name, x, y, labelDx, labelDy, importance, wikiUrl, onHoverChange }: LocationMarkerProps) {
   const [hovered, setHovered] = useState(false);
   const [textWidth, setTextWidth] = useState(0);
   const fillTextRef = useRef<SVGTextElement>(null);
@@ -71,8 +72,14 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
           transition: 'opacity 0.2s ease-in-out',
           cursor: wikiUrl ? 'pointer' : 'default',
         }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onMouseEnter={() => {
+          setHovered(true);
+          onHoverChange?.(true);
+        }}
+        onMouseLeave={() => {
+          setHovered(false);
+          onHoverChange?.(false);
+        }}
         onClick={() => wikiUrl && window.open(wikiUrl, '_blank', 'noopener,noreferrer')}
       >
         <g transform={`translate(${x + labelDx}, ${y + labelDy})`}>

@@ -28,14 +28,34 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
   const wrapperRef = useRef<HTMLDivElement>(null);
   const transformRef = useRef<ReactZoomPanPinchContentRef | null>(null);
   const [hoveredCharId, setHoveredCharId] = useState<string | null>(null);
+  const [hoveredLocId, setHoveredLocId] = useState<string | null>(null);
 
-  const sortedPositions = useMemo(() => {
-    return [...characterPositions].sort((a, b) => {
-      if (a.characterId === hoveredCharId) return 1;
-      if (b.characterId === hoveredCharId) return -1;
+  // We combine locations and character dots into a single flat list, sorted so that:
+  // 1. Unhovered locations come first
+  // 2. Unhovered characters come next
+  // 3. The hovered item (character or location) is placed at the absolute end,
+  //    so it is drawn on top of all other elements in the SVG.
+  const sortedInteractiveItems = useMemo(() => {
+    const items = [
+      ...locationsData.map((loc) => ({ type: 'location' as const, id: loc.id, data: loc })),
+      ...characterPositions.map((pos) => ({ type: 'character' as const, id: pos.characterId, data: pos })),
+    ];
+
+    return items.sort((a, b) => {
+      const isAHovered = (a.type === 'character' && a.id === hoveredCharId) || (a.type === 'location' && a.id === hoveredLocId);
+      const isBHovered = (b.type === 'character' && b.id === hoveredCharId) || (b.type === 'location' && b.id === hoveredLocId);
+
+      if (isAHovered && !isBHovered) return 1;
+      if (isBHovered && !isAHovered) return -1;
+
+      // Keep location items before character items if neither is hovered
+      if (a.type !== b.type) {
+        return a.type === 'location' ? -1 : 1;
+      }
+
       return 0;
     });
-  }, [characterPositions, hoveredCharId]);
+  }, [characterPositions, hoveredCharId, hoveredLocId]);
 
   // Stable collision-detection function — stored in a ref so effects can call it safely
   const runCollisionDetection = useRef((wrapper: HTMLDivElement) => {
@@ -177,32 +197,36 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
                   ))}
                 </g>
 
-                {/* Location labels */}
-                <g id="location-layer">
-                  {locationsData.map((loc) => (
-                    <LocationMarker
-                      key={loc.id}
-                      id={loc.id}
-                      name={loc.name}
-                      x={loc.x}
-                      y={loc.y}
-                      labelDx={(loc as any).labelOffsetX ?? 45}
-                      labelDy={(loc as any).labelOffsetY ?? 15}
-                      importance={(loc as any).importance ?? 0}
-                      wikiUrl={(loc as any).wikiUrl}
-                    />
-                  ))}
-                </g>
-
-                {/* Character layer */}
-                <g id="character-layer">
-                  {sortedPositions.map((pos) => (
-                    <CharacterDot
-                      key={pos.characterId}
-                      position={pos}
-                      onHoverChange={(isHovered) => setHoveredCharId(isHovered ? pos.characterId : null)}
-                    />
-                  ))}
+                {/* Interactive layer - keeps locations and characters together, allowing the hovered item to be drawn on top of everything */}
+                <g id="interactive-layer">
+                  {sortedInteractiveItems.map((item) => {
+                    if (item.type === 'location') {
+                      const loc = item.data;
+                      return (
+                        <LocationMarker
+                          key={loc.id}
+                          id={loc.id}
+                          name={loc.name}
+                          x={loc.x}
+                          y={loc.y}
+                          labelDx={(loc as any).labelOffsetX ?? 45}
+                          labelDy={(loc as any).labelOffsetY ?? 15}
+                          importance={(loc as any).importance ?? 0}
+                          wikiUrl={(loc as any).wikiUrl}
+                          onHoverChange={(isHovered) => setHoveredLocId(isHovered ? loc.id : null)}
+                        />
+                      );
+                    } else {
+                      const pos = item.data;
+                      return (
+                        <CharacterDot
+                          key={pos.characterId}
+                          position={pos}
+                          onHoverChange={(isHovered) => setHoveredCharId(isHovered ? pos.characterId : null)}
+                        />
+                      );
+                    }
+                  })}
                 </g>
               </svg>
             </TransformComponent>
