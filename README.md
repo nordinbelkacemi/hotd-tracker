@@ -6,4 +6,4 @@
 
 ---
 
-*Made with passion for the realm. Valar Morghulis.*
+*Made for fun.*
