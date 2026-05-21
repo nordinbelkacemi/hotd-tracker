@@ -439,5 +439,97 @@
       { "characters": ["criston","aegon","aemond"], "from": "rooks-rest", "to": "kings-landing" },
       { "characters": ["jace"], "from": "dragonstone", "to": "the-twins" }
     ]
+  },
+  {
+    "number": 16,
+    "title": "Smallfolk",
+    "initialLocations": {
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "harrenhal", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "oldtown", "status": "alive" },
+      "rhaenys":     { "location": null, "status": "dead" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": "essos", "status": "alive-offscreen" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "dragonstone", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive", "note": "recovering from burns" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "the-twins", "status": "alive" },
+      "luke":        { "location": null, "status": "dead" }
+    },
+    "movements": [
+      { "characters": ["jace"], "from": "the-twins", "to": "dragonstone", "note": "returned to Dragonstone after making pact with Freys" },
+      { "characters": ["criston"], "from": "kings-landing", "to": "harrenhal", "note": "marching with the Green army to Harrenhal" },
+      { "characters": ["rhaenyra"], "from": "dragonstone", "to": "driftmark", "note": "flew to Driftmark after Seasmoke was claimed by Addam" }
+    ]
+  },
+  {
+    "number": 17,
+    "title": "The Red Sowing",
+    "initialLocations": {
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "driftmark", "status": "alive" },
+      "daemon":      { "location": "harrenhal", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "oldtown", "status": "alive" },
+      "rhaenys":     { "location": null, "status": "dead" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": "essos", "status": "alive-offscreen" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "harrenhal", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "dragonstone", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "dragonstone", "status": "alive" },
+      "luke":        { "location": null, "status": "dead" }
+    },
+    "movements": [
+      { "characters": ["rhaenyra"], "from": "driftmark", "to": "dragonstone", "note": "returned to Dragonstone to conduct the Sowing of the Seeds" },
+      { "characters": ["alicent"], "from": "kings-landing", "to": null, "note": "left the Red Keep to seek solace in the Kingswood" },
+      { "characters": ["aemond"], "from": "kings-landing", "to": "dragonstone", "note": "flew to Dragonstone to pursue Silverwing" },
+      { "characters": ["aemond"], "from": "dragonstone", "to": "kings-landing", "note": "retreated back to King's Landing when confronted by multiple dragons" }
+    ]
+  },
+  {
+    "number": 18,
+    "title": "The Queen Who Ever Was",
+    "initialLocations": {
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "harrenhal", "status": "alive" },
+      "alicent":     { "location": null, "status": "alive", "note": "in the Kingswood" },
+      "otto":        { "location": "oldtown", "status": "alive" },
+      "rhaenys":     { "location": null, "status": "dead" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": "essos", "status": "alive-offscreen" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "harrenhal", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "dragonstone", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "dragonstone", "status": "alive" },
+      "luke":        { "location": null, "status": "dead" }
+    },
+    "movements": [
+      { "characters": ["rhaenyra"], "from": "dragonstone", "to": "harrenhal", "note": "secretly flew to Harrenhal to verify Daemon's loyalty" },
+      { "characters": ["rhaenyra"], "from": "harrenhal", "to": "dragonstone", "note": "returned to Dragonstone after Daemon pledged his loyalty to her" },
+      { "characters": ["alicent"], "from": null, "to": "dragonstone", "note": "secretly traveled to Dragonstone to negotiate terms with Rhaenyra" },
+      { "characters": ["alicent"], "from": "dragonstone", "to": "kings-landing", "note": "returned to King's Landing to prepare for the city's surrender" },
+      { "characters": ["aegon", "larys"], "from": "kings-landing", "to": "pentos", "note": "fled King's Landing to Essos to escape Aemond's wrath" },
+      { "characters": ["corlys"], "from": "driftmark", "to": "stepstones", "note": "boarded flagship to lead the Velaryon fleet at sea" },
+      { "characters": ["otto"], "from": "oldtown", "to": null, "note": "revealed to be imprisoned in an unknown location" }
+    ]
   }
 ]
