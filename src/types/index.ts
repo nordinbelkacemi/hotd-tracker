@@ -25,7 +25,16 @@ export interface Movement {
 export interface Episode {
   number: number;
   title: string;
-  initialLocations: Record<string, string | null>;
+  initialLocations: Record<
+    string,
+    | {
+        location: string | null;
+        status: string;
+        note?: string;
+      }
+    | string
+    | null
+  >;
   movements: Movement[];
 }
 

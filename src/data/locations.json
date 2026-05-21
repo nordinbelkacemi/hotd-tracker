@@ -124,5 +124,14 @@
     "region": "riverlands",
     "importance": 65,
     "wikiUrl": "https://gameofthrones.fandom.com/wiki/Twins"
+  },
+  {
+    "id": "runestone",
+    "name": "Runestone",
+    "x": 2440,
+    "y": 2810,
+    "region": "vale",
+    "importance": 50,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Runestone"
   }
 ]

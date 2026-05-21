@@ -21,7 +21,15 @@ export function computeTimeline(episodes: Episode[]): TimelineStep[] {
   let index = 0;
 
   for (const ep of episodes) {
-    let currentLocationState = { ...ep.initialLocations };
+    // Convert initialLocations (which may contain status objects) to a simple character -> location map
+    const currentLocationState: Record<string, string | null> = {};
+    for (const [charId, info] of Object.entries(ep.initialLocations)) {
+      if (info && typeof info === 'object') {
+        currentLocationState[charId] = info.location;
+      } else {
+        currentLocationState[charId] = info;
+      }
+    }
 
     const seasonNumber = ep.number <= 10 ? 1 : 2;
     const relativeEpisodeNumber = ep.number <= 10 ? ep.number : ep.number - 10;
