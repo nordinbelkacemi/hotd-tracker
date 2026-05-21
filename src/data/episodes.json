@@ -115,7 +115,7 @@
     "initialLocations": {
       "viserys":  "kings-landing",
       "rhaenyra": "kings-landing",
-      "daemon":   "the-eyrie",
+      "daemon":   "kings-landing",
       "alicent":  "kings-landing",
       "otto":     "kings-landing",
       "rhaenys":  "driftmark",
@@ -133,6 +133,7 @@
       "luke":     null
     },
     "movements": [
+      { "characters": ["daemon"], "from": "kings-landing", "to": "the-eyrie" },
       { "characters": ["otto"], "from": "kings-landing", "to": "oldtown" },
       { "characters": ["viserys", "rhaenyra", "criston", "harwin", "larys"], "from": "kings-landing", "to": "driftmark" },
       { "characters": ["viserys", "rhaenyra", "criston", "harwin", "larys", "corlys", "rhaenys", "laenor", "laena"], "from": "driftmark", "to": "kings-landing" },
