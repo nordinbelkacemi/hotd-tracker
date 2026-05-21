@@ -90,6 +90,7 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
       }
 
       label.style.opacity = collision ? '0' : '1';
+      label.style.pointerEvents = collision ? 'none' : 'auto';
       if (!collision) occupied.push(rect);
     }
   }).current;

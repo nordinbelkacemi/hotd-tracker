@@ -34,7 +34,16 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
   const placeholderUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=2a1f0e&color=ffd700&size=400&font-size=0.25`;
 
   return (
-    <g>
+    <g
+      onMouseEnter={() => {
+        setHovered(true);
+        onHoverChange?.(true);
+      }}
+      onMouseLeave={() => {
+        setHovered(false);
+        onHoverChange?.(false);
+      }}
+    >
       {/* Static marker — no hover */}
       {id !== 'stepstones' && (
         <g style={{ transform: 'scale(var(--counter-scale, 1))', transformOrigin: `${x}px ${y}px`, cursor: wikiUrl ? 'pointer' : 'default' }}>
@@ -66,19 +75,12 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
       <g
         className="location-label-group"
         data-importance={importance}
+        data-hovered={hovered}
         style={{
           transform: 'scale(var(--counter-scale, 1))',
           transformOrigin: `${x}px ${y}px`,
           transition: 'opacity 0.2s ease-in-out',
           cursor: wikiUrl ? 'pointer' : 'default',
-        }}
-        onMouseEnter={() => {
-          setHovered(true);
-          onHoverChange?.(true);
-        }}
-        onMouseLeave={() => {
-          setHovered(false);
-          onHoverChange?.(false);
         }}
         onClick={() => wikiUrl && window.open(wikiUrl, '_blank', 'noopener,noreferrer')}
       >

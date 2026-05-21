@@ -63,3 +63,14 @@ input[type="range"]::-moz-range-thumb {
 .lake {
   fill: #1a3a55;
 }
+
+/* By default, disable pointer events on the label group so invisible/collided labels cannot be hovered */
+.location-label-group {
+  pointer-events: none;
+}
+
+/* Hovering a marker or label forces the location label to be visible and interactive */
+.location-label-group[data-hovered="true"] {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
