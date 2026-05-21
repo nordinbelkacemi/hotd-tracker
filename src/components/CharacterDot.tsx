@@ -125,7 +125,7 @@ export default function CharacterDot({ position, onHoverChange }: CharacterDotPr
                   {wikiUrl ? (
                     <a href={wikiUrl} target="_blank" rel="noopener noreferrer">
                       <image
-                        href={`/characters/${characterId}.png`}
+                        href={`${import.meta.env.BASE_URL}characters/${characterId}.png`}
                         x={60}
                         y={-440}
                         width={560}
@@ -140,7 +140,7 @@ export default function CharacterDot({ position, onHoverChange }: CharacterDotPr
                     </a>
                   ) : (
                     <image
-                      href={`/characters/${characterId}.png`}
+                      href={`${import.meta.env.BASE_URL}characters/${characterId}.png`}
                       x={60}
                       y={-440}
                       width={560}

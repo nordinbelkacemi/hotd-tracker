@@ -36,14 +36,28 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
     <g>
       {/* Static marker — no hover */}
       {id !== 'stepstones' && (
-        <g style={{ transform: 'scale(var(--counter-scale, 1))', transformOrigin: `${x}px ${y}px` }}>
-          <polygon
-            points={`${x},${y - 30} ${x + 25},${y} ${x},${y + 30} ${x - 25},${y}`}
-            fill="rgba(0,0,0,0.75)"
-            stroke="rgba(255,255,255,0.6)"
-            strokeWidth={6}
-          />
-          <circle cx={x} cy={y} r={30} fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.7)" strokeWidth={6} />
+        <g style={{ transform: 'scale(var(--counter-scale, 1))', transformOrigin: `${x}px ${y}px`, cursor: wikiUrl ? 'pointer' : 'default' }}>
+          {wikiUrl ? (
+            <a href={wikiUrl} target="_blank" rel="noopener noreferrer">
+              <polygon
+                points={`${x},${y - 30} ${x + 25},${y} ${x},${y + 30} ${x - 25},${y}`}
+                fill="rgba(0,0,0,0.75)"
+                stroke="rgba(255,255,255,0.6)"
+                strokeWidth={6}
+              />
+              <circle cx={x} cy={y} r={30} fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.7)" strokeWidth={6} />
+            </a>
+          ) : (
+            <>
+              <polygon
+                points={`${x},${y - 30} ${x + 25},${y} ${x},${y + 30} ${x - 25},${y}`}
+                fill="rgba(0,0,0,0.75)"
+                stroke="rgba(255,255,255,0.6)"
+                strokeWidth={6}
+              />
+              <circle cx={x} cy={y} r={30} fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.7)" strokeWidth={6} />
+            </>
+          )}
         </g>
       )}
 
@@ -108,16 +122,31 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
                   <clipPath id={`clip-loc-${id}`}>
                     <rect x={100} y={0} width={IMAGE_SIZE} height={IMAGE_SIZE} rx={50} />
                   </clipPath>
-                  <image
-                    href={`/locations/${id}.png`}
-                    x={100} y={0}
-                    width={IMAGE_SIZE} height={IMAGE_SIZE}
-                    clipPath={`url(#clip-loc-${id})`}
-                    preserveAspectRatio="xMidYMid slice"
-                    onError={(e) => {
-                      e.currentTarget.setAttribute('href', placeholderUrl);
-                    }}
-                  />
+                  {wikiUrl ? (
+                    <a href={wikiUrl} target="_blank" rel="noopener noreferrer">
+                      <image
+                        href={`${import.meta.env.BASE_URL}locations/${id}.png`}
+                        x={100} y={0}
+                        width={IMAGE_SIZE} height={IMAGE_SIZE}
+                        clipPath={`url(#clip-loc-${id})`}
+                        preserveAspectRatio="xMidYMid slice"
+                        onError={(e) => {
+                          e.currentTarget.setAttribute('href', placeholderUrl);
+                        }}
+                      />
+                    </a>
+                  ) : (
+                    <image
+                      href={`${import.meta.env.BASE_URL}locations/${id}.png`}
+                      x={100} y={0}
+                      width={IMAGE_SIZE} height={IMAGE_SIZE}
+                      clipPath={`url(#clip-loc-${id})`}
+                      preserveAspectRatio="xMidYMid slice"
+                      onError={(e) => {
+                        e.currentTarget.setAttribute('href', placeholderUrl);
+                      }}
+                    />
+                  )}
                 </motion.g>
               </g>
             )}

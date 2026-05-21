@@ -5,7 +5,8 @@
     "x": 1630,
     "y": 1680,
     "region": "north",
-    "importance": 80
+    "importance": 80,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Winterfell"
   },
   {
     "id": "the-eyrie",
@@ -13,7 +14,8 @@
     "x": 2080,
     "y": 2760,
     "region": "vale",
-    "importance": 70
+    "importance": 70,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Eyrie"
   },
   {
     "id": "harrenhal",
@@ -21,7 +23,8 @@
     "x": 1830,
     "y": 3080,
     "region": "riverlands",
-    "importance": 75
+    "importance": 75,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Harrenhal"
   },
   {
     "id": "casterly-rock",
@@ -38,7 +41,8 @@
     "x": 1270,
     "y": 3870,
     "region": "reach",
-    "importance": 70
+    "importance": 70,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Highgarden"
   },
   {
     "id": "oldtown",
@@ -46,7 +50,8 @@
     "x": 1030,
     "y": 4155,
     "region": "reach",
-    "importance": 70
+    "importance": 70,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Oldtown"
   },
   {
     "id": "kings-landing",
@@ -54,7 +59,8 @@
     "x": 1960,
     "y": 3415,
     "region": "crownlands",
-    "importance": 100
+    "importance": 100,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/King%27s_Landing"
   },
   {
     "id": "dragonstone",
@@ -62,7 +68,8 @@
     "x": 2350,
     "y": 3210,
     "region": "crownlands",
-    "importance": 90
+    "importance": 90,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Dragonstone"
   },
   {
     "id": "driftmark",
@@ -70,7 +77,8 @@
     "x": 2255,
     "y": 3228,
     "region": "crownlands",
-    "importance": 85
+    "importance": 85,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Driftmark"
   },
   {
     "id": "storms-end",
@@ -78,7 +86,8 @@
     "x": 2255,
     "y": 3760,
     "region": "stormlands",
-    "importance": 70
+    "importance": 70,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Storm%27s_End"
   },
   {
     "id": "stepstones",
@@ -86,7 +95,8 @@
     "x": 2500,
     "y": 4200,
     "region": "stepstones",
-    "importance": 20
+    "importance": 20,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Stepstones"
   },
   {
     "id": "pentos",
@@ -94,7 +104,8 @@
     "x": 2905,
     "y": 3385,
     "region": "essos",
-    "importance": 60
+    "importance": 60,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Pentos"
   },
   {
     "id": "rooks-rest",
@@ -102,7 +113,8 @@
     "x": 2185,
     "y": 3175,
     "region": "crownlands",
-    "importance": 50
+    "importance": 50,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Rook%27s_Rest"
   },
   {
     "id": "the-twins",
@@ -110,6 +122,7 @@
     "x": 1590,
     "y": 2650,
     "region": "riverlands",
-    "importance": 65
+    "importance": 65,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Twins"
   }
 ]
