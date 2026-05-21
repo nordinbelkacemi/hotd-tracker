@@ -1,5 +1,5 @@
 import { useMemo, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import WesterosMap from './components/WesterosMap';
 import CharacterPanel from './components/CharacterPanel';
 import EpisodeSlider from './components/EpisodeSlider';
@@ -7,9 +7,10 @@ import useStore from './store/useStore';
 import { getPositions } from './utils/getPositions';
 import { getPaths } from './utils/getPaths';
 import { timelineSteps } from './utils/timeline';
+import SpoilerOverlay from './components/SpoilerOverlay';
 
 export default function App() {
-  const { currentStepIndex, selectedCharacters, setStep, togglePlaying } = useStore();
+  const { currentStepIndex, selectedCharacters, setStep, togglePlaying, spoilersRevealed, setSpoilersRevealed } = useStore();
 
   const characterPositions = useMemo(
     () => getPositions(currentStepIndex, selectedCharacters),
@@ -74,6 +75,13 @@ export default function App() {
           <EpisodeSlider />
         </div>
       </div>
+
+      {/* Full-screen click-to-reveal spoiler overlay */}
+      <AnimatePresence>
+        {!spoilersRevealed && (
+          <SpoilerOverlay onReveal={() => setSpoilersRevealed(true)} />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

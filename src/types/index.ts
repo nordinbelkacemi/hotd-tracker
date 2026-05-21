@@ -62,9 +62,11 @@ export interface AppState {
   selectedCharacters: Set<string>;
   currentStepIndex: number;
   isPlaying: boolean;
+  spoilersRevealed: boolean;
   toggleCharacter: (id: string) => void;
   selectAll: () => void;
   deselectAll: () => void;
   setStep: (index: number) => void;
   togglePlaying: () => void;
+  setSpoilersRevealed: (revealed: boolean) => void;
 }

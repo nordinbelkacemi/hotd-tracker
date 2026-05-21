@@ -8,6 +8,7 @@ const useStore = create<AppState>((set) => ({
   selectedCharacters: ALL_CHARACTER_IDS,
   currentStepIndex: 0,
   isPlaying: false,
+  spoilersRevealed: false,
 
   toggleCharacter: (id) =>
     set((state) => {
@@ -23,6 +24,10 @@ const useStore = create<AppState>((set) => ({
   setStep: (n) => set({ currentStepIndex: n }),
 
   togglePlaying: () => set((state) => ({ isPlaying: !state.isPlaying })),
+
+  setSpoilersRevealed: (revealed) => {
+    set({ spoilersRevealed: revealed });
+  },
 }));
 
 export default useStore;
