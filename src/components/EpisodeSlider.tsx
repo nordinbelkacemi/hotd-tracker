@@ -141,7 +141,7 @@ export default function EpisodeSlider() {
           {trailMode === 'episodes' && (
             <button
               aria-label="Shorter trail"
-              disabled={trailEpisodes <= 1}
+              disabled={trailEpisodes <= 0}
               onClick={() => adjustTrailEpisodes(-1)}
               className="w-5 h-5 flex items-center justify-center rounded-full text-white/50 hover:text-white/90 hover:bg-white/10 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
             >
@@ -152,10 +152,14 @@ export default function EpisodeSlider() {
             role="radio"
             aria-checked={trailMode === 'episodes'}
             onClick={() => setTrailMode('episodes')}
-            title={`Trails cover the last ${trailEpisodes} episode${trailEpisodes === 1 ? '' : 's'}, ending at the current step`}
+            title={
+              trailEpisodes === 0
+                ? 'Trails hidden'
+                : `Trails cover the last ${trailEpisodes} episode${trailEpisodes === 1 ? '' : 's'}, ending at the current step`
+            }
             className={trailChipClass(trailMode === 'episodes')}
           >
-            {trailEpisodes} ep
+            {trailEpisodes === 0 ? 'off' : `${trailEpisodes} ep`}
           </button>
           {trailMode === 'episodes' && (
             <button

@@ -94,6 +94,8 @@ export function getWindowStartIndex(mode: TrailMode, episodes: number, currentSt
   if (mode === 'all') return 0;
   const step = timelineSteps[currentStepIndex] ?? timelineSteps[0];
   if (mode === 'season') return seasonStartIndex.get(step.seasonNumber) ?? 0;
+  // OFF: an empty window past the playhead → no steps, no trails.
+  if (episodes <= 0) return currentStepIndex + 1;
   const firstEpisode = timelineSteps[0].episodeNumber;
   const startEpisode = Math.max(firstEpisode, step.episodeNumber - episodes + 1);
   return episodeStartIndex.get(startEpisode) ?? 0;
