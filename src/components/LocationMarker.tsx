@@ -15,6 +15,9 @@ interface LocationMarkerProps {
 
 const IMAGE_SIZE = 480;
 
+// Sea/region labels rendered as text only — no castle marker.
+const LABEL_ONLY_LOCATIONS = new Set(['stepstones', 'the-gullet']);
+
 export default function LocationMarker({ id, name, x, y, labelDx, labelDy, importance, wikiUrl, onHoverChange }: LocationMarkerProps) {
   const [hovered, setHovered] = useState(false);
   const [textWidth, setTextWidth] = useState(0);
@@ -45,7 +48,7 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
       }}
     >
       {/* Static marker — no hover */}
-      {id !== 'stepstones' && (
+      {!LABEL_ONLY_LOCATIONS.has(id) && (
         <g style={{ transform: 'scale(var(--counter-scale, 1))', transformOrigin: `${x}px ${y}px`, cursor: wikiUrl ? 'pointer' : 'default' }}>
           {wikiUrl ? (
             <a href={wikiUrl} target="_blank" rel="noopener noreferrer">

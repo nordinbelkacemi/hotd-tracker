@@ -8,9 +8,9 @@ const charMap = new Map(charactersData.map((c) => [c.id, c.shortName]));
 
 export interface TimelineStep {
   index: number;
-  episodeNumber: number; // Absolute episode number (1-18)
+  episodeNumber: number; // Absolute episode number (S1: 1-10, S2: 11-18, S3: 19+)
   seasonNumber: number;
-  relativeEpisodeNumber: number; // Episode number within the season (1-10 or 1-8)
+  relativeEpisodeNumber: number; // Episode number within the season (S1: 1-10, S2/S3: 1-8)
   title: string; // The UI label for this step
   locations: Record<string, string | null>;
   activeMovements: Movement[];
@@ -31,8 +31,10 @@ export function computeTimeline(episodes: Episode[]): TimelineStep[] {
       }
     }
 
-    const seasonNumber = ep.number <= 10 ? 1 : 2;
-    const relativeEpisodeNumber = ep.number <= 10 ? ep.number : ep.number - 10;
+    // S1 = eps 1-10, S2 = eps 11-18, S3 = eps 19-26
+    const seasonNumber = ep.number <= 10 ? 1 : ep.number <= 18 ? 2 : 3;
+    const relativeEpisodeNumber =
+      ep.number <= 10 ? ep.number : ep.number <= 18 ? ep.number - 10 : ep.number - 18;
 
     // 1. Add the initial step for the episode
     timeline.push({

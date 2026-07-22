@@ -16,5 +16,18 @@
   { "id": "aemond",   "name": "Aemond",          "shortName": "Aemond",   "house": "Targaryen", "faction": "greens",  "color": "#354F52", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Aemond_Targaryen" },
   { "id": "helaena",  "name": "Helaena",         "shortName": "Helaena",  "house": "Targaryen", "faction": "greens",  "color": "#84A98C", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Helaena_Targaryen" },
   { "id": "jace",     "name": "Jacaerys",        "shortName": "Jace",     "house": "Targaryen", "faction": "blacks",  "color": "#D4A373", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Jacaerys_Velaryon" },
-  { "id": "luke",     "name": "Lucerys",         "shortName": "Luke",     "house": "Targaryen", "faction": "blacks",  "color": "#E9C46A", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Lucerys_Velaryon" }
+  { "id": "luke",     "name": "Lucerys",         "shortName": "Luke",     "house": "Targaryen", "faction": "blacks",  "color": "#E9C46A", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Lucerys_Velaryon" },
+  { "id": "baela",    "name": "Baela",          "shortName": "Baela",    "house": "Targaryen", "faction": "blacks",  "color": "#9D4EDD", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Baela_Targaryen" },
+  { "id": "rhaena",          "name": "Rhaena",            "shortName": "Rhaena",     "house": "Targaryen", "faction": "blacks",  "color": "#C77DFF", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Rhaena_Targaryen" },
+  { "id": "addam",           "name": "Addam of Hull",     "shortName": "Addam",      "house": "Velaryon",  "faction": "blacks",  "color": "#00B4D8", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Addam_of_Hull" },
+  { "id": "alyn",            "name": "Alyn of Hull",      "shortName": "Alyn",       "house": "Velaryon",  "faction": "blacks",  "color": "#0077B6", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Alyn_of_Hull" },
+  { "id": "hugh",            "name": "Hugh Hammer",       "shortName": "Hugh",       "house": "—",         "faction": "blacks",  "color": "#BC6C25", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Hugh" },
+  { "id": "ulf",             "name": "Ulf the White",     "shortName": "Ulf",        "house": "—",         "faction": "blacks",  "color": "#7C90DB", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Ulf" },
+  { "id": "aegon-younger",   "name": "Aegon the Younger", "shortName": "Aegon Y.",   "house": "Targaryen", "faction": "blacks",  "color": "#E76F51", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Aegon_Targaryen_(son_of_Rhaenyra)" },
+  { "id": "viserys-younger", "name": "Prince Viserys",    "shortName": "Viserys Y.", "house": "Targaryen", "faction": "blacks",  "color": "#E9A23B", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Viserys_Targaryen_(son_of_Rhaenyra)" },
+  { "id": "gwayne",          "name": "Gwayne Hightower",  "shortName": "Gwayne",     "house": "Hightower", "faction": "greens",  "color": "#74C69D", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Gwayne_Hightower" },
+  { "id": "ormund",          "name": "Ormund Hightower",  "shortName": "Ormund",     "house": "Hightower", "faction": "greens",  "color": "#2A9D8F", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Ormund_Hightower" },
+  { "id": "tyland",          "name": "Tyland Lannister",  "shortName": "Tyland",     "house": "Lannister", "faction": "greens",  "color": "#A68A3F", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Tyland_Lannister" },
+  { "id": "daeron",          "name": "Daeron Targaryen",  "shortName": "Daeron",     "house": "Targaryen", "faction": "greens",  "color": "#52B788", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Daeron_Targaryen" },
+  { "id": "lohar",           "name": "Sharako Lohar",     "shortName": "Lohar",      "house": "—",         "faction": "greens",  "color": "#7F5539", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Sharako_Lohar" }
 ]

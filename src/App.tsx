@@ -52,7 +52,7 @@ export default function App() {
             House of the Dragon
           </span>
           <span className="ml-3 text-xs text-white/35 tracking-wider uppercase">
-            Seasons 1-2 · Character Tracker
+            Seasons 1-3 · Character Tracker
           </span>
         </div>
       </header>

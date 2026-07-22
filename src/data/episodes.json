@@ -3,1964 +3,821 @@
     "number": 1,
     "title": "The Heirs of the Dragon",
     "initialLocations": {
-      "viserys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenyra": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "laena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "mysaria": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": null,
-        "status": "not-born"
-      },
-      "aemond": {
-        "location": null,
-        "status": "not-born"
-      },
-      "helaena": {
-        "location": null,
-        "status": "not-born"
-      },
-      "jace": {
-        "location": null,
-        "status": "not-born"
-      },
-      "luke": {
-        "location": null,
-        "status": "not-born"
-      }
+      "viserys":     { "location": "kings-landing", "status": "alive" },
+      "rhaenyra":    { "location": "kings-landing", "status": "alive" },
+      "daemon":      { "location": "kings-landing", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "kings-landing", "status": "alive" },
+      "rhaenys":     { "location": "kings-landing", "status": "alive" },
+      "corlys":      { "location": "kings-landing", "status": "alive" },
+      "laenor":      { "location": "kings-landing", "status": "alive" },
+      "laena":       { "location": "kings-landing", "status": "alive" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": "kings-landing", "status": "alive" },
+      "mysaria":     { "location": "kings-landing", "status": "alive" },
+      "aegon":       { "location": null, "status": "not-born" },
+      "aemond":      { "location": null, "status": "not-born" },
+      "helaena":     { "location": null, "status": "not-born" },
+      "jace":        { "location": null, "status": "not-born" },
+      "luke":        { "location": null, "status": "not-born" },
+      "baela":       { "location": null, "status": "not-born" },
+      "rhaena":      { "location": null, "status": "not-born" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": null, "status": "not-introduced" },
+      "hugh":        { "location": null, "status": "not-introduced" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": null, "status": "not-born" },
+      "viserys-younger": { "location": null, "status": "not-born" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": null, "status": "not-introduced" },
+      "tyland":      { "location": null, "status": "not-introduced" },
+      "daeron":      { "location": null, "status": "not-introduced" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "daemon",
-          "mysaria"
-        ],
-        "from": "kings-landing",
-        "to": "dragonstone"
-      }
+      { "characters": ["daemon","mysaria"], "from": "kings-landing", "to": "dragonstone" }
     ]
   },
   {
     "number": 2,
     "title": "The Rogue Prince",
     "initialLocations": {
-      "viserys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenyra": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "laena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "mysaria": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": null,
-        "status": "not-born"
-      },
-      "aemond": {
-        "location": null,
-        "status": "not-born"
-      },
-      "helaena": {
-        "location": null,
-        "status": "not-born"
-      },
-      "jace": {
-        "location": null,
-        "status": "not-born"
-      },
-      "luke": {
-        "location": null,
-        "status": "not-born"
-      }
+      "viserys":     { "location": "kings-landing", "status": "alive" },
+      "rhaenyra":    { "location": "kings-landing", "status": "alive" },
+      "daemon":      { "location": "dragonstone", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "kings-landing", "status": "alive" },
+      "rhaenys":     { "location": "kings-landing", "status": "alive" },
+      "corlys":      { "location": "kings-landing", "status": "alive" },
+      "laenor":      { "location": "kings-landing", "status": "alive" },
+      "laena":       { "location": "kings-landing", "status": "alive" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": "kings-landing", "status": "alive" },
+      "mysaria":     { "location": "dragonstone", "status": "alive" },
+      "aegon":       { "location": null, "status": "not-born" },
+      "aemond":      { "location": null, "status": "not-born" },
+      "helaena":     { "location": null, "status": "not-born" },
+      "jace":        { "location": null, "status": "not-born" },
+      "luke":        { "location": null, "status": "not-born" },
+      "baela":       { "location": null, "status": "not-born" },
+      "rhaena":      { "location": null, "status": "not-born" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": null, "status": "not-introduced" },
+      "hugh":        { "location": null, "status": "not-introduced" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": null, "status": "not-born" },
+      "viserys-younger": { "location": null, "status": "not-born" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": null, "status": "not-introduced" },
+      "tyland":      { "location": null, "status": "not-introduced" },
+      "daeron":      { "location": null, "status": "not-introduced" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "otto",
-          "criston"
-        ],
-        "from": "kings-landing",
-        "to": "dragonstone"
-      },
-      {
-        "characters": [
-          "rhaenyra"
-        ],
-        "from": "kings-landing",
-        "to": "dragonstone"
-      },
-      {
-        "characters": [
-          "otto",
-          "criston",
-          "rhaenyra"
-        ],
-        "from": "dragonstone",
-        "to": "kings-landing"
-      },
-      {
-        "characters": [
-          "corlys"
-        ],
-        "from": "kings-landing",
-        "to": "driftmark"
-      },
-      {
-        "characters": [
-          "daemon"
-        ],
-        "from": "dragonstone",
-        "to": "driftmark"
-      }
+      { "characters": ["otto","criston"], "from": "kings-landing", "to": "dragonstone" },
+      { "characters": ["rhaenyra"], "from": "kings-landing", "to": "dragonstone" },
+      { "characters": ["otto","criston","rhaenyra"], "from": "dragonstone", "to": "kings-landing" },
+      { "characters": ["corlys"], "from": "kings-landing", "to": "driftmark" },
+      { "characters": ["daemon"], "from": "dragonstone", "to": "driftmark" }
     ]
   },
   {
     "number": 3,
     "title": "Second of His Name",
     "initialLocations": {
-      "viserys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenyra": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "laena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "mysaria": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": null,
-        "status": "not-born"
-      },
-      "helaena": {
-        "location": null,
-        "status": "not-born"
-      },
-      "jace": {
-        "location": null,
-        "status": "not-born"
-      },
-      "luke": {
-        "location": null,
-        "status": "not-born"
-      }
+      "viserys":     { "location": "kings-landing", "status": "alive" },
+      "rhaenyra":    { "location": "kings-landing", "status": "alive" },
+      "daemon":      { "location": "driftmark", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "kings-landing", "status": "alive" },
+      "rhaenys":     { "location": "kings-landing", "status": "alive" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": "kings-landing", "status": "alive" },
+      "laena":       { "location": "kings-landing", "status": "alive" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": "kings-landing", "status": "alive" },
+      "mysaria":     { "location": "kings-landing", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": null, "status": "not-born" },
+      "helaena":     { "location": null, "status": "not-born" },
+      "jace":        { "location": null, "status": "not-born" },
+      "luke":        { "location": null, "status": "not-born" },
+      "baela":       { "location": null, "status": "not-born" },
+      "rhaena":      { "location": null, "status": "not-born" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": null, "status": "not-introduced" },
+      "hugh":        { "location": null, "status": "not-introduced" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": null, "status": "not-born" },
+      "viserys-younger": { "location": null, "status": "not-born" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": null, "status": "not-introduced" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": null, "status": "not-introduced" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "daemon",
-          "corlys",
-          "laenor"
-        ],
-        "from": "driftmark",
-        "to": "stepstones",
-        "note": "off-screen time skip; laenor traveled from KL via Driftmark"
-      }
+      { "characters": ["daemon","corlys","laenor"], "from": "driftmark", "to": "stepstones", "note": "off-screen time skip; laenor traveled from KL via Driftmark" }
     ]
   },
   {
     "number": 4,
     "title": "King of the Narrow Sea",
     "initialLocations": {
-      "viserys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenyra": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "stepstones",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive",
-        "note": "returned from Stepstones off-screen"
-      },
-      "laenor": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laena": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "mysaria": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": null,
-        "status": "not-born"
-      },
-      "helaena": {
-        "location": null,
-        "status": "not-born"
-      },
-      "jace": {
-        "location": null,
-        "status": "not-born"
-      },
-      "luke": {
-        "location": null,
-        "status": "not-born"
-      }
+      "viserys":     { "location": "kings-landing", "status": "alive" },
+      "rhaenyra":    { "location": "kings-landing", "status": "alive" },
+      "daemon":      { "location": "stepstones", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "kings-landing", "status": "alive" },
+      "rhaenys":     { "location": "driftmark", "status": "alive" },
+      "corlys":      { "location": "driftmark", "status": "alive", "note": "returned from Stepstones off-screen" },
+      "laenor":      { "location": "driftmark", "status": "alive" },
+      "laena":       { "location": "driftmark", "status": "alive" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": "kings-landing", "status": "alive" },
+      "mysaria":     { "location": "kings-landing", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": null, "status": "not-born" },
+      "helaena":     { "location": null, "status": "not-born" },
+      "jace":        { "location": null, "status": "not-born" },
+      "luke":        { "location": null, "status": "not-born" },
+      "baela":       { "location": null, "status": "not-born" },
+      "rhaena":      { "location": null, "status": "not-born" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": null, "status": "not-introduced" },
+      "hugh":        { "location": null, "status": "not-introduced" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": null, "status": "not-born" },
+      "viserys-younger": { "location": null, "status": "not-born" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": null, "status": "not-introduced" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": null, "status": "not-introduced" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "daemon"
-        ],
-        "from": "stepstones",
-        "to": "kings-landing"
-      }
+      { "characters": ["daemon"], "from": "stepstones", "to": "kings-landing" }
     ]
   },
   {
     "number": 5,
     "title": "We Light the Way",
     "initialLocations": {
-      "viserys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenyra": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laena": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "mysaria": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": null,
-        "status": "not-born"
-      },
-      "helaena": {
-        "location": null,
-        "status": "not-born"
-      },
-      "jace": {
-        "location": null,
-        "status": "not-born"
-      },
-      "luke": {
-        "location": null,
-        "status": "not-born"
-      }
+      "viserys":     { "location": "kings-landing", "status": "alive" },
+      "rhaenyra":    { "location": "kings-landing", "status": "alive" },
+      "daemon":      { "location": "kings-landing", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "kings-landing", "status": "alive" },
+      "rhaenys":     { "location": "driftmark", "status": "alive" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": "driftmark", "status": "alive" },
+      "laena":       { "location": "driftmark", "status": "alive" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": "kings-landing", "status": "alive" },
+      "mysaria":     { "location": "kings-landing", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": null, "status": "not-born" },
+      "helaena":     { "location": null, "status": "not-born" },
+      "jace":        { "location": null, "status": "not-born" },
+      "luke":        { "location": null, "status": "not-born" },
+      "baela":       { "location": null, "status": "not-born" },
+      "rhaena":      { "location": null, "status": "not-born" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": null, "status": "not-introduced" },
+      "hugh":        { "location": null, "status": "not-introduced" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": null, "status": "not-born" },
+      "viserys-younger": { "location": null, "status": "not-born" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": null, "status": "not-introduced" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": null, "status": "not-introduced" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "daemon"
-        ],
-        "from": "kings-landing",
-        "to": "runestone"
-      },
-      {
-        "characters": [
-          "otto"
-        ],
-        "from": "kings-landing",
-        "to": "oldtown",
-        "note": "after dismissal as Hand; inferred during time skip"
-      },
-      {
-        "characters": [
-          "viserys",
-          "rhaenyra",
-          "criston"
-        ],
-        "from": "kings-landing",
-        "to": "driftmark"
-      },
-      {
-        "characters": [
-          "viserys",
-          "rhaenyra",
-          "criston",
-          "corlys",
-          "rhaenys",
-          "laenor",
-          "laena"
-        ],
-        "from": "driftmark",
-        "to": "kings-landing"
-      },
-      {
-        "characters": [
-          "daemon"
-        ],
-        "from": "runestone",
-        "to": "kings-landing"
-      }
+      { "characters": ["daemon"], "from": "kings-landing", "to": "runestone" },
+      { "characters": ["otto"], "from": "kings-landing", "to": "oldtown", "note": "after dismissal as Hand; inferred during time skip" },
+      { "characters": ["viserys","rhaenyra","criston"], "from": "kings-landing", "to": "driftmark" },
+      { "characters": ["viserys","rhaenyra","criston","corlys","rhaenys","laenor","laena"], "from": "driftmark", "to": "kings-landing" },
+      { "characters": ["daemon"], "from": "runestone", "to": "kings-landing" }
     ]
   },
   {
     "number": 6,
     "title": "The Princess and the Queen",
     "initialLocations": {
-      "viserys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenyra": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "pentos",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "oldtown",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "laena": {
-        "location": "pentos",
-        "status": "alive"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "mysaria": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "helaena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "jace": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "luke": {
-        "location": "kings-landing",
-        "status": "alive"
-      }
+      "viserys":     { "location": "kings-landing", "status": "alive" },
+      "rhaenyra":    { "location": "kings-landing", "status": "alive" },
+      "daemon":      { "location": "pentos", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "oldtown", "status": "alive" },
+      "rhaenys":     { "location": "driftmark", "status": "alive" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": "kings-landing", "status": "alive" },
+      "laena":       { "location": "pentos", "status": "alive" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": "kings-landing", "status": "alive" },
+      "mysaria":     { "location": "kings-landing", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "kings-landing", "status": "alive" },
+      "luke":        { "location": "kings-landing", "status": "alive" },
+      "baela":       { "location": "pentos", "status": "alive" },
+      "rhaena":      { "location": "pentos", "status": "alive" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": null, "status": "not-introduced" },
+      "hugh":        { "location": null, "status": "not-introduced" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": null, "status": "not-born" },
+      "viserys-younger": { "location": null, "status": "not-born" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": null, "status": "not-introduced" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": null, "status": "not-introduced" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "harwin"
-        ],
-        "from": "kings-landing",
-        "to": "harrenhal"
-      },
-      {
-        "characters": [
-          "harwin"
-        ],
-        "from": "harrenhal",
-        "to": null,
-        "note": "killed in Harrenhal fire"
-      },
-      {
-        "characters": [
-          "rhaenyra",
-          "laenor",
-          "jace",
-          "luke"
-        ],
-        "from": "kings-landing",
-        "to": "dragonstone"
-      },
-      {
-        "characters": [
-          "laena"
-        ],
-        "from": "pentos",
-        "to": null,
-        "note": "died in childbirth"
-      }
+      { "characters": ["harwin"], "from": "kings-landing", "to": "harrenhal" },
+      { "characters": ["harwin"], "from": "harrenhal", "to": null, "note": "killed in Harrenhal fire" },
+      { "characters": ["rhaenyra","laenor","jace","luke"], "from": "kings-landing", "to": "dragonstone" },
+      { "characters": ["laena"], "from": "pentos", "to": null, "note": "died in childbirth" }
     ]
   },
   {
     "number": 7,
     "title": "Driftmark",
     "initialLocations": {
-      "viserys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "rhaenyra": {
-        "location": "driftmark",
-        "status": "alive",
-        "note": "arrived from Dragonstone for funeral"
-      },
-      "daemon": {
-        "location": "driftmark",
-        "status": "alive",
-        "note": "arrived from Pentos for funeral"
-      },
-      "alicent": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laena": {
-        "location": null,
-        "status": "dead"
-      },
-      "criston": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": null,
-        "status": "dead"
-      },
-      "mysaria": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "helaena": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "jace": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "luke": {
-        "location": "driftmark",
-        "status": "alive"
-      }
+      "viserys":     { "location": "driftmark", "status": "alive" },
+      "rhaenyra":    { "location": "driftmark", "status": "alive", "note": "arrived from Dragonstone for funeral" },
+      "daemon":      { "location": "driftmark", "status": "alive", "note": "arrived from Pentos for funeral" },
+      "alicent":     { "location": "driftmark", "status": "alive" },
+      "otto":        { "location": "driftmark", "status": "alive" },
+      "rhaenys":     { "location": "driftmark", "status": "alive" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": "driftmark", "status": "alive" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "driftmark", "status": "alive" },
+      "larys":       { "location": "driftmark", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "kings-landing", "status": "alive" },
+      "aegon":       { "location": "driftmark", "status": "alive" },
+      "aemond":      { "location": "driftmark", "status": "alive" },
+      "helaena":     { "location": "driftmark", "status": "alive" },
+      "jace":        { "location": "driftmark", "status": "alive" },
+      "luke":        { "location": "driftmark", "status": "alive" },
+      "baela":       { "location": "driftmark", "status": "alive" },
+      "rhaena":      { "location": "driftmark", "status": "alive" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": null, "status": "not-introduced" },
+      "hugh":        { "location": null, "status": "not-introduced" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": null, "status": "not-born" },
+      "viserys-younger": { "location": null, "status": "not-born" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": null, "status": "not-introduced" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": null, "status": "not-introduced" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "laenor"
-        ],
-        "from": "driftmark",
-        "to": "essos",
-        "note": "faked death; secretly fled with Qarl"
-      },
-      {
-        "characters": [
-          "rhaenyra",
-          "daemon",
-          "jace",
-          "luke"
-        ],
-        "from": "driftmark",
-        "to": "dragonstone"
-      },
-      {
-        "characters": [
-          "viserys",
-          "alicent",
-          "otto",
-          "criston",
-          "larys",
-          "aegon",
-          "aemond",
-          "helaena"
-        ],
-        "from": "driftmark",
-        "to": "kings-landing"
-      },
-      {
-        "characters": [
-          "corlys"
-        ],
-        "from": "driftmark",
-        "to": "stepstones",
-        "note": "returns to Stepstones campaign during time gap"
-      }
+      { "characters": ["laenor"], "from": "driftmark", "to": null, "note": "faked death; secretly fled to Essos with Qarl" },
+      { "characters": ["rhaenyra","daemon","jace","luke","baela","rhaena"], "from": "driftmark", "to": "dragonstone" },
+      { "characters": ["viserys","alicent","otto","criston","larys","aegon","aemond","helaena"], "from": "driftmark", "to": "kings-landing" },
+      { "characters": ["corlys"], "from": "driftmark", "to": "stepstones", "note": "returns to Stepstones campaign during time gap" }
     ]
   },
   {
     "number": 8,
     "title": "The Lord of the Tides",
     "initialLocations": {
-      "viserys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenyra": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "stepstones",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "essos",
-        "status": "alive-offscreen"
-      },
-      "laena": {
-        "location": null,
-        "status": "dead"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": null,
-        "status": "dead"
-      },
-      "mysaria": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "helaena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "jace": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "luke": {
-        "location": "dragonstone",
-        "status": "alive"
-      }
+      "viserys":     { "location": "kings-landing", "status": "alive" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "dragonstone", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "kings-landing", "status": "alive" },
+      "rhaenys":     { "location": "driftmark", "status": "alive" },
+      "corlys":      { "location": "stepstones", "status": "alive" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "kings-landing", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "dragonstone", "status": "alive" },
+      "luke":        { "location": "dragonstone", "status": "alive" },
+      "baela":       { "location": "dragonstone", "status": "alive" },
+      "rhaena":      { "location": "dragonstone", "status": "alive" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": null, "status": "not-introduced" },
+      "hugh":        { "location": null, "status": "not-introduced" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": "dragonstone", "status": "alive" },
+      "viserys-younger": { "location": "dragonstone", "status": "alive" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": null, "status": "not-introduced" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": null, "status": "not-introduced" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "corlys"
-        ],
-        "from": "stepstones",
-        "to": "driftmark",
-        "note": "wounded, brought back to Driftmark"
-      },
-      {
-        "characters": [
-          "rhaenys"
-        ],
-        "from": "driftmark",
-        "to": "kings-landing"
-      },
-      {
-        "characters": [
-          "rhaenyra",
-          "daemon",
-          "jace",
-          "luke"
-        ],
-        "from": "dragonstone",
-        "to": "kings-landing"
-      },
-      {
-        "characters": [
-          "viserys"
-        ],
-        "from": "kings-landing",
-        "to": null,
-        "note": "died"
-      },
-      {
-        "characters": [
-          "rhaenyra",
-          "daemon",
-          "jace",
-          "luke"
-        ],
-        "from": "kings-landing",
-        "to": "dragonstone"
-      }
+      { "characters": ["corlys"], "from": "stepstones", "to": "driftmark", "note": "wounded, brought back to Driftmark" },
+      { "characters": ["rhaenys"], "from": "driftmark", "to": "kings-landing" },
+      { "characters": ["rhaenyra","daemon","jace","luke"], "from": "dragonstone", "to": "kings-landing" },
+      { "characters": ["viserys"], "from": "kings-landing", "to": null, "note": "died" },
+      { "characters": ["rhaenyra","daemon","jace","luke"], "from": "kings-landing", "to": "dragonstone" }
     ]
   },
   {
     "number": 9,
     "title": "The Green Council",
     "initialLocations": {
-      "viserys": {
-        "location": null,
-        "status": "dead"
-      },
-      "rhaenyra": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "essos",
-        "status": "alive-offscreen"
-      },
-      "laena": {
-        "location": null,
-        "status": "dead"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": null,
-        "status": "dead"
-      },
-      "mysaria": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "helaena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "jace": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "luke": {
-        "location": "dragonstone",
-        "status": "alive"
-      }
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "dragonstone", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "kings-landing", "status": "alive" },
+      "rhaenys":     { "location": "kings-landing", "status": "alive" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "kings-landing", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "dragonstone", "status": "alive" },
+      "luke":        { "location": "dragonstone", "status": "alive" },
+      "baela":       { "location": "dragonstone", "status": "alive" },
+      "rhaena":      { "location": "dragonstone", "status": "alive" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": null, "status": "not-introduced" },
+      "hugh":        { "location": null, "status": "not-introduced" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": "dragonstone", "status": "alive" },
+      "viserys-younger": { "location": "dragonstone", "status": "alive" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": null, "status": "not-introduced" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": null, "status": "not-introduced" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "rhaenys"
-        ],
-        "from": "kings-landing",
-        "to": "dragonstone"
-      }
+      { "characters": ["rhaenys"], "from": "kings-landing", "to": "dragonstone" }
     ]
   },
   {
     "number": 10,
     "title": "The Black Queen",
     "initialLocations": {
-      "viserys": {
-        "location": null,
-        "status": "dead"
-      },
-      "rhaenyra": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "essos",
-        "status": "alive-offscreen"
-      },
-      "laena": {
-        "location": null,
-        "status": "dead"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": null,
-        "status": "dead"
-      },
-      "mysaria": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "helaena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "jace": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "luke": {
-        "location": "dragonstone",
-        "status": "alive"
-      }
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "dragonstone", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "kings-landing", "status": "alive" },
+      "rhaenys":     { "location": "dragonstone", "status": "alive" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "kings-landing", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "dragonstone", "status": "alive" },
+      "luke":        { "location": "dragonstone", "status": "alive" },
+      "baela":       { "location": "dragonstone", "status": "alive" },
+      "rhaena":      { "location": "dragonstone", "status": "alive" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": null, "status": "not-introduced" },
+      "hugh":        { "location": null, "status": "not-introduced" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": "dragonstone", "status": "alive" },
+      "viserys-younger": { "location": "dragonstone", "status": "alive" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": null, "status": "not-introduced" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": null, "status": "not-introduced" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "corlys"
-        ],
-        "from": "driftmark",
-        "to": "dragonstone"
-      },
-      {
-        "characters": [
-          "otto"
-        ],
-        "from": "kings-landing",
-        "to": "dragonstone"
-      },
-      {
-        "characters": [
-          "otto"
-        ],
-        "from": "dragonstone",
-        "to": "kings-landing"
-      },
-      {
-        "characters": [
-          "jace"
-        ],
-        "from": "dragonstone",
-        "to": "the-eyrie"
-      },
-      {
-        "characters": [
-          "luke"
-        ],
-        "from": "dragonstone",
-        "to": "storms-end"
-      },
-      {
-        "characters": [
-          "aemond"
-        ],
-        "from": "kings-landing",
-        "to": "storms-end"
-      },
-      {
-        "characters": [
-          "luke"
-        ],
-        "from": "storms-end",
-        "to": null,
-        "note": "killed by Vhagar over Shipbreaker Bay"
-      }
+      { "characters": ["corlys"], "from": "driftmark", "to": "dragonstone" },
+      { "characters": ["otto"], "from": "kings-landing", "to": "dragonstone" },
+      { "characters": ["otto"], "from": "dragonstone", "to": "kings-landing" },
+      { "characters": ["jace"], "from": "dragonstone", "to": "the-eyrie" },
+      { "characters": ["luke"], "from": "dragonstone", "to": "storms-end" },
+      { "characters": ["aemond"], "from": "kings-landing", "to": "storms-end" },
+      { "characters": ["luke"], "from": "storms-end", "to": null, "note": "killed by Vhagar over Shipbreaker Bay" }
     ]
   },
   {
     "number": 11,
     "title": "A Son for a Son",
     "initialLocations": {
-      "viserys": {
-        "location": null,
-        "status": "dead"
-      },
-      "rhaenyra": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "essos",
-        "status": "alive-offscreen"
-      },
-      "laena": {
-        "location": null,
-        "status": "dead"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": null,
-        "status": "dead"
-      },
-      "mysaria": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": "storms-end",
-        "status": "alive"
-      },
-      "helaena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "jace": {
-        "location": "the-eyrie",
-        "status": "alive"
-      },
-      "luke": {
-        "location": null,
-        "status": "dead"
-      }
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "dragonstone", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "kings-landing", "status": "alive" },
+      "rhaenys":     { "location": "driftmark", "status": "alive" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "kings-landing", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": "storms-end", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "the-eyrie", "status": "alive" },
+      "luke":        { "location": null, "status": "dead" },
+      "baela":       { "location": "dragonstone", "status": "alive" },
+      "rhaena":      { "location": "dragonstone", "status": "alive" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": "driftmark", "status": "alive" },
+      "hugh":        { "location": "kings-landing", "status": "alive" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": "dragonstone", "status": "alive" },
+      "viserys-younger": { "location": "dragonstone", "status": "alive" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": null, "status": "not-introduced" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": null, "status": "not-introduced" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "jace"
-        ],
-        "from": "the-eyrie",
-        "to": "winterfell"
-      },
-      {
-        "characters": [
-          "aemond"
-        ],
-        "from": "storms-end",
-        "to": "kings-landing"
-      },
-      {
-        "characters": [
-          "mysaria"
-        ],
-        "from": "kings-landing",
-        "to": "dragonstone"
-      },
-      {
-        "characters": [
-          "daemon"
-        ],
-        "from": "dragonstone",
-        "to": "kings-landing"
-      },
-      {
-        "characters": [
-          "daemon"
-        ],
-        "from": "kings-landing",
-        "to": "dragonstone"
-      }
+      { "characters": ["jace"], "from": "the-eyrie", "to": "winterfell" },
+      { "characters": ["aemond"], "from": "storms-end", "to": "kings-landing" },
+      { "characters": ["mysaria"], "from": "kings-landing", "to": "dragonstone" },
+      { "characters": ["daemon"], "from": "dragonstone", "to": "kings-landing" },
+      { "characters": ["daemon"], "from": "kings-landing", "to": "dragonstone" }
     ]
   },
   {
     "number": 12,
     "title": "Rhaenyra the Cruel",
     "initialLocations": {
-      "viserys": {
-        "location": null,
-        "status": "dead"
-      },
-      "rhaenyra": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "essos",
-        "status": "alive-offscreen"
-      },
-      "laena": {
-        "location": null,
-        "status": "dead"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": null,
-        "status": "dead"
-      },
-      "mysaria": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "helaena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "jace": {
-        "location": "winterfell",
-        "status": "alive"
-      },
-      "luke": {
-        "location": null,
-        "status": "dead"
-      }
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "dragonstone", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "kings-landing", "status": "alive" },
+      "rhaenys":     { "location": "driftmark", "status": "alive" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "dragonstone", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "winterfell", "status": "alive" },
+      "luke":        { "location": null, "status": "dead" },
+      "baela":       { "location": "dragonstone", "status": "alive" },
+      "rhaena":      { "location": "dragonstone", "status": "alive" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": "driftmark", "status": "alive" },
+      "hugh":        { "location": "kings-landing", "status": "alive" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": "dragonstone", "status": "alive" },
+      "viserys-younger": { "location": "dragonstone", "status": "alive" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": "oldtown", "status": "alive" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": "oldtown", "status": "alive" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "jace"
-        ],
-        "from": "winterfell",
-        "to": "dragonstone"
-      },
-      {
-        "characters": [
-          "daemon"
-        ],
-        "from": "dragonstone",
-        "to": "harrenhal"
-      }
+      { "characters": ["jace"], "from": "winterfell", "to": "dragonstone" },
+      { "characters": ["daemon"], "from": "dragonstone", "to": "harrenhal" }
     ]
   },
   {
     "number": 13,
     "title": "The Burning Mill",
     "initialLocations": {
-      "viserys": {
-        "location": null,
-        "status": "dead"
-      },
-      "rhaenyra": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "harrenhal",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "essos",
-        "status": "alive-offscreen"
-      },
-      "laena": {
-        "location": null,
-        "status": "dead"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": null,
-        "status": "dead"
-      },
-      "mysaria": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "helaena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "jace": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "luke": {
-        "location": null,
-        "status": "dead"
-      }
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "harrenhal", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "kings-landing", "status": "alive" },
+      "rhaenys":     { "location": "driftmark", "status": "alive" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "dragonstone", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "dragonstone", "status": "alive" },
+      "luke":        { "location": null, "status": "dead" },
+      "baela":       { "location": "dragonstone", "status": "alive" },
+      "rhaena":      { "location": "dragonstone", "status": "alive" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": "driftmark", "status": "alive" },
+      "hugh":        { "location": "kings-landing", "status": "alive" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": "dragonstone", "status": "alive" },
+      "viserys-younger": { "location": "dragonstone", "status": "alive" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": "oldtown", "status": "alive" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": "oldtown", "status": "alive" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "otto"
-        ],
-        "from": "kings-landing",
-        "to": "oldtown"
-      },
-      {
-        "characters": [
-          "rhaenyra"
-        ],
-        "from": "dragonstone",
-        "to": "kings-landing"
-      },
-      {
-        "characters": [
-          "rhaenyra"
-        ],
-        "from": "kings-landing",
-        "to": "dragonstone"
-      }
+      { "characters": ["otto"], "from": "kings-landing", "to": "oldtown" },
+      { "characters": ["rhaenyra"], "from": "dragonstone", "to": "kings-landing" },
+      { "characters": ["rhaenyra"], "from": "kings-landing", "to": "dragonstone" },
+      { "characters": ["rhaena","aegon-younger","viserys-younger"], "from": "dragonstone", "to": "the-eyrie", "note": "Rhaena escorts the young princes Aegon and Viserys to the Vale for safety" }
     ]
   },
   {
     "number": 14,
     "title": "The Red Dragon and the Gold",
     "initialLocations": {
-      "viserys": {
-        "location": null,
-        "status": "dead"
-      },
-      "rhaenyra": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "harrenhal",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "oldtown",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "essos",
-        "status": "alive-offscreen"
-      },
-      "laena": {
-        "location": null,
-        "status": "dead"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": null,
-        "status": "dead"
-      },
-      "mysaria": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "helaena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "jace": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "luke": {
-        "location": null,
-        "status": "dead"
-      }
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "harrenhal", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "oldtown", "status": "alive" },
+      "rhaenys":     { "location": "driftmark", "status": "alive" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "dragonstone", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "dragonstone", "status": "alive" },
+      "luke":        { "location": null, "status": "dead" },
+      "baela":       { "location": "dragonstone", "status": "alive" },
+      "rhaena":      { "location": "the-eyrie", "status": "alive" },
+      "addam":       { "location": null, "status": "not-introduced" },
+      "alyn":        { "location": "driftmark", "status": "alive" },
+      "hugh":        { "location": "kings-landing", "status": "alive" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": "the-eyrie", "status": "alive" },
+      "viserys-younger": { "location": "the-eyrie", "status": "alive" },
+      "gwayne":      { "location": null, "status": "not-introduced" },
+      "ormund":      { "location": "oldtown", "status": "alive" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": "oldtown", "status": "alive" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "criston"
-        ],
-        "from": "kings-landing",
-        "to": "rooks-rest",
-        "note": "marching with ground forces"
-      },
-      {
-        "characters": [
-          "aemond"
-        ],
-        "from": "kings-landing",
-        "to": "rooks-rest",
-        "note": "by dragon (Vhagar)"
-      },
-      {
-        "characters": [
-          "aegon"
-        ],
-        "from": "kings-landing",
-        "to": "rooks-rest",
-        "note": "flew in independently on Sunfyre"
-      },
-      {
-        "characters": [
-          "rhaenys"
-        ],
-        "from": "driftmark",
-        "to": "rooks-rest"
-      },
-      {
-        "characters": [
-          "rhaenys"
-        ],
-        "from": "rooks-rest",
-        "to": null,
-        "note": "killed with Meleys"
-      }
+      { "characters": ["criston"], "from": "kings-landing", "to": "rooks-rest", "note": "marching with ground forces" },
+      { "characters": ["aemond"], "from": "kings-landing", "to": "rooks-rest", "note": "by dragon (Vhagar)" },
+      { "characters": ["aegon"], "from": "kings-landing", "to": "rooks-rest", "note": "flew in independently on Sunfyre" },
+      { "characters": ["rhaenys"], "from": "driftmark", "to": "rooks-rest" },
+      { "characters": ["rhaenys"], "from": "rooks-rest", "to": null, "note": "killed with Meleys" }
     ]
   },
   {
     "number": 15,
     "title": "Regent",
     "initialLocations": {
-      "viserys": {
-        "location": null,
-        "status": "dead"
-      },
-      "rhaenyra": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "harrenhal",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "oldtown",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": null,
-        "status": "dead"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "essos",
-        "status": "alive-offscreen"
-      },
-      "laena": {
-        "location": null,
-        "status": "dead"
-      },
-      "criston": {
-        "location": "rooks-rest",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": null,
-        "status": "dead"
-      },
-      "mysaria": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "rooks-rest",
-        "status": "alive",
-        "note": "gravely wounded"
-      },
-      "aemond": {
-        "location": "rooks-rest",
-        "status": "alive"
-      },
-      "helaena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "jace": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "luke": {
-        "location": null,
-        "status": "dead"
-      }
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "harrenhal", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "oldtown", "status": "alive" },
+      "rhaenys":     { "location": null, "status": "dead" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "rooks-rest", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "dragonstone", "status": "alive" },
+      "aegon":       { "location": "rooks-rest", "status": "alive", "note": "gravely wounded" },
+      "aemond":      { "location": "rooks-rest", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "dragonstone", "status": "alive" },
+      "luke":        { "location": null, "status": "dead" },
+      "baela":       { "location": "dragonstone", "status": "alive" },
+      "rhaena":      { "location": "the-eyrie", "status": "alive" },
+      "addam":       { "location": "driftmark", "status": "alive" },
+      "alyn":        { "location": "driftmark", "status": "alive" },
+      "hugh":        { "location": "kings-landing", "status": "alive" },
+      "ulf":         { "location": null, "status": "not-introduced" },
+      "aegon-younger": { "location": "the-eyrie", "status": "alive" },
+      "viserys-younger": { "location": "the-eyrie", "status": "alive" },
+      "gwayne":      { "location": "kings-landing", "status": "alive" },
+      "ormund":      { "location": "oldtown", "status": "alive" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": "oldtown", "status": "alive" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "criston",
-          "aegon",
-          "aemond"
-        ],
-        "from": "rooks-rest",
-        "to": "kings-landing"
-      },
-      {
-        "characters": [
-          "jace"
-        ],
-        "from": "dragonstone",
-        "to": "the-twins"
-      }
+      { "characters": ["criston","aegon","aemond"], "from": "rooks-rest", "to": "kings-landing" },
+      { "characters": ["jace"], "from": "dragonstone", "to": "the-twins" }
     ]
   },
   {
     "number": 16,
     "title": "Smallfolk",
     "initialLocations": {
-      "viserys": {
-        "location": null,
-        "status": "dead"
-      },
-      "rhaenyra": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "harrenhal",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "oldtown",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": null,
-        "status": "dead"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "essos",
-        "status": "alive-offscreen"
-      },
-      "laena": {
-        "location": null,
-        "status": "dead"
-      },
-      "criston": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": null,
-        "status": "dead"
-      },
-      "mysaria": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive",
-        "note": "recovering from burns"
-      },
-      "aemond": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "helaena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "jace": {
-        "location": "the-twins",
-        "status": "alive"
-      },
-      "luke": {
-        "location": null,
-        "status": "dead"
-      }
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "harrenhal", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "oldtown", "status": "alive" },
+      "rhaenys":     { "location": null, "status": "dead" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "kings-landing", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "dragonstone", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive", "note": "recovering from burns" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "the-twins", "status": "alive" },
+      "luke":        { "location": null, "status": "dead" },
+      "baela":       { "location": "dragonstone", "status": "alive" },
+      "rhaena":      { "location": "the-eyrie", "status": "alive" },
+      "addam":       { "location": "driftmark", "status": "alive" },
+      "alyn":        { "location": "driftmark", "status": "alive" },
+      "hugh":        { "location": "kings-landing", "status": "alive" },
+      "ulf":         { "location": "kings-landing", "status": "alive" },
+      "aegon-younger": { "location": "the-eyrie", "status": "alive" },
+      "viserys-younger": { "location": "the-eyrie", "status": "alive" },
+      "gwayne":      { "location": "kings-landing", "status": "alive" },
+      "ormund":      { "location": "oldtown", "status": "alive" },
+      "tyland":      { "location": "kings-landing", "status": "alive" },
+      "daeron":      { "location": "oldtown", "status": "alive" },
+      "lohar":       { "location": null, "status": "not-introduced" }
     },
     "movements": [
-      {
-        "characters": [
-          "jace"
-        ],
-        "from": "the-twins",
-        "to": "dragonstone",
-        "note": "returned to Dragonstone after making pact with Freys"
-      },
-      {
-        "characters": [
-          "criston"
-        ],
-        "from": "kings-landing",
-        "to": "harrenhal",
-        "note": "marching with the Green army to Harrenhal"
-      },
-      {
-        "characters": [
-          "rhaenyra"
-        ],
-        "from": "dragonstone",
-        "to": "driftmark",
-        "note": "flew to Driftmark after Seasmoke was claimed by Addam"
-      }
+      { "characters": ["jace"], "from": "the-twins", "to": "dragonstone", "note": "returned to Dragonstone after making pact with Freys" },
+      { "characters": ["criston"], "from": "kings-landing", "to": "harrenhal", "note": "marching with the Green army to Harrenhal" },
+      { "characters": ["rhaenyra"], "from": "dragonstone", "to": "driftmark", "note": "flew to Driftmark after Seasmoke was claimed by Addam" },
+      { "characters": ["gwayne"], "from": "kings-landing", "to": "harrenhal", "note": "marches out with Criston Cole's Green army toward Harrenhal" },
+      { "characters": ["tyland"], "from": "kings-landing", "to": "pentos", "note": "sails to the Free Cities to treat with the Triarchy" }
     ]
   },
   {
     "number": 17,
     "title": "The Red Sowing",
     "initialLocations": {
-      "viserys": {
-        "location": null,
-        "status": "dead"
-      },
-      "rhaenyra": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "harrenhal",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "otto": {
-        "location": "oldtown",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": null,
-        "status": "dead"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "essos",
-        "status": "alive-offscreen"
-      },
-      "laena": {
-        "location": null,
-        "status": "dead"
-      },
-      "criston": {
-        "location": "harrenhal",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": null,
-        "status": "dead"
-      },
-      "mysaria": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "helaena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "jace": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "luke": {
-        "location": null,
-        "status": "dead"
-      }
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "driftmark", "status": "alive" },
+      "daemon":      { "location": "harrenhal", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "oldtown", "status": "alive" },
+      "rhaenys":     { "location": null, "status": "dead" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "harrenhal", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "dragonstone", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "dragonstone", "status": "alive" },
+      "luke":        { "location": null, "status": "dead" },
+      "baela":       { "location": "dragonstone", "status": "alive" },
+      "rhaena":      { "location": "the-eyrie", "status": "alive" },
+      "addam":       { "location": "driftmark", "status": "alive" },
+      "alyn":        { "location": "driftmark", "status": "alive" },
+      "hugh":        { "location": "kings-landing", "status": "alive" },
+      "ulf":         { "location": "kings-landing", "status": "alive" },
+      "aegon-younger": { "location": "the-eyrie", "status": "alive" },
+      "viserys-younger": { "location": "the-eyrie", "status": "alive" },
+      "gwayne":      { "location": "harrenhal", "status": "alive" },
+      "ormund":      { "location": "oldtown", "status": "alive" },
+      "tyland":      { "location": "pentos", "status": "alive" },
+      "daeron":      { "location": "oldtown", "status": "alive" },
+      "lohar":       { "location": "pentos", "status": "alive" }
     },
     "movements": [
-      {
-        "characters": [
-          "rhaenyra"
-        ],
-        "from": "driftmark",
-        "to": "dragonstone",
-        "note": "returned to Dragonstone to conduct the Sowing of the Seeds"
-      },
-      {
-        "characters": [
-          "alicent"
-        ],
-        "from": "kings-landing",
-        "to": null,
-        "note": "left the Red Keep to seek solace in the Kingswood"
-      },
-      {
-        "characters": [
-          "aemond"
-        ],
-        "from": "kings-landing",
-        "to": "dragonstone",
-        "note": "flew to Dragonstone to pursue Silverwing"
-      },
-      {
-        "characters": [
-          "aemond"
-        ],
-        "from": "dragonstone",
-        "to": "kings-landing",
-        "note": "retreated back to King's Landing when confronted by multiple dragons"
-      }
+      { "characters": ["rhaenyra"], "from": "driftmark", "to": "dragonstone", "note": "returned to Dragonstone to conduct the Sowing of the Seeds" },
+      { "characters": ["alicent"], "from": "kings-landing", "to": null, "note": "left the Red Keep to seek solace in the Kingswood" },
+      { "characters": ["aemond"], "from": "kings-landing", "to": "dragonstone", "note": "flew to Dragonstone to pursue Silverwing" },
+      { "characters": ["aemond"], "from": "dragonstone", "to": "kings-landing", "note": "retreated back to King's Landing when confronted by multiple dragons" },
+      { "characters": ["addam"], "from": "driftmark", "to": "dragonstone", "note": "after Seasmoke claims him at Hull, flies to Dragonstone and bends the knee to Rhaenyra" },
+      { "characters": ["hugh","ulf"], "from": "kings-landing", "to": "dragonstone", "note": "answer the call to Dragonstone and claim Vermithor and Silverwing at the Red Sowing" }
     ]
   },
   {
     "number": 18,
     "title": "The Queen Who Ever Was",
     "initialLocations": {
-      "viserys": {
-        "location": null,
-        "status": "dead"
-      },
-      "rhaenyra": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "daemon": {
-        "location": "harrenhal",
-        "status": "alive"
-      },
-      "alicent": {
-        "location": null,
-        "status": "alive",
-        "note": "in the Kingswood"
-      },
-      "otto": {
-        "location": "oldtown",
-        "status": "alive"
-      },
-      "rhaenys": {
-        "location": null,
-        "status": "dead"
-      },
-      "corlys": {
-        "location": "driftmark",
-        "status": "alive"
-      },
-      "laenor": {
-        "location": "essos",
-        "status": "alive-offscreen"
-      },
-      "laena": {
-        "location": null,
-        "status": "dead"
-      },
-      "criston": {
-        "location": "harrenhal",
-        "status": "alive"
-      },
-      "larys": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "harwin": {
-        "location": null,
-        "status": "dead"
-      },
-      "mysaria": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "aegon": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "aemond": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "helaena": {
-        "location": "kings-landing",
-        "status": "alive"
-      },
-      "jace": {
-        "location": "dragonstone",
-        "status": "alive"
-      },
-      "luke": {
-        "location": null,
-        "status": "dead"
-      }
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "harrenhal", "status": "alive" },
+      "alicent":     { "location": null, "status": "alive", "note": "in the Kingswood" },
+      "otto":        { "location": "oldtown", "status": "alive" },
+      "rhaenys":     { "location": null, "status": "dead" },
+      "corlys":      { "location": "driftmark", "status": "alive" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "harrenhal", "status": "alive" },
+      "larys":       { "location": "kings-landing", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "dragonstone", "status": "alive" },
+      "aegon":       { "location": "kings-landing", "status": "alive" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "dragonstone", "status": "alive" },
+      "luke":        { "location": null, "status": "dead" },
+      "baela":       { "location": "dragonstone", "status": "alive" },
+      "rhaena":      { "location": "the-eyrie", "status": "alive" },
+      "addam":       { "location": "dragonstone", "status": "alive" },
+      "alyn":        { "location": "driftmark", "status": "alive" },
+      "hugh":        { "location": "dragonstone", "status": "alive" },
+      "ulf":         { "location": "dragonstone", "status": "alive" },
+      "aegon-younger": { "location": "the-eyrie", "status": "alive" },
+      "viserys-younger": { "location": "the-eyrie", "status": "alive" },
+      "gwayne":      { "location": "harrenhal", "status": "alive" },
+      "ormund":      { "location": "oldtown", "status": "alive" },
+      "tyland":      { "location": "pentos", "status": "alive" },
+      "daeron":      { "location": "oldtown", "status": "alive" },
+      "lohar":       { "location": "pentos", "status": "alive" }
     },
     "movements": [
-      {
-        "characters": [
-          "rhaenyra"
-        ],
-        "from": "dragonstone",
-        "to": "harrenhal",
-        "note": "secretly flew to Harrenhal to verify Daemon's loyalty"
-      },
-      {
-        "characters": [
-          "rhaenyra"
-        ],
-        "from": "harrenhal",
-        "to": "dragonstone",
-        "note": "returned to Dragonstone after Daemon pledged his loyalty to her"
-      },
-      {
-        "characters": [
-          "alicent"
-        ],
-        "from": null,
-        "to": "dragonstone",
-        "note": "secretly traveled to Dragonstone to negotiate terms with Rhaenyra"
-      },
-      {
-        "characters": [
-          "alicent"
-        ],
-        "from": "dragonstone",
-        "to": "kings-landing",
-        "note": "returned to King's Landing to prepare for the city's surrender"
-      },
-      {
-        "characters": [
-          "aegon",
-          "larys"
-        ],
-        "from": "kings-landing",
-        "to": "pentos",
-        "note": "fled King's Landing to Essos to escape Aemond's wrath"
-      },
-      {
-        "characters": [
-          "corlys"
-        ],
-        "from": "driftmark",
-        "to": "stepstones",
-        "note": "boarded flagship to lead the Velaryon fleet at sea"
-      },
-      {
-        "characters": [
-          "otto"
-        ],
-        "from": "oldtown",
-        "to": null,
-        "note": "revealed to be imprisoned in an unknown location"
-      }
+      { "characters": ["rhaenyra"], "from": "dragonstone", "to": "harrenhal", "note": "secretly flew to Harrenhal to verify Daemon's loyalty" },
+      { "characters": ["rhaenyra"], "from": "harrenhal", "to": "dragonstone", "note": "returned to Dragonstone after Daemon pledged his loyalty to her" },
+      { "characters": ["alicent"], "from": null, "to": "dragonstone", "note": "secretly traveled to Dragonstone to negotiate terms with Rhaenyra" },
+      { "characters": ["alicent"], "from": "dragonstone", "to": "kings-landing", "note": "returned to King's Landing to prepare for the city's surrender" },
+      { "characters": ["aegon", "larys"], "from": "kings-landing", "to": "pentos", "note": "fled King's Landing to Essos to escape Aemond's wrath" },
+      { "characters": ["corlys"], "from": "driftmark", "to": "stepstones", "note": "boarded flagship to lead the Velaryon fleet at sea" },
+      { "characters": ["otto"], "from": "oldtown", "to": null, "note": "revealed to be imprisoned in an unknown location" }
+    ]
+  },
+  {
+    "number": 19,
+    "title": "Salt and Sea, Fire and Blood",
+    "initialLocations": {
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "harrenhal", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": null, "status": "alive", "note": "imprisoned in an unknown location" },
+      "rhaenys":     { "location": null, "status": "dead" },
+      "corlys":      { "location": "stepstones", "status": "alive", "note": "at sea with the Velaryon fleet" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "harrenhal", "status": "alive" },
+      "larys":       { "location": "pentos", "status": "alive" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "dragonstone", "status": "alive" },
+      "aegon":       { "location": "pentos", "status": "alive" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": "dragonstone", "status": "alive" },
+      "luke":        { "location": null, "status": "dead" },
+      "baela":       { "location": "dragonstone", "status": "alive" },
+      "rhaena":      { "location": "the-eyrie", "status": "alive" },
+      "addam":       { "location": "dragonstone", "status": "alive" },
+      "alyn":        { "location": "driftmark", "status": "alive" },
+      "hugh":        { "location": "dragonstone", "status": "alive" },
+      "ulf":         { "location": "dragonstone", "status": "alive" },
+      "aegon-younger": { "location": "the-eyrie", "status": "alive" },
+      "viserys-younger": { "location": "the-eyrie", "status": "alive" },
+      "gwayne":      { "location": "harrenhal", "status": "alive" },
+      "ormund":      { "location": "oldtown", "status": "alive" },
+      "tyland":      { "location": "pentos", "status": "alive" },
+      "daeron":      { "location": "oldtown", "status": "alive" },
+      "lohar":       { "location": "pentos", "status": "alive" }
+    },
+    "movements": [
+      { "characters": ["corlys"], "from": "stepstones", "to": "the-gullet", "note": "leads the Velaryon fleet against the Triarchy at the Battle of the Gullet; High Tide is sacked" },
+      { "characters": ["jace","baela"], "from": "dragonstone", "to": "the-gullet", "note": "fly Vermax and Moondancer to the Gullet to break the Triarchy assault" },
+      { "characters": ["jace"], "from": "the-gullet", "to": null, "note": "killed at the Gullet after Vermax is downed by a scorpion bolt and drowns" },
+      { "characters": ["baela"], "from": "the-gullet", "to": "dragonstone", "note": "Moondancer survives; returns to Dragonstone after the battle" },
+      { "characters": ["aegon","larys"], "from": "pentos", "to": "dragonstone", "note": "captured by Rhaenyra's forces and brought to Dragonstone as hostages" },
+      { "characters": ["rhaena"], "from": "the-eyrie", "to": "the-gullet", "note": "having bonded the wild dragon Sheepstealer, flies to the Battle of the Gullet" },
+      { "characters": ["alyn"], "from": "driftmark", "to": "the-gullet", "note": "fights at the Gullet with the Velaryon fleet and slays Sharako Lohar" },
+      { "characters": ["tyland"], "from": "pentos", "to": "the-gullet", "note": "arrives with the Triarchy fleet" },
+      { "characters": ["lohar"], "from": "pentos", "to": "the-gullet", "note": "leads the Triarchy fleet to the Gullet" },
+      { "characters": ["lohar"], "from": "the-gullet", "to": null, "note": "killed by Alyn of Hull at the Gullet" }
     ]
   }
 ]

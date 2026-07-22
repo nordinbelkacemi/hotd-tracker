@@ -99,6 +99,15 @@
     "wikiUrl": "https://gameofthrones.fandom.com/wiki/Stepstones"
   },
   {
+    "id": "the-gullet",
+    "name": "The Gullet",
+    "x": 2300,
+    "y": 3270,
+    "region": "crownlands",
+    "importance": 20,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Gullet"
+  },
+  {
     "id": "pentos",
     "name": "Pentos",
     "x": 2905,

@@ -4,6 +4,8 @@ export interface Location {
   x: number;
   y: number;
   region: string;
+  importance: number;
+  wikiUrl?: string;
 }
 
 export interface Character {
@@ -20,6 +22,7 @@ export interface Movement {
   characters: string[];
   from: string | null;
   to: string | null;
+  note?: string;
 }
 
 export interface Episode {
