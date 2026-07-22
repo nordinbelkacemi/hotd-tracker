@@ -108,6 +108,24 @@
     "wikiUrl": "https://gameofthrones.fandom.com/wiki/Gullet"
   },
   {
+    "id": "tumbleton",
+    "name": "Tumbleton",
+    "x": 1640,
+    "y": 3650,
+    "region": "reach",
+    "importance": 50,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Tumbleton"
+  },
+  {
+    "id": "stoney-sept",
+    "name": "Stoney Sept",
+    "x": 1480,
+    "y": 3230,
+    "region": "riverlands",
+    "importance": 50,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Stoney_Sept"
+  },
+  {
     "id": "pentos",
     "name": "Pentos",
     "x": 2905,

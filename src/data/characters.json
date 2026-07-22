@@ -29,5 +29,13 @@
   { "id": "ormund",          "name": "Ormund Hightower",  "shortName": "Ormund",     "house": "Hightower", "faction": "greens",  "color": "#2A9D8F", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Ormund_Hightower" },
   { "id": "tyland",          "name": "Tyland Lannister",  "shortName": "Tyland",     "house": "Lannister", "faction": "greens",  "color": "#A68A3F", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Tyland_Lannister" },
   { "id": "daeron",          "name": "Daeron Targaryen",  "shortName": "Daeron",     "house": "Targaryen", "faction": "greens",  "color": "#52B788", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Daeron_Targaryen" },
-  { "id": "lohar",           "name": "Sharako Lohar",     "shortName": "Lohar",      "house": "—",         "faction": "greens",  "color": "#7F5539", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Sharako_Lohar" }
+  { "id": "lohar",           "name": "Sharako Lohar",     "shortName": "Lohar",      "house": "—",         "faction": "greens",  "color": "#7F5539", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Sharako_Lohar" },
+  { "id": "roderick",        "name": "Roderick Dustin",   "shortName": "Roddy",      "house": "Dustin",    "faction": "blacks",  "color": "#3D5A80", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Roderick_Dustin" },
+  { "id": "oscar",           "name": "Oscar Tully",       "shortName": "Oscar",      "house": "Tully",     "faction": "blacks",  "color": "#D81159", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Oscar_Tully" },
+  { "id": "alysanne",        "name": "Alysanne Blackwood","shortName": "Black Aly",  "house": "Blackwood", "faction": "blacks",  "color": "#3A0CA3", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Alysanne_Blackwood" },
+  { "id": "alys",            "name": "Alys Rivers",       "shortName": "Alys",       "house": "Strong",    "faction": "greens",  "color": "#A44A3F", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Alys_Rivers" },
+  { "id": "luthor",          "name": "Luthor Largent",    "shortName": "Luthor",     "house": "—",         "faction": "blacks",  "color": "#FB8500", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Luthor_Largent" },
+  { "id": "torrhen",         "name": "Torrhen Manderly",  "shortName": "Torrhen",    "house": "Manderly",  "faction": "blacks",  "color": "#0B525B", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Torrhen_Manderly" },
+  { "id": "jeyne",           "name": "Jeyne Arryn",       "shortName": "Jeyne",      "house": "Arryn",     "faction": "blacks",  "color": "#4361EE", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Jeyne_Arryn" },
+  { "id": "joffrey",         "name": "Joffrey Velaryon",  "shortName": "Joffrey",    "house": "Targaryen", "faction": "blacks",  "color": "#4CC9F0", "wikiUrl": "https://gameofthrones.fandom.com/wiki/Joffrey_Velaryon" }
 ]

@@ -33,7 +33,15 @@
       "ormund":      { "location": null, "status": "not-introduced" },
       "tyland":      { "location": null, "status": "not-introduced" },
       "daeron":      { "location": null, "status": "not-introduced" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["daemon","mysaria"], "from": "kings-landing", "to": "dragonstone" }
@@ -73,7 +81,15 @@
       "ormund":      { "location": null, "status": "not-introduced" },
       "tyland":      { "location": null, "status": "not-introduced" },
       "daeron":      { "location": null, "status": "not-introduced" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["otto","criston"], "from": "kings-landing", "to": "dragonstone" },
@@ -117,7 +133,15 @@
       "ormund":      { "location": null, "status": "not-introduced" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": null, "status": "not-introduced" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["daemon","corlys","laenor"], "from": "driftmark", "to": "stepstones", "note": "off-screen time skip; laenor traveled from KL via Driftmark" }
@@ -157,7 +181,15 @@
       "ormund":      { "location": null, "status": "not-introduced" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": null, "status": "not-introduced" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["daemon"], "from": "stepstones", "to": "kings-landing" }
@@ -197,7 +229,15 @@
       "ormund":      { "location": null, "status": "not-introduced" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": null, "status": "not-introduced" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["daemon"], "from": "kings-landing", "to": "runestone" },
@@ -241,7 +281,15 @@
       "ormund":      { "location": null, "status": "not-introduced" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": null, "status": "not-introduced" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["harwin"], "from": "kings-landing", "to": "harrenhal" },
@@ -284,7 +332,15 @@
       "ormund":      { "location": null, "status": "not-introduced" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": null, "status": "not-introduced" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["laenor"], "from": "driftmark", "to": null, "note": "faked death; secretly fled to Essos with Qarl" },
@@ -327,7 +383,15 @@
       "ormund":      { "location": null, "status": "not-introduced" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": null, "status": "not-introduced" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["corlys"], "from": "stepstones", "to": "driftmark", "note": "wounded, brought back to Driftmark" },
@@ -371,7 +435,15 @@
       "ormund":      { "location": null, "status": "not-introduced" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": null, "status": "not-introduced" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["rhaenys"], "from": "kings-landing", "to": "dragonstone" }
@@ -411,7 +483,15 @@
       "ormund":      { "location": null, "status": "not-introduced" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": null, "status": "not-introduced" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["corlys"], "from": "driftmark", "to": "dragonstone" },
@@ -457,7 +537,15 @@
       "ormund":      { "location": null, "status": "not-introduced" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": null, "status": "not-introduced" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["jace"], "from": "the-eyrie", "to": "winterfell" },
@@ -501,7 +589,15 @@
       "ormund":      { "location": "oldtown", "status": "alive" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": "oldtown", "status": "alive" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["jace"], "from": "winterfell", "to": "dragonstone" },
@@ -542,7 +638,15 @@
       "ormund":      { "location": "oldtown", "status": "alive" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": "oldtown", "status": "alive" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["otto"], "from": "kings-landing", "to": "oldtown" },
@@ -585,7 +689,15 @@
       "ormund":      { "location": "oldtown", "status": "alive" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": "oldtown", "status": "alive" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["criston"], "from": "kings-landing", "to": "rooks-rest", "note": "marching with ground forces" },
@@ -629,7 +741,15 @@
       "ormund":      { "location": "oldtown", "status": "alive" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": "oldtown", "status": "alive" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["criston","aegon","aemond"], "from": "rooks-rest", "to": "kings-landing" },
@@ -670,7 +790,15 @@
       "ormund":      { "location": "oldtown", "status": "alive" },
       "tyland":      { "location": "kings-landing", "status": "alive" },
       "daeron":      { "location": "oldtown", "status": "alive" },
-      "lohar":       { "location": null, "status": "not-introduced" }
+      "lohar":       { "location": null, "status": "not-introduced" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["jace"], "from": "the-twins", "to": "dragonstone", "note": "returned to Dragonstone after making pact with Freys" },
@@ -714,7 +842,15 @@
       "ormund":      { "location": "oldtown", "status": "alive" },
       "tyland":      { "location": "pentos", "status": "alive" },
       "daeron":      { "location": "oldtown", "status": "alive" },
-      "lohar":       { "location": "pentos", "status": "alive" }
+      "lohar":       { "location": "pentos", "status": "alive" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["rhaenyra"], "from": "driftmark", "to": "dragonstone", "note": "returned to Dragonstone to conduct the Sowing of the Seeds" },
@@ -759,14 +895,22 @@
       "ormund":      { "location": "oldtown", "status": "alive" },
       "tyland":      { "location": "pentos", "status": "alive" },
       "daeron":      { "location": "oldtown", "status": "alive" },
-      "lohar":       { "location": "pentos", "status": "alive" }
+      "lohar":       { "location": "pentos", "status": "alive" },
+      "roderick":    { "location": null, "status": "not-introduced" },
+      "oscar":       { "location": null, "status": "not-introduced" },
+      "alysanne":    { "location": null, "status": "not-introduced" },
+      "alys":        { "location": null, "status": "not-introduced" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["rhaenyra"], "from": "dragonstone", "to": "harrenhal", "note": "secretly flew to Harrenhal to verify Daemon's loyalty" },
       { "characters": ["rhaenyra"], "from": "harrenhal", "to": "dragonstone", "note": "returned to Dragonstone after Daemon pledged his loyalty to her" },
       { "characters": ["alicent"], "from": null, "to": "dragonstone", "note": "secretly traveled to Dragonstone to negotiate terms with Rhaenyra" },
       { "characters": ["alicent"], "from": "dragonstone", "to": "kings-landing", "note": "returned to King's Landing to prepare for the city's surrender" },
-      { "characters": ["aegon", "larys"], "from": "kings-landing", "to": "pentos", "note": "fled King's Landing to Essos to escape Aemond's wrath" },
+      { "characters": ["aegon","larys"], "from": "kings-landing", "to": "pentos", "note": "fled King's Landing to Essos to escape Aemond's wrath" },
       { "characters": ["corlys"], "from": "driftmark", "to": "stepstones", "note": "boarded flagship to lead the Velaryon fleet at sea" },
       { "characters": ["otto"], "from": "oldtown", "to": null, "note": "revealed to be imprisoned in an unknown location" }
     ]
@@ -805,7 +949,15 @@
       "ormund":      { "location": "oldtown", "status": "alive" },
       "tyland":      { "location": "pentos", "status": "alive" },
       "daeron":      { "location": "oldtown", "status": "alive" },
-      "lohar":       { "location": "pentos", "status": "alive" }
+      "lohar":       { "location": "pentos", "status": "alive" },
+      "roderick":    { "location": "harrenhal", "status": "alive", "note": "leads the Winter Wolves; routs the Lannister host at the Red Fork alongside Daemon" },
+      "oscar":       { "location": "harrenhal", "status": "alive", "note": "Lord of Riverrun, commanding the river host at the Red Fork" },
+      "alysanne":    { "location": "harrenhal", "status": "alive", "note": "her Blackwood archers fight at the Red Fork" },
+      "alys":        { "location": "harrenhal", "status": "alive", "note": "warns the dragonseeds to abandon Harrenhal before Aemond descends" },
+      "luthor":      { "location": null, "status": "not-introduced" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": null, "status": "not-introduced" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
     },
     "movements": [
       { "characters": ["corlys"], "from": "stepstones", "to": "the-gullet", "note": "leads the Velaryon fleet against the Triarchy at the Battle of the Gullet; High Tide is sacked" },
@@ -818,6 +970,221 @@
       { "characters": ["tyland"], "from": "pentos", "to": "the-gullet", "note": "arrives with the Triarchy fleet" },
       { "characters": ["lohar"], "from": "pentos", "to": "the-gullet", "note": "leads the Triarchy fleet to the Gullet" },
       { "characters": ["lohar"], "from": "the-gullet", "to": null, "note": "killed by Alyn of Hull at the Gullet" }
+    ]
+  },
+  {
+    "number": 20,
+    "title": "Queen's Landing",
+    "initialLocations": {
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "dragonstone", "status": "alive" },
+      "daemon":      { "location": "harrenhal", "status": "alive", "note": "encamped with the Winter Wolves by the Gods Eye" },
+      "alicent":     { "location": "kings-landing", "status": "alive" },
+      "otto":        { "location": "kings-landing", "status": "alive", "note": "revealed: Larys had him locked in the Black Cells beneath the Red Keep all along" },
+      "rhaenys":     { "location": null, "status": "dead" },
+      "corlys":      { "location": "the-gullet", "status": "alive", "note": "missing — cast into the sea by Lohar during the battle" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "harrenhal", "status": "alive", "note": "his host advances on Harrenhal through the Riverlands" },
+      "larys":       { "location": "dragonstone", "status": "alive", "note": "captive with Aegon II" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "dragonstone", "status": "alive" },
+      "aegon":       { "location": "dragonstone", "status": "alive", "note": "captive of the Blacks" },
+      "aemond":      { "location": "kings-landing", "status": "alive" },
+      "helaena":     { "location": "kings-landing", "status": "alive" },
+      "jace":        { "location": null, "status": "dead" },
+      "luke":        { "location": null, "status": "dead" },
+      "baela":       { "location": "dragonstone", "status": "alive" },
+      "rhaena":      { "location": "the-gullet", "status": "alive" },
+      "addam":       { "location": "dragonstone", "status": "alive" },
+      "alyn":        { "location": "the-gullet", "status": "alive", "note": "combing the wreckage for his father" },
+      "hugh":        { "location": "dragonstone", "status": "alive" },
+      "ulf":         { "location": "dragonstone", "status": "alive" },
+      "aegon-younger": { "location": "the-eyrie", "status": "alive" },
+      "viserys-younger": { "location": "the-eyrie", "status": "alive" },
+      "gwayne":      { "location": "harrenhal", "status": "alive", "note": "rides with Cole's host" },
+      "ormund":      { "location": "oldtown", "status": "alive", "note": "musters the Hightower host north along the Roseroad" },
+      "tyland":      { "location": "the-gullet", "status": "alive", "note": "adrift among the Triarchy's shattered fleet" },
+      "daeron":      { "location": "oldtown", "status": "alive", "note": "rides with Ormund's host" },
+      "lohar":       { "location": null, "status": "dead" },
+      "roderick":    { "location": "harrenhal", "status": "alive", "note": "the Winter Wolves crush a Lannister host by the Gods Eye lakeshore" },
+      "oscar":       { "location": "harrenhal", "status": "alive", "note": "the river host celebrates the rout" },
+      "alysanne":    { "location": "harrenhal", "status": "alive", "note": "her archers among the lakeshore victors" },
+      "alys":        { "location": "harrenhal", "status": "alive" },
+      "luthor":      { "location": "kings-landing", "status": "alive", "note": "gold cloak officer — his City Watch holds the capital" },
+      "torrhen":     { "location": null, "status": "not-introduced" },
+      "jeyne":       { "location": "the-eyrie", "status": "alive", "note": "Lady of the Eyrie and the Vale" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
+    },
+    "movements": [
+      { "characters": ["baela"], "from": "dragonstone", "to": "the-gullet", "note": "flies Moondancer to the battle wreckage to recover Jace's body" },
+      { "characters": ["baela"], "from": "the-gullet", "to": "dragonstone", "note": "bears Jace's body home to a shattered Rhaenyra" },
+      { "characters": ["addam","hugh","ulf"], "from": "dragonstone", "to": "the-gullet", "note": "finish off the Triarchy remnants still afloat in the strait" },
+      { "characters": ["corlys"], "from": "the-gullet", "to": "driftmark", "note": "washed ashore, found alive on the rocks — 'If this be victory, I pray I never win another'" },
+      { "characters": ["addam","alyn"], "from": "the-gullet", "to": "driftmark", "note": "search the shoreline for their father; the recovered Corlys grants Alyn the Velaryon name" },
+      { "characters": ["rhaena"], "from": "the-gullet", "to": "the-eyrie", "note": "flies Sheepstealer to the Vale; Jeyne Arryn grudgingly grants asylum, wary of the wild dragon" },
+      { "characters": ["aegon","larys"], "from": "dragonstone", "to": null, "note": "Triarchy stragglers ambush their escort mid-transfer; the pair slip their chains and vanish into the Crownlands" },
+      { "characters": ["aemond"], "from": "kings-landing", "to": "harrenhal", "note": "burns Harrenhal and puts Simon Strong's line to the sword; a dying man's knife leaves him gravely wounded — Alys Rivers hides him" },
+      { "characters": ["hugh","ulf"], "from": "the-gullet", "to": "dragonstone", "note": "rally at Dragonstone for the assault on the capital" },
+      { "characters": ["daemon"], "from": "harrenhal", "to": "dragonstone", "note": "flies to Rhaenyra's side with news of Jace's death; Alys names it 'the beginning of the end'" },
+      { "characters": ["rhaenyra","daemon","hugh","ulf"], "from": "dragonstone", "to": "kings-landing", "note": "four dragons over the city; Luthor Largent's gold cloaks open the gates and the garrison stands down on Alicent's order" },
+      { "characters": ["otto"], "from": "kings-landing", "to": null, "note": "beheaded by Rhaenyra in the throne room, Larys's parting 'gift'" }
+    ]
+  },
+  {
+    "number": 21,
+    "title": "Rhaenyra Triumphant",
+    "initialLocations": {
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "kings-landing", "status": "alive" },
+      "daemon":      { "location": "kings-landing", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive", "note": "prisoner in the Red Keep" },
+      "otto":        { "location": null, "status": "dead" },
+      "rhaenys":     { "location": null, "status": "dead" },
+      "corlys":      { "location": "kings-landing", "status": "alive", "note": "recovered; serves as Rhaenyra's Hand" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "harrenhal", "status": "alive", "note": "his host nears the ruined castle" },
+      "larys":       { "location": null, "status": "alive-offscreen", "note": "fugitive with Aegon II" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "kings-landing", "status": "alive", "note": "Mistress of Whisperers in the new court" },
+      "aegon":       { "location": null, "status": "alive-offscreen", "note": "fugitive somewhere in the Crownlands" },
+      "aemond":      { "location": "harrenhal", "status": "alive", "note": "gravely wounded, hidden by Alys Rivers — both courts believe him lost" },
+      "helaena":     { "location": "kings-landing", "status": "alive", "note": "prisoner in the Red Keep" },
+      "jace":        { "location": null, "status": "dead" },
+      "luke":        { "location": null, "status": "dead" },
+      "baela":       { "location": "kings-landing", "status": "alive", "note": "the court removes to the capital" },
+      "rhaena":      { "location": "the-eyrie", "status": "alive", "note": "asylum in the Vale, kept at arm's length from the Eyrie" },
+      "addam":       { "location": "kings-landing", "status": "alive" },
+      "alyn":        { "location": "driftmark", "status": "alive" },
+      "hugh":        { "location": "kings-landing", "status": "alive", "note": "knighted: Ser Hugh Hammer" },
+      "ulf":         { "location": "kings-landing", "status": "alive", "note": "knighted: Ser Ulf White" },
+      "aegon-younger": { "location": "the-eyrie", "status": "alive" },
+      "viserys-younger": { "location": "the-eyrie", "status": "alive" },
+      "gwayne":      { "location": "harrenhal", "status": "alive", "note": "rides with Cole's host" },
+      "ormund":      { "location": "oldtown", "status": "alive" },
+      "tyland":      { "location": "the-gullet", "status": "alive", "note": "adrift among the Triarchy's shattered fleet" },
+      "daeron":      { "location": "oldtown", "status": "alive", "note": "with Ormund's host — the 'Daeron' about to be handed over is a decoy" },
+      "lohar":       { "location": null, "status": "dead" },
+      "roderick":    { "location": "harrenhal", "status": "alive" },
+      "oscar":       { "location": "harrenhal", "status": "alive" },
+      "alysanne":    { "location": "harrenhal", "status": "alive" },
+      "alys":        { "location": "harrenhal", "status": "alive", "note": "conceals the wounded Aemond" },
+      "luthor":      { "location": "kings-landing", "status": "alive", "note": "Commander of the City Watch" },
+      "torrhen":     { "location": "kings-landing", "status": "alive", "note": "come south from White Harbor; catches the queen's eye at the rat feast" },
+      "jeyne":       { "location": "the-eyrie", "status": "alive" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
+    },
+    "movements": [
+      { "characters": ["ormund","daeron"], "from": "oldtown", "to": "tumbleton", "note": "the Hightower host camps on the Roseroad; by episode's end it doubles back, ambushes the Dragonkeepers and seizes Tumbleton — capturing Tessarion" },
+      { "characters": ["daemon","hugh","ulf"], "from": "kings-landing", "to": "tumbleton", "note": "three dragons descend on Ormund's camp; he bends the knee and yields 'Daeron' as hostage" },
+      { "characters": ["daemon","hugh","ulf"], "from": "tumbleton", "to": "kings-landing", "note": "fly home with the hostage — a bleach-haired commoner decoy, later exposed by Alicent" },
+      { "characters": ["baela"], "from": "kings-landing", "to": "rooks-rest", "note": "scouts for Vhagar and Sheepstealer; finds only Sunfyre's rotting carcass (site inferred)" },
+      { "characters": ["baela"], "from": "rooks-rest", "to": "kings-landing", "note": "brings her grim find to the small council" }
+    ]
+  },
+  {
+    "number": 22,
+    "title": "Tumbleton",
+    "initialLocations": {
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "kings-landing", "status": "alive" },
+      "daemon":      { "location": "kings-landing", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive", "note": "prisoner in the Red Keep" },
+      "otto":        { "location": null, "status": "dead" },
+      "rhaenys":     { "location": null, "status": "dead" },
+      "corlys":      { "location": "kings-landing", "status": "alive" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "harrenhal", "status": "alive", "note": "reaches the ruined Harrenhal at last — only Alys Rivers remains, claiming Aemond is gone" },
+      "larys":       { "location": null, "status": "alive-offscreen", "note": "fugitive with Aegon II" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "kings-landing", "status": "alive" },
+      "aegon":       { "location": null, "status": "alive-offscreen", "note": "fugitive in the Crownlands, seeking Sunfyre" },
+      "aemond":      { "location": "harrenhal", "status": "alive", "note": "hidden in the depths of Harrenhal, mending" },
+      "helaena":     { "location": "kings-landing", "status": "alive", "note": "prisoner in the Red Keep — with child" },
+      "jace":        { "location": null, "status": "dead" },
+      "luke":        { "location": null, "status": "dead" },
+      "baela":       { "location": "kings-landing", "status": "alive" },
+      "rhaena":      { "location": "the-eyrie", "status": "alive", "note": "slips away to hide with Sheepstealer in the Mountains of the Moon" },
+      "addam":       { "location": "kings-landing", "status": "alive" },
+      "alyn":        { "location": "kings-landing", "status": "alive", "note": "summoned to court" },
+      "hugh":        { "location": "kings-landing", "status": "alive" },
+      "ulf":         { "location": "kings-landing", "status": "alive" },
+      "aegon-younger": { "location": "the-eyrie", "status": "alive" },
+      "viserys-younger": { "location": "the-eyrie", "status": "alive" },
+      "gwayne":      { "location": "harrenhal", "status": "alive", "note": "at Cole's side in the ruins" },
+      "ormund":      { "location": "tumbleton", "status": "alive" },
+      "tyland":      { "location": "the-gullet", "status": "alive", "note": "hunting rumors of the fugitive king" },
+      "daeron":      { "location": "tumbleton", "status": "alive", "note": "revealed at Ormund's side — his first true appearance" },
+      "lohar":       { "location": null, "status": "dead" },
+      "roderick":    { "location": "harrenhal", "status": "alive" },
+      "oscar":       { "location": "harrenhal", "status": "alive" },
+      "alysanne":    { "location": "harrenhal", "status": "alive" },
+      "alys":        { "location": "harrenhal", "status": "alive", "note": "swears to Cole that Aemond has fled — a lie" },
+      "luthor":      { "location": "kings-landing", "status": "alive" },
+      "torrhen":     { "location": "kings-landing", "status": "alive", "note": "named Master of Coin" },
+      "jeyne":       { "location": "the-eyrie", "status": "alive" },
+      "joffrey":     { "location": null, "status": "not-introduced" }
+    },
+    "movements": [
+      { "characters": ["corlys"], "from": "kings-landing", "to": null, "note": "resigns as Hand when Rhaenyra refuses to legitimize his sons and sails against the Triarchy's remnants; Alyn serves as Hand in his stead" },
+      { "characters": ["daemon"], "from": "kings-landing", "to": "the-eyrie", "note": "collects the promised Vale gold from Jeyne Arryn, who needles him about Rhea Royce" },
+      { "characters": ["daemon"], "from": "the-eyrie", "to": "kings-landing", "note": "Caraxes scents Sheepstealer — Daemon finds Rhaena in her mountain cave, then kills a shepherd and passes the charred skull off as the dead Gullet rider; only Mysaria marks the lie" },
+      { "characters": ["aegon","larys"], "from": null, "to": "rooks-rest", "note": "the fugitives reach the field where Sunfyre fell; Aegon swears his dragon still lives" },
+      { "characters": ["hugh","ulf"], "from": "kings-landing", "to": "tumbleton", "note": "sent to watch the occupied town — where Hugh's wife Kat lives; Daeron executes her brother as Ormund's loyalty test" }
+    ]
+  },
+  {
+    "number": 23,
+    "title": "Unbowed and Unbent",
+    "initialLocations": {
+      "viserys":     { "location": null, "status": "dead" },
+      "rhaenyra":    { "location": "kings-landing", "status": "alive" },
+      "daemon":      { "location": "kings-landing", "status": "alive" },
+      "alicent":     { "location": "kings-landing", "status": "alive", "note": "prisoner in the Red Keep" },
+      "otto":        { "location": null, "status": "dead" },
+      "rhaenys":     { "location": null, "status": "dead" },
+      "corlys":      { "location": null, "status": "alive-offscreen", "note": "at sea against the Triarchy's remnants" },
+      "laenor":      { "location": null, "status": "alive-offscreen", "note": "fled to Essos with Qarl" },
+      "laena":       { "location": null, "status": "dead" },
+      "criston":     { "location": "harrenhal", "status": "alive" },
+      "larys":       { "location": "rooks-rest", "status": "alive", "note": "hiding with Aegon II" },
+      "harwin":      { "location": null, "status": "dead" },
+      "mysaria":     { "location": "kings-landing", "status": "alive" },
+      "aegon":       { "location": "rooks-rest", "status": "alive", "note": "hiding in the woods off the Rook's Rest battlefield" },
+      "aemond":      { "location": "harrenhal", "status": "alive", "note": "recovering — slaughters the bounty hunters who come for Alys" },
+      "helaena":     { "location": "kings-landing", "status": "alive", "note": "prisoner in the Red Keep — with child" },
+      "jace":        { "location": null, "status": "dead" },
+      "luke":        { "location": null, "status": "dead" },
+      "baela":       { "location": "kings-landing", "status": "alive", "note": "flies with Addam on the Vhagar hunt, over villages burned near Wendish Town" },
+      "rhaena":      { "location": "the-eyrie", "status": "alive", "note": "hiding with Sheepstealer in the Mountains of the Moon" },
+      "addam":       { "location": "kings-landing", "status": "alive", "note": "reports Vhagar's trail to the council; sent hunting her with Baela over the Riverlands" },
+      "alyn":        { "location": "kings-landing", "status": "alive" },
+      "hugh":        { "location": "tumbleton", "status": "alive" },
+      "ulf":         { "location": "tumbleton", "status": "alive" },
+      "aegon-younger": { "location": "the-eyrie", "status": "alive" },
+      "viserys-younger": { "location": "the-eyrie", "status": "alive" },
+      "gwayne":      { "location": "harrenhal", "status": "alive" },
+      "ormund":      { "location": "tumbleton", "status": "alive" },
+      "tyland":      { "location": "the-gullet", "status": "alive" },
+      "daeron":      { "location": "tumbleton", "status": "alive", "note": "Ormund has declared him king, minting coin in his image" },
+      "lohar":       { "location": null, "status": "dead" },
+      "roderick":    { "location": "harrenhal", "status": "alive", "note": "the Winter Wolves join the southbound march" },
+      "oscar":       { "location": "harrenhal", "status": "alive", "note": "readies the river host to march south" },
+      "alysanne":    { "location": "harrenhal", "status": "alive" },
+      "alys":        { "location": "harrenhal", "status": "alive", "note": "nurses Aemond back to strength" },
+      "luthor":      { "location": "kings-landing", "status": "alive" },
+      "torrhen":     { "location": "kings-landing", "status": "alive" },
+      "jeyne":       { "location": "the-eyrie", "status": "alive" },
+      "joffrey":     { "location": "the-eyrie", "status": "alive", "note": "named heir to the Iron Throne after Jace's death; summoned to court" }
+    },
+    "movements": [
+      { "characters": ["oscar","roderick","alysanne"], "from": "harrenhal", "to": "stoney-sept", "note": "the river host and Winter Wolves march south for Tumbleton; Oscar sends Petyr Piper ahead to seize the Stoney Sept crossing" },
+      { "characters": ["criston","gwayne"], "from": "harrenhal", "to": "stoney-sept", "note": "shadow the column and raid it by night — Cole kills Piper in his bedroll and burns the crossing camp" },
+      { "characters": ["gwayne"], "from": "stoney-sept", "to": "tumbleton", "note": "refuses Criston's suicidal assault on the host and abandons him for Ormund's army" },
+      { "characters": ["tyland"], "from": "the-gullet", "to": "rooks-rest", "note": "comes ashore hunting rumors and finds the fugitive king — Aegon kills the sellsword Janos in a quarrel over his crown" },
+      { "characters": ["luthor"], "from": "kings-landing", "to": null, "note": "massacred with his gold cloaks at Daemon's staged 'Feast for Traitors' — the Watch had been bought with Ormund's counterfeit coin" }
     ]
   }
 ]
