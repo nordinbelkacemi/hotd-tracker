@@ -10,7 +10,7 @@ interface AnimatedPathProps {
 export default function AnimatedPath({ path }: AnimatedPathProps) {
   const measureRef = useRef<SVGPathElement>(null);
   const prevLengthRef = useRef(0);
-  const [anim, setAnim] = useState<{ d: string; length: number; startOffset: number } | null>(null);
+  const [anim, setAnim] = useState<{ d: string; length: number; startOffset: number; grew: boolean } | null>(null);
 
   const d = buildPathD(path.points);
 
@@ -21,9 +21,10 @@ export default function AnimatedPath({ path }: AnimatedPathProps) {
       return;
     }
     const newLength = measureRef.current.getTotalLength();
+    const grew = newLength > prevLengthRef.current;
     const startOffset = Math.max(0, newLength - prevLengthRef.current);
     prevLengthRef.current = newLength;
-    setAnim({ d, length: newLength, startOffset });
+    setAnim({ d, length: newLength, startOffset, grew });
   }, [d]);
 
   if (!d) return null;
@@ -39,15 +40,16 @@ export default function AnimatedPath({ path }: AnimatedPathProps) {
           d={anim.d}
           fill="none"
           stroke={path.color}
-          strokeWidth={35}
-          style={{ strokeWidth: 'calc(35px * var(--counter-scale, 1))' }}
+          strokeWidth={18}
+          style={{ strokeWidth: 'calc(18px * var(--counter-scale, 1))' }}
           strokeOpacity={0.38}
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeDasharray={anim.length}
-          initial={{ strokeDashoffset: anim.startOffset }}
-          animate={{ strokeDashoffset: 0 }}
-          transition={{ duration: 1.2, ease: 'easeInOut' }}
+          // Grown paths draw in the new leg; shrunken paths (trail window slid) crossfade instead.
+          initial={anim.grew ? { strokeDashoffset: anim.startOffset, opacity: 1 } : { strokeDashoffset: 0, opacity: 0 }}
+          animate={{ strokeDashoffset: 0, opacity: 1 }}
+          transition={anim.grew ? { duration: 1.2, ease: 'easeInOut' } : { duration: 0.2 }}
         />
       )}
     </>

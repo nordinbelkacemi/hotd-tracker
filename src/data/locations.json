@@ -110,8 +110,8 @@
   {
     "id": "tumbleton",
     "name": "Tumbleton",
-    "x": 1640,
-    "y": 3650,
+    "x": 1760,
+    "y": 3525,
     "region": "reach",
     "importance": 50,
     "wikiUrl": "https://gameofthrones.fandom.com/wiki/Tumbleton"
@@ -119,8 +119,8 @@
   {
     "id": "stoney-sept",
     "name": "Stoney Sept",
-    "x": 1480,
-    "y": 3230,
+    "x": 1570,
+    "y": 3235,
     "region": "riverlands",
     "importance": 50,
     "wikiUrl": "https://gameofthrones.fandom.com/wiki/Stoney_Sept"

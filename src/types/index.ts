@@ -61,15 +61,21 @@ export interface CharacterPath {
   points: { x: number; y: number }[];
 }
 
+export type TrailMode = 'episodes' | 'season' | 'all';
+
 export interface AppState {
   selectedCharacters: Set<string>;
   currentStepIndex: number;
   isPlaying: boolean;
   spoilersRevealed: boolean;
+  trailMode: TrailMode;
+  trailEpisodes: number;
   toggleCharacter: (id: string) => void;
   selectAll: () => void;
   deselectAll: () => void;
   setStep: (index: number) => void;
   togglePlaying: () => void;
   setSpoilersRevealed: (revealed: boolean) => void;
+  setTrailMode: (mode: TrailMode) => void;
+  adjustTrailEpisodes: (delta: 1 | -1) => void;
 }

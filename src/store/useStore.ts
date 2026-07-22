@@ -1,14 +1,18 @@
 import { create } from 'zustand';
 import type { AppState } from '../types';
 import characters from '../data/characters.json';
+import episodes from '../data/episodes.json';
 
 const ALL_CHARACTER_IDS = new Set(characters.map((c) => c.id));
+const TOTAL_EPISODES = episodes.length;
 
 const useStore = create<AppState>((set) => ({
   selectedCharacters: ALL_CHARACTER_IDS,
   currentStepIndex: 0,
   isPlaying: false,
   spoilersRevealed: false,
+  trailMode: 'episodes',
+  trailEpisodes: 3,
 
   toggleCharacter: (id) =>
     set((state) => {
@@ -28,6 +32,13 @@ const useStore = create<AppState>((set) => ({
   setSpoilersRevealed: (revealed) => {
     set({ spoilersRevealed: revealed });
   },
+
+  setTrailMode: (mode) => set({ trailMode: mode }),
+
+  adjustTrailEpisodes: (delta) =>
+    set((state) => ({
+      trailEpisodes: Math.min(TOTAL_EPISODES, Math.max(1, state.trailEpisodes + delta)),
+    })),
 }));
 
 export default useStore;

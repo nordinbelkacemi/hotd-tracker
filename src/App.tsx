@@ -6,20 +6,25 @@ import EpisodeSlider from './components/EpisodeSlider';
 import useStore from './store/useStore';
 import { getPositions } from './utils/getPositions';
 import { getPaths } from './utils/getPaths';
-import { timelineSteps } from './utils/timeline';
+import { timelineSteps, getWindowStartIndex } from './utils/timeline';
 import SpoilerOverlay from './components/SpoilerOverlay';
 
 export default function App() {
-  const { currentStepIndex, selectedCharacters, setStep, togglePlaying, spoilersRevealed, setSpoilersRevealed } = useStore();
+  const { currentStepIndex, selectedCharacters, setStep, togglePlaying, spoilersRevealed, setSpoilersRevealed, trailMode, trailEpisodes } = useStore();
 
   const characterPositions = useMemo(
     () => getPositions(currentStepIndex, selectedCharacters),
     [currentStepIndex, selectedCharacters]
   );
 
+  const windowStartIndex = useMemo(
+    () => getWindowStartIndex(trailMode, trailEpisodes, currentStepIndex),
+    [trailMode, trailEpisodes, currentStepIndex]
+  );
+
   const paths = useMemo(
-    () => getPaths(currentStepIndex, selectedCharacters),
-    [currentStepIndex, selectedCharacters]
+    () => getPaths(currentStepIndex, selectedCharacters, windowStartIndex),
+    [currentStepIndex, selectedCharacters, windowStartIndex]
   );
 
   // Keyboard shortcuts

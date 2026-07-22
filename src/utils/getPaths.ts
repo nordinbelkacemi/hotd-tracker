@@ -8,17 +8,21 @@ const characterMap = new Map(charactersData.map((c) => [c.id, c]));
 
 export function getPaths(
   currentStepIndex: number,
-  selectedCharacters: Set<string>
+  selectedCharacters: Set<string>,
+  windowStartIndex = 0
 ): CharacterPath[] {
   const paths: CharacterPath[] = [];
 
   for (const char of charactersData) {
     if (!selectedCharacters.has(char.id)) continue;
 
+    // No dot at the playhead (dead/off-board) → no trail.
+    if ((timelineSteps[currentStepIndex]?.locations[char.id] ?? null) === null) continue;
+
     const points: { x: number; y: number }[] = [];
     let lastLocId: string | null = null;
 
-    for (let stepIdx = 0; stepIdx <= currentStepIndex; stepIdx++) {
+    for (let stepIdx = windowStartIndex; stepIdx <= currentStepIndex; stepIdx++) {
       const step = timelineSteps[stepIdx];
       if (!step) continue;
 
