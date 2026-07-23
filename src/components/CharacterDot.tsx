@@ -212,21 +212,14 @@ export default function CharacterDot({ position, onHoverChange, inHoveredCluster
         </g>
 
         {/* Co-location roster — anchored to the cluster centre (outside the per-marker
-            offset group) so it stays put when moving between markers in the cluster */}
-        <AnimatePresence>
-          {hovered && isCluster && (
-            <g transform={`translate(${DOT_RADIUS + 124}, 0)`}>
-              <motion.g
-                initial={{ opacity: 1 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.12 }}
-              >
-                <ClusterRoster members={clusterMembers!} locationName={locationName} />
-              </motion.g>
-            </g>
-          )}
-        </AnimatePresence>
+            offset group) so it stays put when moving between markers in the cluster.
+            Rendered without enter/exit animation so switching markers doesn't replay
+            a fade (or an overlapping-shadow flicker). */}
+        {hovered && isCluster && (
+          <g transform={`translate(${DOT_RADIUS + 124}, 0)`}>
+            <ClusterRoster members={clusterMembers!} locationName={locationName} />
+          </g>
+        )}
       </g>
     </motion.g>
   );
