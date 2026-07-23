@@ -21,7 +21,7 @@ const FACTION_ORDER = ['blacks', 'greens', 'neutral'] as const;
 
 const PREVIEW_SIZE = 200;
 const PREVIEW_MARGIN = 16;
-const PREVIEW_HIDE_DELAY = 350;
+const PREVIEW_HIDE_DELAY = 100;
 // Half the card's total height (portrait + colour accent + borders), to centre it on the row.
 const PREVIEW_HALF = PREVIEW_SIZE / 2 + 3;
 

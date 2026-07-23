@@ -15,7 +15,7 @@ interface CharacterDotProps {
 }
 
 const DOT_RADIUS = 50;
-const HIDE_DELAY = 350;
+const HIDE_DELAY = 100;
 
 export default function CharacterDot({ position, onHoverChange, inHoveredCluster = false, clusterMembers, partOfCluster = false }: CharacterDotProps) {
   const [hovered, setHovered] = useState(false);
