@@ -160,5 +160,32 @@
     "region": "vale",
     "importance": 50,
     "wikiUrl": "https://gameofthrones.fandom.com/wiki/Runestone"
+  },
+  {
+    "id": "sharp-point",
+    "name": "Sharp Point",
+    "x": 2312,
+    "y": 3370,
+    "region": "crownlands",
+    "importance": 40,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Sharp_Point"
+  },
+  {
+    "id": "tyrosh",
+    "name": "Tyrosh",
+    "x": 2755,
+    "y": 4222,
+    "region": "essos",
+    "importance": 50,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Tyrosh"
+  },
+  {
+    "id": "wendish-town",
+    "name": "Wendish Town",
+    "x": 1490,
+    "y": 2940,
+    "region": "riverlands",
+    "importance": 40,
+    "wikiUrl": "https://gameofthrones.fandom.com/wiki/Wendish_Town"
   }
 ]
