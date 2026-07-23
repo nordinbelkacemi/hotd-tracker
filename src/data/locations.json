@@ -164,8 +164,8 @@
   {
     "id": "sharp-point",
     "name": "Sharp Point",
-    "x": 2312,
-    "y": 3370,
+    "x": 2315,
+    "y": 3302,
     "region": "crownlands",
     "importance": 40,
     "wikiUrl": "https://gameofthrones.fandom.com/wiki/Sharp_Point"
@@ -173,8 +173,8 @@
   {
     "id": "tyrosh",
     "name": "Tyrosh",
-    "x": 2755,
-    "y": 4222,
+    "x": 2700,
+    "y": 3995,
     "region": "essos",
     "importance": 50,
     "wikiUrl": "https://gameofthrones.fandom.com/wiki/Tyrosh"
@@ -182,8 +182,8 @@
   {
     "id": "wendish-town",
     "name": "Wendish Town",
-    "x": 1490,
-    "y": 2940,
+    "x": 1600,
+    "y": 2820,
     "region": "riverlands",
     "importance": 40,
     "wikiUrl": "https://gameofthrones.fandom.com/wiki/Wendish_Town"
