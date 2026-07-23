@@ -11,26 +11,30 @@ interface ClusterRosterProps {
   locationName: string;
 }
 
-// SVG roster card listing every character sharing one location. Rendered inside
-// the hovered dot's counter-scaled group, so it keeps a constant on-screen size.
+// SVG roster card listing every character sharing one location, each with a
+// circular portrait. Rendered inside the hovered dot's counter-scaled group, so
+// it keeps a constant on-screen size.
 export default function ClusterRoster({ members, hoveredId, locationName }: ClusterRosterProps) {
-  const ROW_H = 150;
-  const HEADER_H = 180;
+  const ROW_H = 158;
+  const HEADER_H = 176;
   const PAD_Y = 56;
   const PAD_X = 70;
-  const SWATCH_GAP = 104;
-  const NAME_SIZE = 94;
-  const HOUSE_SIZE = 60;
+  const AVATAR_R = 52;
+  const TEXT_X = PAD_X + AVATAR_R * 2 + 44;
+  const NAME_SIZE = 88;
+  const HOUSE_SIZE = 56;
 
   const label = (m: RosterMember) => (m.house && m.house !== '—' ? `${m.name} · ${m.house}` : m.name);
   const maxLabelLen = members.reduce((max, m) => Math.max(max, label(m).length), 0);
   const header = `${locationName} · ${members.length} here`.toUpperCase();
 
-  const contentW = Math.max(maxLabelLen * 50 + SWATCH_GAP, header.length * 44);
-  const width = PAD_X * 2 + contentW;
+  const width = Math.max(TEXT_X + maxLabelLen * 47 + PAD_X, PAD_X * 2 + header.length * 44);
   const height = HEADER_H + members.length * ROW_H + PAD_Y;
   const top = -height / 2;
   const firstRowCenter = top + HEADER_H + ROW_H / 2;
+
+  const placeholder = (m: RosterMember) =>
+    `https://ui-avatars.com/api/?name=${encodeURIComponent(m.name)}&background=222222&color=ffffff&size=200&font-size=0.4`;
 
   return (
     <g>
@@ -63,13 +67,30 @@ export default function ClusterRoster({ members, hoveredId, locationName }: Clus
       {members.map((m, i) => {
         const cy = firstRowCenter + i * ROW_H;
         const isHovered = m.characterId === hoveredId;
+        const cx = PAD_X + AVATAR_R;
         return (
           <g key={m.characterId}>
             {isHovered && (
-              <rect x={22} y={cy - ROW_H / 2 + 10} width={width - 44} height={ROW_H - 20} rx={28} fill="rgba(255,255,255,0.08)" />
+              <rect x={22} y={cy - ROW_H / 2 + 8} width={width - 44} height={ROW_H - 16} rx={30} fill="rgba(255,255,255,0.08)" />
             )}
-            <circle cx={PAD_X + 34} cy={cy} r={34} fill={m.color} stroke="rgba(255,255,255,0.7)" strokeWidth={4} />
-            <text x={PAD_X + SWATCH_GAP} y={cy + 32} fontSize={NAME_SIZE} fontFamily="Inter, sans-serif">
+            <clipPath id={`clip-roster-${m.characterId}`}>
+              <circle cx={cx} cy={cy} r={AVATAR_R} />
+            </clipPath>
+            <image
+              href={`${import.meta.env.BASE_URL}characters/${m.characterId}.png`}
+              x={cx - AVATAR_R}
+              y={cy - AVATAR_R}
+              width={AVATAR_R * 2}
+              height={AVATAR_R * 2}
+              clipPath={`url(#clip-roster-${m.characterId})`}
+              preserveAspectRatio="xMidYMid slice"
+              onError={(e) => {
+                e.currentTarget.setAttribute('href', placeholder(m));
+              }}
+            />
+            {/* Colored ring keeps the faction/character colour association */}
+            <circle cx={cx} cy={cy} r={AVATAR_R} fill="none" stroke={m.color} strokeWidth={isHovered ? 8 : 6} />
+            <text x={TEXT_X} y={cy + 30} fontSize={NAME_SIZE} fontFamily="Inter, sans-serif">
               <tspan fill={isHovered ? '#ffffff' : 'rgba(255,255,255,0.82)'} fontWeight={isHovered ? 600 : 500}>
                 {m.name}
               </tspan>
