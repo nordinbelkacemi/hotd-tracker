@@ -8,7 +8,6 @@ export interface RosterMember {
 
 interface ClusterRosterProps {
   members: RosterMember[];
-  hoveredId: string;
   locationName: string;
 }
 
@@ -32,7 +31,7 @@ const MAX_VISIBLE = 5;
 
 // Roster of every character sharing a location, rendered as scrollable, clickable
 // HTML inside a foreignObject so it keeps native scrolling and wiki links.
-export default function ClusterRoster({ members, hoveredId, locationName }: ClusterRosterProps) {
+export default function ClusterRoster({ members, locationName }: ClusterRosterProps) {
   const maxNameLen = members.reduce((max, m) => Math.max(max, m.name.length), 0);
   const header = `${locationName} · ${members.length} here`.toUpperCase();
   const visibleRows = Math.min(members.length, MAX_VISIBLE);
@@ -67,8 +66,8 @@ export default function ClusterRoster({ members, hoveredId, locationName }: Clus
           .roster-scroll::-webkit-scrollbar-track { background: transparent; }
           .roster-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.22); border-radius: 24px; border: 12px solid transparent; background-clip: padding-box; }
           .roster-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.34); background-clip: padding-box; }
-          .roster-row { text-decoration: none; }
-          .roster-row:hover { background: rgba(255,255,255,0.07); }
+          .roster-row { text-decoration: none; background: transparent; transition: background 0.12s; }
+          .roster-row:hover { background: rgba(255,255,255,0.08); }
         `}</style>
 
         <div style={{ height: `${GOLD_BAR}px`, background: '#C4A44A', opacity: 0.85 }} />
@@ -92,7 +91,6 @@ export default function ClusterRoster({ members, hoveredId, locationName }: Clus
 
         <div className="roster-scroll" data-roster-scroll style={{ height: `${listH}px`, overflowY: scrolls ? 'auto' : 'hidden' }}>
           {members.map((m) => {
-            const isHovered = m.characterId === hoveredId;
             const Row: any = m.wikiUrl ? 'a' : 'div';
             return (
               <Row
@@ -107,7 +105,6 @@ export default function ClusterRoster({ members, hoveredId, locationName }: Clus
                   boxSizing: 'border-box',
                   padding: `${ROW_VPAD}px ${ROW_HPAD}px`,
                   borderLeft: `${BORDER}px solid ${m.color}`,
-                  background: isHovered ? 'rgba(255,255,255,0.08)' : 'transparent',
                   cursor: m.wikiUrl ? 'pointer' : 'default',
                 }}
               >

@@ -112,7 +112,7 @@ export default function CharacterDot({ position, onHoverChange, inHoveredCluster
                   exit={{ opacity: 0, y: 12 }}
                   transition={{ duration: 0.12 }}
                 >
-                  <ClusterRoster members={clusterMembers!} hoveredId={characterId} locationName={locationName} />
+                  <ClusterRoster members={clusterMembers!} locationName={locationName} />
                 </motion.g>
               </g>
             )}
