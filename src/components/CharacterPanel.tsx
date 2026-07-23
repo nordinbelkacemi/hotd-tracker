@@ -4,20 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import useStore from '../store/useStore';
 import characters from '../data/characters.json';
 import type { Character } from '../types';
-
-const FACTION_LABEL: Record<string, string> = {
-  blacks: 'The Blacks',
-  greens: 'The Greens',
-  neutral: 'Neutral',
-};
-
-const FACTION_ACCENT: Record<string, string> = {
-  blacks: '#E63946',
-  greens: '#2D6A4F',
-  neutral: '#C4A44A',
-};
-
-const FACTION_ORDER = ['blacks', 'greens', 'neutral'] as const;
+import { FACTION_LABEL, FACTION_ACCENT, FACTION_ORDER } from './factions';
 
 const PREVIEW_SIZE = 200;
 const PREVIEW_MARGIN = 16;

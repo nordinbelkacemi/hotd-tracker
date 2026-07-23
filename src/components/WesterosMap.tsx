@@ -4,17 +4,24 @@ import { TransformWrapper, TransformComponent, type ReactZoomPanPinchContentRef 
 import CharacterDot from './CharacterDot';
 import AnimatedPath from './AnimatedPath';
 import LocationMarker from './LocationMarker';
+import useStore from '../store/useStore';
 import westerosRaw from '../assets/westeros.svg?raw';
 import locationsData from '../data/locations.json';
 
 const VIEWBOX = '0 0 10000 6667';
+const PAR = 'xMaxYMid meet';
+
+// The 21 locations sit in x:1025–2905, y:1680–4200 — the western ~30% of the world
+// map. On mobile we keep the full map (so Essos stays pannable) but zoom the initial
+// view to this padded box so Westeros fills a portrait screen.
+const MOBILE_FRAME = { x: 875, y: 1480, w: 2180, h: 2920 };
 
 const processedSvg = westerosRaw
   .replace(/width="[^"]*"/, 'width="100%"')
   .replace(/height="[^"]*"/, 'height="100%"')
   .replace(/<svg([^>]*)>/, (_match: string, attrs: string) => {
     if (!attrs.includes('preserveAspectRatio')) {
-      return `<svg${attrs} preserveAspectRatio="xMaxYMid meet">`;
+      return `<svg${attrs} preserveAspectRatio="${PAR}">`;
     }
     return `<svg${attrs}>`;
   });
@@ -22,13 +29,21 @@ const processedSvg = westerosRaw
 interface WesterosMapProps {
   characterPositions: CharacterPosition[];
   paths: CharacterPath[];
+  // 'hover' = desktop tooltips; 'tap' = touch (tap opens the mobile info card).
+  mode?: 'hover' | 'tap';
 }
 
-export default function WesterosMap({ characterPositions, paths }: WesterosMapProps) {
+export default function WesterosMap({ characterPositions, paths, mode = 'hover' }: WesterosMapProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const transformRef = useRef<ReactZoomPanPinchContentRef | null>(null);
   const [hoveredCharId, setHoveredCharId] = useState<string | null>(null);
   const [hoveredLocId, setHoveredLocId] = useState<string | null>(null);
+  const focusedEntity = useStore((s) => s.focusedEntity);
+  const setFocusedEntity = useStore((s) => s.setFocusedEntity);
+  const isTap = mode === 'tap';
+
+  const focusedCharId = focusedEntity?.type === 'character' ? focusedEntity.id : null;
+  const focusedLocId = focusedEntity?.type === 'location' ? focusedEntity.id : null;
 
   // Characters sharing each location, and — when a character is hovered and it
   // shares its location with others — that co-located cluster's members.
@@ -64,21 +79,26 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
       ...characterPositions.map((pos) => ({ type: 'character' as const, id: pos.characterId, data: pos })),
     ];
 
+    // Emphasis = hovered (desktop) or focused (mobile tap) — drawn last, on top.
+    const isEmph = (item: typeof items[number]) =>
+      (item.type === 'character' && (item.id === hoveredCharId || item.id === focusedCharId)) ||
+      (item.type === 'location' && (item.id === hoveredLocId || item.id === focusedLocId));
+
     return items.sort((a, b) => {
-      const isAHovered = (a.type === 'character' && a.id === hoveredCharId) || (a.type === 'location' && a.id === hoveredLocId);
-      const isBHovered = (b.type === 'character' && b.id === hoveredCharId) || (b.type === 'location' && b.id === hoveredLocId);
+      const isAEmph = isEmph(a);
+      const isBEmph = isEmph(b);
 
-      if (isAHovered && !isBHovered) return 1;
-      if (isBHovered && !isAHovered) return -1;
+      if (isAEmph && !isBEmph) return 1;
+      if (isBEmph && !isAEmph) return -1;
 
-      // Keep location items before character items if neither is hovered
+      // Keep location items before character items if neither is emphasized
       if (a.type !== b.type) {
         return a.type === 'location' ? -1 : 1;
       }
 
       return 0;
     });
-  }, [characterPositions, hoveredCharId, hoveredLocId]);
+  }, [characterPositions, hoveredCharId, hoveredLocId, focusedCharId, focusedLocId]);
 
   // Stable collision-detection function — stored in a ref so effects can call it safely
   const runCollisionDetection = useRef((wrapper: HTMLDivElement) => {
@@ -184,15 +204,62 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
     return () => clearTimeout(timer);
   }, [runCollisionDetection]);
 
+  // Debounced label-collision pass, reusable by the pinch/zoom transform handler.
+  const collisionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const scheduleCollision = () => {
+    if (collisionTimerRef.current) clearTimeout(collisionTimerRef.current);
+    collisionTimerRef.current = setTimeout(() => {
+      if (wrapperRef.current) runCollisionDetection(wrapperRef.current);
+    }, 150);
+  };
+
+  // Zoom the initial mobile view to frame Westeros (the full map stays pannable).
+  // zoomToElement fits+centres the invisible frame rect and correctly honours the
+  // pan bounds — computing the transform by hand fights the library's own centring.
+  // It reads the node's *current* screen rect, so it must run exactly once from the
+  // untransformed (scale-1) state; the guard makes onInit + the rAF fallback idempotent.
+  const framedRef = useRef(false);
+  const frameWesteros = () => {
+    if (framedRef.current) return;
+    const el = wrapperRef.current;
+    const ref = transformRef.current;
+    if (!el || !ref || !el.clientWidth || !el.clientHeight) return;
+    framedRef.current = true;
+    ref.zoomToElement('mobile-frame-target', undefined, 0);
+    scheduleCollision();
+  };
+
+  // Frame Westeros once the container has its final size (mobile only).
+  useEffect(() => {
+    if (!isTap) return;
+    const id = requestAnimationFrame(frameWesteros);
+    return () => cancelAnimationFrame(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isTap]);
+
   return (
-    <div ref={wrapperRef} className="relative w-full h-full overflow-hidden cursor-grab active:cursor-grabbing">
+    <div
+      ref={wrapperRef}
+      className="relative w-full h-full overflow-hidden cursor-grab active:cursor-grabbing"
+      onClick={isTap ? () => setFocusedEntity(null) : undefined}
+    >
       <TransformWrapper
         initialScale={1}
         minScale={1}
-        maxScale={20}
-        centerOnInit={true}
+        // Mobile's base map is ~2.8x narrower than desktop's, so the same scale shows
+        // far less detail — raise the mobile cap so zoom-in reaches desktop-level detail
+        // (enough to separate tightly clustered labels like Driftmark / Rook's Rest).
+        maxScale={isTap ? 60 : 20}
+        centerOnInit={!isTap}
         smooth={false}
         wheel={{ disabled: true }}
+        onInit={() => { if (isTap) frameWesteros(); }}
+        onTransform={(_ref, state) => {
+          // Keep strokes/labels/dots a constant on-screen size while pinch-zooming
+          // (desktop does this via the wheel handler; touch needs it here too).
+          wrapperRef.current?.style.setProperty('--counter-scale', (1 / state.scale).toString());
+          scheduleCollision();
+        }}
       >
         {(utils) => {
           transformRef.current = utils;
@@ -212,14 +279,25 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
               <svg
                 className="absolute inset-0 w-full h-full z-10"
                 viewBox={VIEWBOX}
-                preserveAspectRatio="xMaxYMid meet"
+                preserveAspectRatio={PAR}
                 xmlns="http://www.w3.org/2000/svg"
                 style={{ overflow: 'visible' }}
               >
+                {/* Invisible target for the initial mobile zoom-to-Westeros. */}
+                <rect
+                  id="mobile-frame-target"
+                  x={MOBILE_FRAME.x}
+                  y={MOBILE_FRAME.y}
+                  width={MOBILE_FRAME.w}
+                  height={MOBILE_FRAME.h}
+                  fill="none"
+                  pointerEvents="none"
+                />
+
                 {/* Path layer */}
                 <g id="path-layer">
                   {paths.map((path) => (
-                    <AnimatedPath key={path.characterId} path={path} />
+                    <AnimatedPath key={path.characterId} path={path} width={isTap ? 24 : 18} />
                   ))}
                 </g>
 
@@ -239,6 +317,8 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
                           labelDy={(loc as any).labelOffsetY ?? 15}
                           importance={(loc as any).importance ?? 0}
                           wikiUrl={(loc as any).wikiUrl}
+                          mode={mode}
+                          focused={focusedLocId === loc.id}
                           onHoverChange={(isHovered) => setHoveredLocId(isHovered ? loc.id : null)}
                         />
                       );
@@ -248,6 +328,8 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
                         <CharacterDot
                           key={pos.characterId}
                           position={pos}
+                          mode={mode}
+                          focused={focusedCharId === pos.characterId}
                           onHoverChange={(isHovered) =>
                             setHoveredCharId((prev) => (isHovered ? pos.characterId : prev === pos.characterId ? null : prev))
                           }

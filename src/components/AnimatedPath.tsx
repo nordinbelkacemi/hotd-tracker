@@ -5,9 +5,11 @@ import type { CharacterPath } from '../types';
 
 interface AnimatedPathProps {
   path: CharacterPath;
+  // On-screen trail thickness (kept constant across zoom via counter-scale).
+  width?: number;
 }
 
-export default function AnimatedPath({ path }: AnimatedPathProps) {
+export default function AnimatedPath({ path, width = 18 }: AnimatedPathProps) {
   const measureRef = useRef<SVGPathElement>(null);
   const prevLengthRef = useRef(0);
   const [anim, setAnim] = useState<{ d: string; length: number; startOffset: number; grew: boolean } | null>(null);
@@ -40,8 +42,8 @@ export default function AnimatedPath({ path }: AnimatedPathProps) {
           d={anim.d}
           fill="none"
           stroke={path.color}
-          strokeWidth={18}
-          style={{ strokeWidth: 'calc(18px * var(--counter-scale, 1))' }}
+          strokeWidth={width}
+          style={{ strokeWidth: `calc(${width}px * var(--counter-scale, 1))` }}
           strokeOpacity={0.38}
           strokeLinecap="round"
           strokeLinejoin="round"

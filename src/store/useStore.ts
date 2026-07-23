@@ -14,6 +14,7 @@ const useStore = create<AppState>((set) => ({
   trailsEnabled: true,
   trailMode: 'all',
   trailEpisodes: 3,
+  focusedEntity: null,
 
   toggleCharacter: (id) =>
     set((state) => {
@@ -42,6 +43,8 @@ const useStore = create<AppState>((set) => ({
     set((state) => ({
       trailEpisodes: Math.min(TOTAL_EPISODES, Math.max(1, state.trailEpisodes + delta)),
     })),
+
+  setFocusedEntity: (entity) => set({ focusedEntity: entity }),
 }));
 
 export default useStore;
