@@ -4,31 +4,56 @@ import { TransformWrapper, TransformComponent, type ReactZoomPanPinchContentRef 
 import CharacterDot from './CharacterDot';
 import AnimatedPath from './AnimatedPath';
 import LocationMarker from './LocationMarker';
+import useStore from '../store/useStore';
 import westerosRaw from '../assets/westeros.svg?raw';
 import locationsData from '../data/locations.json';
 
 const VIEWBOX = '0 0 10000 6667';
+// The 21 locations all sit in x:1025–2905, y:1680–4200 (the western ~30% of the
+// world map). On a portrait phone we frame that region (plus padding) so Westeros
+// fills the screen instead of floating in empty ocean — and the tighter viewBox
+// magnifies the dots/labels to a natural touch size.
+const MOBILE_VIEWBOX = '875 1480 2180 2920';
+const DESKTOP_PAR = 'xMaxYMid meet';
+const MOBILE_PAR = 'xMidYMid meet';
 
-const processedSvg = westerosRaw
-  .replace(/width="[^"]*"/, 'width="100%"')
-  .replace(/height="[^"]*"/, 'height="100%"')
-  .replace(/<svg([^>]*)>/, (_match: string, attrs: string) => {
-    if (!attrs.includes('preserveAspectRatio')) {
-      return `<svg${attrs} preserveAspectRatio="xMaxYMid meet">`;
-    }
-    return `<svg${attrs}>`;
-  });
+function processSvg(raw: string, viewBox: string, par: string): string {
+  return raw
+    .replace(/width="[^"]*"/, 'width="100%"')
+    .replace(/height="[^"]*"/, 'height="100%"')
+    .replace(/viewBox="[^"]*"/, `viewBox="${viewBox}"`)
+    .replace(/<svg([^>]*)>/, (_match: string, attrs: string) => {
+      const cleaned = attrs.replace(/\s*preserveAspectRatio="[^"]*"/, '');
+      return `<svg${cleaned} preserveAspectRatio="${par}">`;
+    });
+}
+
+const processedSvgDesktop = processSvg(westerosRaw, VIEWBOX, DESKTOP_PAR);
+const processedSvgMobile = processSvg(westerosRaw, MOBILE_VIEWBOX, MOBILE_PAR);
 
 interface WesterosMapProps {
   characterPositions: CharacterPosition[];
   paths: CharacterPath[];
+  // 'hover' = desktop tooltips; 'tap' = touch (tap opens the mobile info card).
+  mode?: 'hover' | 'tap';
 }
 
-export default function WesterosMap({ characterPositions, paths }: WesterosMapProps) {
+export default function WesterosMap({ characterPositions, paths, mode = 'hover' }: WesterosMapProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const transformRef = useRef<ReactZoomPanPinchContentRef | null>(null);
   const [hoveredCharId, setHoveredCharId] = useState<string | null>(null);
   const [hoveredLocId, setHoveredLocId] = useState<string | null>(null);
+  const focusedEntity = useStore((s) => s.focusedEntity);
+  const setFocusedEntity = useStore((s) => s.setFocusedEntity);
+  const isTap = mode === 'tap';
+
+  const focusedCharId = focusedEntity?.type === 'character' ? focusedEntity.id : null;
+  const focusedLocId = focusedEntity?.type === 'location' ? focusedEntity.id : null;
+
+  // Mobile reframes to the populated western region; desktop shows the full map.
+  const viewBox = isTap ? MOBILE_VIEWBOX : VIEWBOX;
+  const par = isTap ? MOBILE_PAR : DESKTOP_PAR;
+  const baseSvg = isTap ? processedSvgMobile : processedSvgDesktop;
 
   // Characters sharing each location, and — when a character is hovered and it
   // shares its location with others — that co-located cluster's members.
@@ -64,21 +89,26 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
       ...characterPositions.map((pos) => ({ type: 'character' as const, id: pos.characterId, data: pos })),
     ];
 
+    // Emphasis = hovered (desktop) or focused (mobile tap) — drawn last, on top.
+    const isEmph = (item: typeof items[number]) =>
+      (item.type === 'character' && (item.id === hoveredCharId || item.id === focusedCharId)) ||
+      (item.type === 'location' && (item.id === hoveredLocId || item.id === focusedLocId));
+
     return items.sort((a, b) => {
-      const isAHovered = (a.type === 'character' && a.id === hoveredCharId) || (a.type === 'location' && a.id === hoveredLocId);
-      const isBHovered = (b.type === 'character' && b.id === hoveredCharId) || (b.type === 'location' && b.id === hoveredLocId);
+      const isAEmph = isEmph(a);
+      const isBEmph = isEmph(b);
 
-      if (isAHovered && !isBHovered) return 1;
-      if (isBHovered && !isAHovered) return -1;
+      if (isAEmph && !isBEmph) return 1;
+      if (isBEmph && !isAEmph) return -1;
 
-      // Keep location items before character items if neither is hovered
+      // Keep location items before character items if neither is emphasized
       if (a.type !== b.type) {
         return a.type === 'location' ? -1 : 1;
       }
 
       return 0;
     });
-  }, [characterPositions, hoveredCharId, hoveredLocId]);
+  }, [characterPositions, hoveredCharId, hoveredLocId, focusedCharId, focusedLocId]);
 
   // Stable collision-detection function — stored in a ref so effects can call it safely
   const runCollisionDetection = useRef((wrapper: HTMLDivElement) => {
@@ -185,7 +215,11 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
   }, [runCollisionDetection]);
 
   return (
-    <div ref={wrapperRef} className="relative w-full h-full overflow-hidden cursor-grab active:cursor-grabbing">
+    <div
+      ref={wrapperRef}
+      className="relative w-full h-full overflow-hidden cursor-grab active:cursor-grabbing"
+      onClick={isTap ? () => setFocusedEntity(null) : undefined}
+    >
       <TransformWrapper
         initialScale={1}
         minScale={1}
@@ -204,15 +238,15 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
               {/* Base map — inlined SVG */}
               <div
                 className="absolute inset-0 w-full h-full"
-                dangerouslySetInnerHTML={{ __html: processedSvg }}
+                dangerouslySetInnerHTML={{ __html: baseSvg }}
                 style={{ lineHeight: 0 }}
               />
 
               {/* Overlay SVG — inside TransformComponent for position tracking */}
               <svg
                 className="absolute inset-0 w-full h-full z-10"
-                viewBox={VIEWBOX}
-                preserveAspectRatio="xMaxYMid meet"
+                viewBox={viewBox}
+                preserveAspectRatio={par}
                 xmlns="http://www.w3.org/2000/svg"
                 style={{ overflow: 'visible' }}
               >
@@ -239,6 +273,8 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
                           labelDy={(loc as any).labelOffsetY ?? 15}
                           importance={(loc as any).importance ?? 0}
                           wikiUrl={(loc as any).wikiUrl}
+                          mode={mode}
+                          focused={focusedLocId === loc.id}
                           onHoverChange={(isHovered) => setHoveredLocId(isHovered ? loc.id : null)}
                         />
                       );
@@ -248,6 +284,8 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
                         <CharacterDot
                           key={pos.characterId}
                           position={pos}
+                          mode={mode}
+                          focused={focusedCharId === pos.characterId}
                           onHoverChange={(isHovered) =>
                             setHoveredCharId((prev) => (isHovered ? pos.characterId : prev === pos.characterId ? null : prev))
                           }

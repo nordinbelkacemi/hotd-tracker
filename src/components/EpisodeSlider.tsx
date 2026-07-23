@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
 import useStore from '../store/useStore';
+import usePlaybackInterval from '../hooks/usePlaybackInterval';
 import { timelineSteps, getWindowStartIndex } from '../utils/timeline';
 import episodesData from '../data/episodes.json';
 
@@ -12,29 +12,11 @@ const trailChipClass = (active: boolean) =>
 
 export default function EpisodeSlider() {
   const { currentStepIndex, isPlaying, setStep, togglePlaying, trailsEnabled, trailMode, trailEpisodes, setTrailsEnabled, setTrailMode, adjustTrailEpisodes } = useStore();
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const step = timelineSteps[currentStepIndex] || timelineSteps[0];
   const windowStartIndex = trailsEnabled ? getWindowStartIndex(trailMode, trailEpisodes, currentStepIndex) : currentStepIndex + 1;
 
-  useEffect(() => {
-    if (isPlaying) {
-      intervalRef.current = setInterval(() => {
-        useStore.setState((state) => {
-          if (state.currentStepIndex >= timelineSteps.length - 1) {
-            clearInterval(intervalRef.current!);
-            return { isPlaying: false };
-          }
-          return { currentStepIndex: state.currentStepIndex + 1 };
-        });
-      }, 3000);
-    } else {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    }
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [isPlaying]);
+  usePlaybackInterval();
 
   return (
     <div className="px-4 py-4 border-t border-white/10 space-y-3 shrink-0">

@@ -33,6 +33,17 @@ input[type="range"]::-moz-range-thumb {
   border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
+/* Larger thumb for touch targets on the mobile scrubber */
+.range-touch::-webkit-slider-thumb {
+  width: 22px;
+  height: 22px;
+}
+
+.range-touch::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+}
+
 /* Map SVG styling */
 .land, .lake, .river {
   stroke: #1a3a55 !important;

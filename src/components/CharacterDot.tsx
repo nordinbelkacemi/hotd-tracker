@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { CharacterPosition } from '../types';
+import useStore from '../store/useStore';
 import ClusterRoster, { type RosterMember } from './ClusterRoster';
 
 interface CharacterDotProps {
@@ -12,14 +13,23 @@ interface CharacterDotProps {
   clusterMembers?: RosterMember[];
   // True when this dot shares its location with others (so it never shows the solo tooltip).
   partOfCluster?: boolean;
+  // 'hover' = desktop (wiki link + hover tooltip); 'tap' = touch (tap opens the info card).
+  mode?: 'hover' | 'tap';
+  // True when this dot is the tapped/focused entity on mobile.
+  focused?: boolean;
 }
 
 const DOT_RADIUS = 50;
 const HIDE_DELAY = 100;
+// On mobile the map is reframed to a tight viewBox that magnifies the dots ~4.6×,
+// so they keep their base radius and just gain an invisible, touch-sized hit circle.
+const TAP_HIT_RADIUS = DOT_RADIUS * 3;
 
-export default function CharacterDot({ position, onHoverChange, inHoveredCluster = false, clusterMembers, partOfCluster = false }: CharacterDotProps) {
+export default function CharacterDot({ position, onHoverChange, inHoveredCluster = false, clusterMembers, partOfCluster = false, mode = 'hover', focused = false }: CharacterDotProps) {
+  const setFocusedEntity = useStore((s) => s.setFocusedEntity);
+  const isTap = mode === 'tap';
   const [hovered, setHovered] = useState(false);
-  const highlighted = hovered || inHoveredCluster;
+  const highlighted = hovered || inHoveredCluster || focused;
   const isCluster = !!clusterMembers && clusterMembers.length > 1;
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -46,8 +56,11 @@ export default function CharacterDot({ position, onHoverChange, inHoveredCluster
   const tx = x;
   const ty = y;
 
+  const R = DOT_RADIUS;
+  const glowExtra = 5;
+
   const houseLocationStr = [house !== '—' ? house : null, locationName].filter(Boolean).join(' · ');
-  
+
   // Dynamically calculate tooltip width based on text length
   const estimatedNameWidth = name.length * 85;
   const estimatedDescWidth = houseLocationStr.length * 55;
@@ -58,6 +71,28 @@ export default function CharacterDot({ position, onHoverChange, inHoveredCluster
   // We can format it nicely.
   const placeholderUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=222222&color=ffffff&size=300&font-size=0.33`;
 
+  // Glow ring + main dot — identical whether wrapped in a wiki link, plain, or tappable.
+  const dotCore = (
+    <>
+      {/* Glow ring */}
+      <motion.circle
+        fill={color}
+        initial={{ opacity: 0.18, r: R + glowExtra }}
+        animate={{ opacity: highlighted ? 0.45 : 0.18, r: R + glowExtra }}
+        transition={{ duration: 0.18 }}
+      />
+      {/* Main dot */}
+      <motion.circle
+        fill={color}
+        stroke="rgba(255,255,255,0.85)"
+        strokeWidth={6}
+        initial={{ r: R }}
+        animate={{ r: highlighted ? R * 1.3 : R }}
+        transition={{ type: 'spring', stiffness: 320, damping: 22 }}
+      />
+    </>
+  );
+
   return (
     <motion.g
       key={characterId}
@@ -67,56 +102,30 @@ export default function CharacterDot({ position, onHoverChange, inHoveredCluster
       exit={{ opacity: 0, scale: 0.2 }}
       transition={{ type: 'spring', stiffness: 130, damping: 22 }}
       style={{ cursor: 'pointer' }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={isTap ? undefined : handleMouseEnter}
+      onMouseLeave={isTap ? undefined : handleMouseLeave}
+      onClick={isTap ? (e) => { e.stopPropagation(); setFocusedEntity({ type: 'character', id: characterId }); } : undefined}
     >
       {/* Counter-scale group: scales around origin (0,0) which is the dot center */}
       <g style={{ transform: 'scale(var(--counter-scale, 1))' }}>
         <g style={{ transform: `translate(${offsetX * 1.8}px, ${offsetY * 1.8}px)` }}>
-          {/* Wrap main dot in a hyperlink if wikiUrl is available */}
-          {wikiUrl ? (
+          {isTap ? (
+            <>
+              {/* Generous transparent touch target */}
+              <circle r={TAP_HIT_RADIUS} fill="transparent" />
+              {dotCore}
+            </>
+          ) : wikiUrl ? (
             <a href={wikiUrl} target="_blank" rel="noopener noreferrer">
-              {/* Glow ring */}
-              <motion.circle
-                fill={color}
-                initial={{ opacity: 0.18, r: DOT_RADIUS + 5 }}
-                animate={{ opacity: highlighted ? 0.45 : 0.18, r: DOT_RADIUS + 5 }}
-                transition={{ duration: 0.18 }}
-              />
-              {/* Main dot */}
-              <motion.circle
-                fill={color}
-                stroke="rgba(255,255,255,0.85)"
-                strokeWidth={6}
-                initial={{ r: DOT_RADIUS }}
-                animate={{ r: highlighted ? DOT_RADIUS * 1.3 : DOT_RADIUS }}
-                transition={{ type: 'spring', stiffness: 320, damping: 22 }}
-              />
+              {dotCore}
             </a>
           ) : (
-            <>
-              {/* Glow ring */}
-              <motion.circle
-                fill={color}
-                initial={{ opacity: 0.18, r: DOT_RADIUS + 5 }}
-                animate={{ opacity: highlighted ? 0.45 : 0.18, r: DOT_RADIUS + 5 }}
-                transition={{ duration: 0.18 }}
-              />
-              {/* Main dot */}
-              <motion.circle
-                fill={color}
-                stroke="rgba(255,255,255,0.85)"
-                strokeWidth={6}
-                initial={{ r: DOT_RADIUS }}
-                animate={{ r: highlighted ? DOT_RADIUS * 1.3 : DOT_RADIUS }}
-                transition={{ type: 'spring', stiffness: 320, damping: 22 }}
-              />
-            </>
+            dotCore
           )}
 
-          {/* Single-character tooltip — anchored to this marker */}
+          {/* Single-character tooltip — hover only; anchored to this marker */}
           <AnimatePresence>
-            {hovered && !partOfCluster && (
+            {!isTap && hovered && !partOfCluster && (
               <g transform={`translate(${DOT_RADIUS + 124}, ${-DOT_RADIUS - 30})`}>
                 <motion.g
                   initial={{ opacity: 0, y: 12 }}
@@ -211,11 +220,11 @@ export default function CharacterDot({ position, onHoverChange, inHoveredCluster
           </AnimatePresence>
         </g>
 
-        {/* Co-location roster — anchored to the cluster centre (outside the per-marker
-            offset group) so it stays put when moving between markers in the cluster.
-            Rendered without enter/exit animation so switching markers doesn't replay
-            a fade (or an overlapping-shadow flicker). */}
-        {hovered && isCluster && (
+        {/* Co-location roster — hover only. Anchored to the cluster centre (outside
+            the per-marker offset group) so it stays put when moving between markers
+            in the cluster. Rendered without enter/exit animation so switching
+            markers doesn't replay a fade (or an overlapping-shadow flicker). */}
+        {!isTap && hovered && isCluster && (
           <g transform={`translate(${DOT_RADIUS + 124}, 0)`}>
             <ClusterRoster members={clusterMembers!} locationName={locationName} />
           </g>

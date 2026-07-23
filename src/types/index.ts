@@ -63,6 +63,12 @@ export interface CharacterPath {
 
 export type TrailMode = 'episodes' | 'season' | 'all';
 
+// The dot/marker the user tapped on touch — drives the mobile info card.
+export interface FocusedEntity {
+  type: 'character' | 'location';
+  id: string;
+}
+
 export interface AppState {
   selectedCharacters: Set<string>;
   currentStepIndex: number;
@@ -71,6 +77,7 @@ export interface AppState {
   trailsEnabled: boolean;
   trailMode: TrailMode;
   trailEpisodes: number;
+  focusedEntity: FocusedEntity | null;
   toggleCharacter: (id: string) => void;
   selectAll: () => void;
   deselectAll: () => void;
@@ -80,4 +87,5 @@ export interface AppState {
   setTrailsEnabled: (enabled: boolean) => void;
   setTrailMode: (mode: TrailMode) => void;
   adjustTrailEpisodes: (delta: 1 | -1) => void;
+  setFocusedEntity: (entity: FocusedEntity | null) => void;
 }

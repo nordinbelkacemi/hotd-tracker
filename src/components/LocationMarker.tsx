@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import useStore from '../store/useStore';
 
 interface LocationMarkerProps {
   id: string;
@@ -11,6 +12,10 @@ interface LocationMarkerProps {
   importance: number;
   wikiUrl?: string;
   onHoverChange?: (hovered: boolean) => void;
+  // 'hover' = desktop (wiki link + hover image); 'tap' = touch (tap opens the info card).
+  mode?: 'hover' | 'tap';
+  // True when this location is the tapped/focused entity on mobile.
+  focused?: boolean;
 }
 
 const IMAGE_SIZE = 480;
@@ -18,10 +23,14 @@ const IMAGE_SIZE = 480;
 // Sea/region labels rendered as text only — no castle marker.
 const LABEL_ONLY_LOCATIONS = new Set(['stepstones', 'the-gullet']);
 
-export default function LocationMarker({ id, name, x, y, labelDx, labelDy, importance, wikiUrl, onHoverChange }: LocationMarkerProps) {
+export default function LocationMarker({ id, name, x, y, labelDx, labelDy, importance, wikiUrl, onHoverChange, mode = 'hover', focused = false }: LocationMarkerProps) {
+  const setFocusedEntity = useStore((s) => s.setFocusedEntity);
+  const isTap = mode === 'tap';
   const [hovered, setHovered] = useState(false);
   const [textWidth, setTextWidth] = useState(0);
   const fillTextRef = useRef<SVGTextElement>(null);
+  // Label emphasis: hover on desktop, focus (tapped) on mobile.
+  const active = hovered || (isTap && focused);
 
   useEffect(() => {
     const measure = () => {
@@ -36,40 +45,38 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
 
   const placeholderUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=2a1f0e&color=ffd700&size=400&font-size=0.25`;
 
+  const focusLocation = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setFocusedEntity({ type: 'location', id });
+  };
+
+  const markerCore = (
+    <>
+      <polygon
+        points={`${x},${y - 30} ${x + 25},${y} ${x},${y + 30} ${x - 25},${y}`}
+        fill="rgba(0,0,0,0.75)"
+        stroke="rgba(255,255,255,0.6)"
+        strokeWidth={6}
+      />
+      <circle cx={x} cy={y} r={30} fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.7)" strokeWidth={6} />
+    </>
+  );
+
   return (
     <g
-      onMouseEnter={() => {
-        setHovered(true);
-        onHoverChange?.(true);
-      }}
-      onMouseLeave={() => {
-        setHovered(false);
-        onHoverChange?.(false);
-      }}
+      onMouseEnter={isTap ? undefined : () => { setHovered(true); onHoverChange?.(true); }}
+      onMouseLeave={isTap ? undefined : () => { setHovered(false); onHoverChange?.(false); }}
+      onClick={isTap ? focusLocation : undefined}
     >
-      {/* Static marker — no hover */}
+      {/* Static marker */}
       {!LABEL_ONLY_LOCATIONS.has(id) && (
-        <g style={{ transform: 'scale(var(--counter-scale, 1))', transformOrigin: `${x}px ${y}px`, cursor: wikiUrl ? 'pointer' : 'default' }}>
-          {wikiUrl ? (
+        <g style={{ transform: 'scale(var(--counter-scale, 1))', transformOrigin: `${x}px ${y}px`, cursor: wikiUrl || isTap ? 'pointer' : 'default' }}>
+          {!isTap && wikiUrl ? (
             <a href={wikiUrl} target="_blank" rel="noopener noreferrer">
-              <polygon
-                points={`${x},${y - 30} ${x + 25},${y} ${x},${y + 30} ${x - 25},${y}`}
-                fill="rgba(0,0,0,0.75)"
-                stroke="rgba(255,255,255,0.6)"
-                strokeWidth={6}
-              />
-              <circle cx={x} cy={y} r={30} fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.7)" strokeWidth={6} />
+              {markerCore}
             </a>
           ) : (
-            <>
-              <polygon
-                points={`${x},${y - 30} ${x + 25},${y} ${x},${y + 30} ${x - 25},${y}`}
-                fill="rgba(0,0,0,0.75)"
-                stroke="rgba(255,255,255,0.6)"
-                strokeWidth={6}
-              />
-              <circle cx={x} cy={y} r={30} fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.7)" strokeWidth={6} />
-            </>
+            markerCore
           )}
         </g>
       )}
@@ -83,15 +90,15 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
           transform: 'scale(var(--counter-scale, 1))',
           transformOrigin: `${x}px ${y}px`,
           transition: 'opacity 0.2s ease-in-out',
-          cursor: wikiUrl ? 'pointer' : 'default',
+          cursor: wikiUrl || isTap ? 'pointer' : 'default',
         }}
-        onClick={() => wikiUrl && window.open(wikiUrl, '_blank', 'noopener,noreferrer')}
+        onClick={isTap ? undefined : () => wikiUrl && window.open(wikiUrl, '_blank', 'noopener,noreferrer')}
       >
         <g transform={`translate(${x + labelDx}, ${y + labelDy})`}>
           {/* Text — CSS transform is more reliable than Framer Motion scale in SVG */}
           <g
             style={{
-              transform: hovered ? 'scale(1.12)' : 'scale(1)',
+              transform: active ? 'scale(1.12)' : 'scale(1)',
               transformOrigin: '0px 0px',
               transition: 'transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1)',
             }}
@@ -121,9 +128,9 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
             </text>
           </g>
 
-          {/* Image anchored to the right end of the text, vertically centered with it */}
+          {/* Image anchored to the right end of the text — hover only */}
           <AnimatePresence>
-            {hovered && (
+            {!isTap && hovered && (
               <g transform={`translate(${textWidth + 40}, ${-(IMAGE_SIZE / 2) - 36})`}>
                 <motion.g
                   initial={{ opacity: 0, y: 15 }}
