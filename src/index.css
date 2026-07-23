@@ -1,17 +1,5 @@
 @import "tailwindcss";
 
-/* Game of Thrones wordmark display face (Charlie Samways, free for personal &
-   commercial use). Used only for the app title — it's an all-caps display font,
-   so everything else stays on Cinzel (the Trajan-based show serif). */
-@font-face {
-  font-family: 'Game of Thrones';
-  src: url('./assets/fonts/GameOfThrones.woff2') format('woff2'),
-       url('./assets/fonts/GameOfThrones.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 * {
   box-sizing: border-box;
 }
