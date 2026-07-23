@@ -1,4 +1,4 @@
-import { useState, useRef, type MouseEvent as ReactMouseEvent } from 'react';
+import { useState, useRef, useEffect, type MouseEvent as ReactMouseEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import useStore from '../store/useStore';
@@ -21,6 +21,7 @@ const FACTION_ORDER = ['blacks', 'greens', 'neutral'] as const;
 
 const PREVIEW_SIZE = 200;
 const PREVIEW_MARGIN = 16;
+const PREVIEW_HIDE_DELAY = 350;
 // Half the card's total height (portrait + colour accent + borders), to centre it on the row.
 const PREVIEW_HALF = PREVIEW_SIZE / 2 + 3;
 
@@ -28,6 +29,7 @@ interface Preview {
   id: string;
   name: string;
   color: string;
+  wikiUrl?: string;
   centerY: number;
   right: number;
 }
@@ -36,6 +38,17 @@ export default function CharacterPanel() {
   const { selectedCharacters, toggleCharacter, selectAll, deselectAll } = useStore();
   const rootRef = useRef<HTMLDivElement>(null);
   const [preview, setPreview] = useState<Preview | null>(null);
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const cancelHide = () => {
+    if (hideTimer.current) { clearTimeout(hideTimer.current); hideTimer.current = null; }
+  };
+  // Linger before hiding so the cursor can travel from the row onto the image.
+  const scheduleHide = () => {
+    cancelHide();
+    hideTimer.current = setTimeout(() => { setPreview(null); hideTimer.current = null; }, PREVIEW_HIDE_DELAY);
+  };
+  useEffect(() => cancelHide, []);
 
   const byFaction = FACTION_ORDER.map((faction) => ({
     faction,
@@ -43,12 +56,14 @@ export default function CharacterPanel() {
   }));
 
   const showPreview = (char: Character, e: ReactMouseEvent<HTMLButtonElement>) => {
+    cancelHide();
     const row = e.currentTarget.getBoundingClientRect();
     const panelLeft = rootRef.current?.getBoundingClientRect().left ?? row.left;
     setPreview({
       id: char.id,
       name: char.name,
       color: char.color,
+      wikiUrl: char.wikiUrl,
       centerY: row.top + row.height / 2,
       right: window.innerWidth - panelLeft + PREVIEW_MARGIN,
     });
@@ -94,7 +109,7 @@ export default function CharacterPanel() {
                     key={char.id}
                     onClick={() => toggleCharacter(char.id)}
                     onMouseEnter={(e) => showPreview(char, e)}
-                    onMouseLeave={() => setPreview(null)}
+                    onMouseLeave={scheduleHide}
                     className="w-full flex items-center gap-2 px-2 py-1.5 rounded hover:bg-white/5 transition-colors cursor-pointer group"
                   >
                     {/* Color dot */}
@@ -147,11 +162,12 @@ export default function CharacterPanel() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.12 }}
+              onMouseEnter={cancelHide}
+              onMouseLeave={scheduleHide}
               style={{
                 position: 'fixed',
                 top: preview.centerY - PREVIEW_HALF,
                 right: preview.right,
-                pointerEvents: 'none',
                 zIndex: 40,
                 borderRadius: '16px',
                 overflow: 'hidden',
@@ -160,21 +176,28 @@ export default function CharacterPanel() {
                 background: '#0d1117',
               }}
             >
-              <div style={{ height: '4px', background: preview.color }} />
-              <img
-                src={`${import.meta.env.BASE_URL}characters/${preview.id}.png`}
-                alt={preview.name}
-                width={PREVIEW_SIZE}
-                height={PREVIEW_SIZE}
-                onError={(e) => {
-                  const t = e.currentTarget;
-                  if (!t.dataset.fbk) {
-                    t.dataset.fbk = '1';
-                    t.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(preview.name)}&background=222222&color=ffffff&size=300&font-size=0.4`;
-                  }
-                }}
-                style={{ display: 'block', width: `${PREVIEW_SIZE}px`, height: `${PREVIEW_SIZE}px`, objectFit: 'cover' }}
-              />
+              <a
+                href={preview.wikiUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'block', cursor: preview.wikiUrl ? 'pointer' : 'default' }}
+              >
+                <div style={{ height: '4px', background: preview.color }} />
+                <img
+                  src={`${import.meta.env.BASE_URL}characters/${preview.id}.png`}
+                  alt={preview.name}
+                  width={PREVIEW_SIZE}
+                  height={PREVIEW_SIZE}
+                  onError={(e) => {
+                    const t = e.currentTarget;
+                    if (!t.dataset.fbk) {
+                      t.dataset.fbk = '1';
+                      t.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(preview.name)}&background=222222&color=ffffff&size=300&font-size=0.4`;
+                    }
+                  }}
+                  style={{ display: 'block', width: `${PREVIEW_SIZE}px`, height: `${PREVIEW_SIZE}px`, objectFit: 'cover' }}
+                />
+              </a>
             </motion.div>
           )}
         </AnimatePresence>,
