@@ -32,21 +32,24 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
 
   // Characters sharing each location, and — when a character is hovered and it
   // shares its location with others — that co-located cluster's members.
-  const { hoveredClusterLocId, clusterMembers } = useMemo(() => {
+  const { hoveredClusterLocId, clusterMembers, clusteredLocIds } = useMemo(() => {
     const byLoc = new Map<string, CharacterPosition[]>();
     for (const pos of characterPositions) {
       const arr = byLoc.get(pos.locationId) ?? [];
       arr.push(pos);
       byLoc.set(pos.locationId, arr);
     }
+    const clusteredLocIds = new Set<string>();
+    for (const [locId, arr] of byLoc) if (arr.length > 1) clusteredLocIds.add(locId);
     const hoveredPos = hoveredCharId ? characterPositions.find((p) => p.characterId === hoveredCharId) : undefined;
     const group = hoveredPos ? byLoc.get(hoveredPos.locationId) : undefined;
     if (!hoveredPos || !group || group.length < 2) {
-      return { hoveredClusterLocId: null as string | null, clusterMembers: undefined };
+      return { hoveredClusterLocId: null as string | null, clusterMembers: undefined, clusteredLocIds };
     }
     return {
       hoveredClusterLocId: hoveredPos.locationId,
       clusterMembers: group.map((p) => ({ characterId: p.characterId, name: p.name, house: p.house, color: p.color, wikiUrl: p.wikiUrl })),
+      clusteredLocIds,
     };
   }, [characterPositions, hoveredCharId]);
 
@@ -245,9 +248,12 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
                         <CharacterDot
                           key={pos.characterId}
                           position={pos}
-                          onHoverChange={(isHovered) => setHoveredCharId(isHovered ? pos.characterId : null)}
+                          onHoverChange={(isHovered) =>
+                            setHoveredCharId((prev) => (isHovered ? pos.characterId : prev === pos.characterId ? null : prev))
+                          }
                           inHoveredCluster={hoveredClusterLocId === pos.locationId}
                           clusterMembers={pos.characterId === hoveredCharId ? clusterMembers : undefined}
+                          partOfCluster={clusteredLocIds.has(pos.locationId)}
                         />
                       );
                     }

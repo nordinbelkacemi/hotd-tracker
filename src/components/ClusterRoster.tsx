@@ -34,8 +34,9 @@ const MAX_VISIBLE = 5;
 export default function ClusterRoster({ members, locationName }: ClusterRosterProps) {
   const maxNameLen = members.reduce((max, m) => Math.max(max, m.name.length), 0);
   const header = `${locationName} · ${members.length} here`.toUpperCase();
-  const visibleRows = Math.min(members.length, MAX_VISIBLE);
   const scrolls = members.length > MAX_VISIBLE;
+  // When there are more than fit, show half of the next row as a scroll affordance.
+  const visibleRows = scrolls ? MAX_VISIBLE + 0.5 : members.length;
 
   const width = Math.max(
     BORDER + ROW_HPAD + IMG + GAP + maxNameLen * 68 + 40 + ROW_HPAD + (scrolls ? SCROLLBAR : 0),

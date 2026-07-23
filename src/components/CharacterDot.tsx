@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { CharacterPosition } from '../types';
 import ClusterRoster, { type RosterMember } from './ClusterRoster';
@@ -10,23 +10,35 @@ interface CharacterDotProps {
   inHoveredCluster?: boolean;
   // Everyone at this dot's location — passed only to the hovered dot, to render the roster.
   clusterMembers?: RosterMember[];
+  // True when this dot shares its location with others (so it never shows the solo tooltip).
+  partOfCluster?: boolean;
 }
 
 const DOT_RADIUS = 50;
+const HIDE_DELAY = 350;
 
-export default function CharacterDot({ position, onHoverChange, inHoveredCluster = false, clusterMembers }: CharacterDotProps) {
+export default function CharacterDot({ position, onHoverChange, inHoveredCluster = false, clusterMembers, partOfCluster = false }: CharacterDotProps) {
   const [hovered, setHovered] = useState(false);
   const highlighted = hovered || inHoveredCluster;
   const isCluster = !!clusterMembers && clusterMembers.length > 1;
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => { if (hideTimer.current) clearTimeout(hideTimer.current); }, []);
 
   const handleMouseEnter = () => {
+    if (hideTimer.current) { clearTimeout(hideTimer.current); hideTimer.current = null; }
     setHovered(true);
     onHoverChange?.(true);
   };
 
+  // Linger briefly before hiding, so the list doesn't vanish the instant the cursor leaves.
   const handleMouseLeave = () => {
-    setHovered(false);
-    onHoverChange?.(false);
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    hideTimer.current = setTimeout(() => {
+      setHovered(false);
+      onHoverChange?.(false);
+      hideTimer.current = null;
+    }, HIDE_DELAY);
   };
 
   const { x, y, offsetX, offsetY, color, name, house, locationName, characterId, wikiUrl } = position;
@@ -104,7 +116,7 @@ export default function CharacterDot({ position, onHoverChange, inHoveredCluster
 
           {/* Single-character tooltip — anchored to this marker */}
           <AnimatePresence>
-            {hovered && !isCluster && (
+            {hovered && !partOfCluster && (
               <g transform={`translate(${DOT_RADIUS + 124}, ${-DOT_RADIUS - 30})`}>
                 <motion.g
                   initial={{ opacity: 0, y: 12 }}
