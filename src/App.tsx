@@ -58,8 +58,8 @@ export default function App() {
           <header className="h-12 flex items-center px-6 shrink-0 border-b border-white/8">
             <div>
               <span
-                className="text-base font-bold tracking-widest text-white/90"
-                style={{ fontFamily: 'Cinzel, serif' }}
+                className="text-2xl tracking-wide text-white/90 uppercase leading-none"
+                style={{ fontFamily: "'Game of Thrones', 'Cinzel', serif", wordSpacing: '0.18em' }}
               >
                 House of the Dragon
               </span>
