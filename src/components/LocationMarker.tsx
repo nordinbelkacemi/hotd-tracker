@@ -23,6 +23,9 @@ const IMAGE_SIZE = 480;
 // counter-scaling keeps them a constant on-screen size while pinching. Keep in sync
 // with MOBILE_SCALE in CharacterDot.
 const MOBILE_MARKER_SCALE = 4.6;
+// Location name labels are scaled less than the castle markers so they read at a
+// comfortable size on mobile instead of dominating the map.
+const MOBILE_LABEL_SCALE = 3.1;
 
 // Sea/region labels rendered as text only — no castle marker.
 const LABEL_ONLY_LOCATIONS = new Set(['stepstones', 'the-gullet']);
@@ -31,6 +34,7 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
   const setFocusedEntity = useStore((s) => s.setFocusedEntity);
   const isTap = mode === 'tap';
   const m = isTap ? MOBILE_MARKER_SCALE : 1;
+  const labelScale = isTap ? MOBILE_LABEL_SCALE : 1;
   const [hovered, setHovered] = useState(false);
   const [textWidth, setTextWidth] = useState(0);
   const fillTextRef = useRef<SVGTextElement>(null);
@@ -110,10 +114,10 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
           >
             <text
               x={0} y={0}
-              fontSize={100 * m}
+              fontSize={100 * labelScale}
               fill="none"
               stroke="#000"
-              strokeWidth={15 * m}
+              strokeWidth={15 * labelScale}
               fontFamily="Cinzel, serif"
               fontWeight={600}
               style={{ pointerEvents: 'none' }}
@@ -124,7 +128,7 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
             <text
               ref={fillTextRef}
               x={0} y={0}
-              fontSize={100 * m}
+              fontSize={100 * labelScale}
               fill="rgba(255,240,180,0.95)"
               fontFamily="Cinzel, serif"
               fontWeight={600}
