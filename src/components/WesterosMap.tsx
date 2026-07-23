@@ -294,7 +294,7 @@ export default function WesterosMap({ characterPositions, paths, mode = 'hover' 
                 {/* Path layer */}
                 <g id="path-layer">
                   {paths.map((path) => (
-                    <AnimatedPath key={path.characterId} path={path} />
+                    <AnimatedPath key={path.characterId} path={path} width={isTap ? 24 : 18} />
                   ))}
                 </g>
 

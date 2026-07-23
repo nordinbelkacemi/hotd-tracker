@@ -59,6 +59,20 @@ input[type="range"]::-moz-range-thumb {
   stroke-width: calc(6px * var(--counter-scale, 1)) !important;
 }
 
+/* Mobile: double the map line weights so coastlines/rivers hold up next to the
+   enlarged markers and labels on a small screen. */
+@media (max-width: 767px) {
+  .land, .lake, .river {
+    stroke-width: calc(8px * var(--counter-scale, 1)) !important;
+  }
+  .major-border {
+    stroke-width: calc(24px * var(--counter-scale, 1)) !important;
+  }
+  .minor-border {
+    stroke-width: calc(12px * var(--counter-scale, 1)) !important;
+  }
+}
+
 .land {
   fill: #2a3441;
 }
