@@ -21,10 +21,11 @@ interface CharacterDotProps {
 
 const DOT_RADIUS = 50;
 const HIDE_DELAY = 100;
-// On mobile the full map renders in a ~390px-wide viewport, so markers are scaled up
-// (~4.6× ≈ a desktop-equivalent on-screen size) and counter-scaled to stay constant
-// while pinching. Keep this in sync with MOBILE_MARKER_SCALE in LocationMarker.
-const MOBILE_SCALE = 4.6;
+// On mobile the full map renders in a ~390px-wide viewport, so dots are scaled up and
+// counter-scaled to stay a constant on-screen size while pinching. Kept a touch below
+// the location-marker scale (MOBILE_MARKER_SCALE) so the character dots read slightly
+// smaller.
+const MOBILE_SCALE = 4.1;
 
 export default function CharacterDot({ position, onHoverChange, inHoveredCluster = false, clusterMembers, partOfCluster = false, mode = 'hover', focused = false }: CharacterDotProps) {
   const setFocusedEntity = useStore((s) => s.setFocusedEntity);
