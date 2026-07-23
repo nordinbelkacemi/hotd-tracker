@@ -102,20 +102,8 @@ export default function CharacterDot({ position, onHoverChange, inHoveredCluster
             </>
           )}
 
-          {/* Tooltip */}
+          {/* Single-character tooltip — anchored to this marker */}
           <AnimatePresence>
-            {hovered && isCluster && (
-              <g transform={`translate(${DOT_RADIUS + 124}, 0)`}>
-                <motion.g
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 12 }}
-                  transition={{ duration: 0.12 }}
-                >
-                  <ClusterRoster members={clusterMembers!} locationName={locationName} />
-                </motion.g>
-              </g>
-            )}
             {hovered && !isCluster && (
               <g transform={`translate(${DOT_RADIUS + 124}, ${-DOT_RADIUS - 30})`}>
                 <motion.g
@@ -210,6 +198,23 @@ export default function CharacterDot({ position, onHoverChange, inHoveredCluster
             )}
           </AnimatePresence>
         </g>
+
+        {/* Co-location roster — anchored to the cluster centre (outside the per-marker
+            offset group) so it stays put when moving between markers in the cluster */}
+        <AnimatePresence>
+          {hovered && isCluster && (
+            <g transform={`translate(${DOT_RADIUS + 124}, 0)`}>
+              <motion.g
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.12 }}
+              >
+                <ClusterRoster members={clusterMembers!} locationName={locationName} />
+              </motion.g>
+            </g>
+          )}
+        </AnimatePresence>
       </g>
     </motion.g>
   );
