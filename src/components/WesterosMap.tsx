@@ -246,7 +246,10 @@ export default function WesterosMap({ characterPositions, paths, mode = 'hover' 
       <TransformWrapper
         initialScale={1}
         minScale={1}
-        maxScale={20}
+        // Mobile's base map is ~2.8x narrower than desktop's, so the same scale shows
+        // far less detail — raise the mobile cap so zoom-in reaches desktop-level detail
+        // (enough to separate tightly clustered labels like Driftmark / Rook's Rest).
+        maxScale={isTap ? 60 : 20}
         centerOnInit={!isTap}
         smooth={false}
         wheel={{ disabled: true }}
