@@ -46,7 +46,7 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
     }
     return {
       hoveredClusterLocId: hoveredPos.locationId,
-      clusterMembers: group.map((p) => ({ characterId: p.characterId, name: p.name, house: p.house, color: p.color })),
+      clusterMembers: group.map((p) => ({ characterId: p.characterId, name: p.name, house: p.house, color: p.color, wikiUrl: p.wikiUrl })),
     };
   }, [characterPositions, hoveredCharId]);
 
@@ -129,6 +129,8 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
     let collisionTimer: ReturnType<typeof setTimeout> | null = null;
 
     const onWheel = (e: WheelEvent) => {
+      // Let the co-location roster scroll instead of zooming the map.
+      if ((e.target as Element | null)?.closest?.('[data-roster-scroll]')) return;
       e.preventDefault();
       const ref = transformRef.current;
       if (!ref) return;
