@@ -21,9 +21,10 @@ interface CharacterDotProps {
 
 const DOT_RADIUS = 50;
 const HIDE_DELAY = 100;
-// On mobile the map is reframed to a tight viewBox that magnifies the dots ~4.6×,
-// so they keep their base radius and just gain an invisible, touch-sized hit circle.
-const TAP_HIT_RADIUS = DOT_RADIUS * 3;
+// On mobile the full map renders in a ~390px-wide viewport, so markers are scaled up
+// (~4.6× ≈ a desktop-equivalent on-screen size) and counter-scaled to stay constant
+// while pinching. Keep this in sync with MOBILE_MARKER_SCALE in LocationMarker.
+const MOBILE_SCALE = 4.6;
 
 export default function CharacterDot({ position, onHoverChange, inHoveredCluster = false, clusterMembers, partOfCluster = false, mode = 'hover', focused = false }: CharacterDotProps) {
   const setFocusedEntity = useStore((s) => s.setFocusedEntity);
@@ -56,8 +57,10 @@ export default function CharacterDot({ position, onHoverChange, inHoveredCluster
   const tx = x;
   const ty = y;
 
-  const R = DOT_RADIUS;
-  const glowExtra = 5;
+  const sizeMul = isTap ? MOBILE_SCALE : 1;
+  const R = DOT_RADIUS * sizeMul;
+  const glowExtra = 5 * sizeMul;
+  const hitRadius = R * 3;
 
   const houseLocationStr = [house !== '—' ? house : null, locationName].filter(Boolean).join(' · ');
 
@@ -112,7 +115,7 @@ export default function CharacterDot({ position, onHoverChange, inHoveredCluster
           {isTap ? (
             <>
               {/* Generous transparent touch target */}
-              <circle r={TAP_HIT_RADIUS} fill="transparent" />
+              <circle r={hitRadius} fill="transparent" />
               {dotCore}
             </>
           ) : wikiUrl ? (

@@ -9,27 +9,22 @@ import westerosRaw from '../assets/westeros.svg?raw';
 import locationsData from '../data/locations.json';
 
 const VIEWBOX = '0 0 10000 6667';
-// The 21 locations all sit in x:1025–2905, y:1680–4200 (the western ~30% of the
-// world map). On a portrait phone we frame that region (plus padding) so Westeros
-// fills the screen instead of floating in empty ocean — and the tighter viewBox
-// magnifies the dots/labels to a natural touch size.
-const MOBILE_VIEWBOX = '875 1480 2180 2920';
-const DESKTOP_PAR = 'xMaxYMid meet';
-const MOBILE_PAR = 'xMidYMid meet';
+const PAR = 'xMaxYMid meet';
 
-function processSvg(raw: string, viewBox: string, par: string): string {
-  return raw
-    .replace(/width="[^"]*"/, 'width="100%"')
-    .replace(/height="[^"]*"/, 'height="100%"')
-    .replace(/viewBox="[^"]*"/, `viewBox="${viewBox}"`)
-    .replace(/<svg([^>]*)>/, (_match: string, attrs: string) => {
-      const cleaned = attrs.replace(/\s*preserveAspectRatio="[^"]*"/, '');
-      return `<svg${cleaned} preserveAspectRatio="${par}">`;
-    });
-}
+// The 21 locations sit in x:1025–2905, y:1680–4200 — the western ~30% of the world
+// map. On mobile we keep the full map (so Essos stays pannable) but zoom the initial
+// view to this padded box so Westeros fills a portrait screen.
+const MOBILE_FRAME = { x: 875, y: 1480, w: 2180, h: 2920 };
 
-const processedSvgDesktop = processSvg(westerosRaw, VIEWBOX, DESKTOP_PAR);
-const processedSvgMobile = processSvg(westerosRaw, MOBILE_VIEWBOX, MOBILE_PAR);
+const processedSvg = westerosRaw
+  .replace(/width="[^"]*"/, 'width="100%"')
+  .replace(/height="[^"]*"/, 'height="100%"')
+  .replace(/<svg([^>]*)>/, (_match: string, attrs: string) => {
+    if (!attrs.includes('preserveAspectRatio')) {
+      return `<svg${attrs} preserveAspectRatio="${PAR}">`;
+    }
+    return `<svg${attrs}>`;
+  });
 
 interface WesterosMapProps {
   characterPositions: CharacterPosition[];
@@ -49,11 +44,6 @@ export default function WesterosMap({ characterPositions, paths, mode = 'hover' 
 
   const focusedCharId = focusedEntity?.type === 'character' ? focusedEntity.id : null;
   const focusedLocId = focusedEntity?.type === 'location' ? focusedEntity.id : null;
-
-  // Mobile reframes to the populated western region; desktop shows the full map.
-  const viewBox = isTap ? MOBILE_VIEWBOX : VIEWBOX;
-  const par = isTap ? MOBILE_PAR : DESKTOP_PAR;
-  const baseSvg = isTap ? processedSvgMobile : processedSvgDesktop;
 
   // Characters sharing each location, and — when a character is hovered and it
   // shares its location with others — that co-located cluster's members.
@@ -214,6 +204,39 @@ export default function WesterosMap({ characterPositions, paths, mode = 'hover' 
     return () => clearTimeout(timer);
   }, [runCollisionDetection]);
 
+  // Debounced label-collision pass, reusable by the pinch/zoom transform handler.
+  const collisionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const scheduleCollision = () => {
+    if (collisionTimerRef.current) clearTimeout(collisionTimerRef.current);
+    collisionTimerRef.current = setTimeout(() => {
+      if (wrapperRef.current) runCollisionDetection(wrapperRef.current);
+    }, 150);
+  };
+
+  // Zoom the initial mobile view to frame Westeros (the full map stays pannable).
+  // zoomToElement fits+centres the invisible frame rect and correctly honours the
+  // pan bounds — computing the transform by hand fights the library's own centring.
+  // It reads the node's *current* screen rect, so it must run exactly once from the
+  // untransformed (scale-1) state; the guard makes onInit + the rAF fallback idempotent.
+  const framedRef = useRef(false);
+  const frameWesteros = () => {
+    if (framedRef.current) return;
+    const el = wrapperRef.current;
+    const ref = transformRef.current;
+    if (!el || !ref || !el.clientWidth || !el.clientHeight) return;
+    framedRef.current = true;
+    ref.zoomToElement('mobile-frame-target', undefined, 0);
+    scheduleCollision();
+  };
+
+  // Frame Westeros once the container has its final size (mobile only).
+  useEffect(() => {
+    if (!isTap) return;
+    const id = requestAnimationFrame(frameWesteros);
+    return () => cancelAnimationFrame(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isTap]);
+
   return (
     <div
       ref={wrapperRef}
@@ -224,9 +247,16 @@ export default function WesterosMap({ characterPositions, paths, mode = 'hover' 
         initialScale={1}
         minScale={1}
         maxScale={20}
-        centerOnInit={true}
+        centerOnInit={!isTap}
         smooth={false}
         wheel={{ disabled: true }}
+        onInit={() => { if (isTap) frameWesteros(); }}
+        onTransform={(_ref, state) => {
+          // Keep strokes/labels/dots a constant on-screen size while pinch-zooming
+          // (desktop does this via the wheel handler; touch needs it here too).
+          wrapperRef.current?.style.setProperty('--counter-scale', (1 / state.scale).toString());
+          scheduleCollision();
+        }}
       >
         {(utils) => {
           transformRef.current = utils;
@@ -238,18 +268,29 @@ export default function WesterosMap({ characterPositions, paths, mode = 'hover' 
               {/* Base map — inlined SVG */}
               <div
                 className="absolute inset-0 w-full h-full"
-                dangerouslySetInnerHTML={{ __html: baseSvg }}
+                dangerouslySetInnerHTML={{ __html: processedSvg }}
                 style={{ lineHeight: 0 }}
               />
 
               {/* Overlay SVG — inside TransformComponent for position tracking */}
               <svg
                 className="absolute inset-0 w-full h-full z-10"
-                viewBox={viewBox}
-                preserveAspectRatio={par}
+                viewBox={VIEWBOX}
+                preserveAspectRatio={PAR}
                 xmlns="http://www.w3.org/2000/svg"
                 style={{ overflow: 'visible' }}
               >
+                {/* Invisible target for the initial mobile zoom-to-Westeros. */}
+                <rect
+                  id="mobile-frame-target"
+                  x={MOBILE_FRAME.x}
+                  y={MOBILE_FRAME.y}
+                  width={MOBILE_FRAME.w}
+                  height={MOBILE_FRAME.h}
+                  fill="none"
+                  pointerEvents="none"
+                />
+
                 {/* Path layer */}
                 <g id="path-layer">
                   {paths.map((path) => (

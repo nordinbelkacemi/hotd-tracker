@@ -19,6 +19,10 @@ interface LocationMarkerProps {
 }
 
 const IMAGE_SIZE = 480;
+// Markers/labels are enlarged on mobile so they read on a ~390px-wide full map, and
+// counter-scaling keeps them a constant on-screen size while pinching. Keep in sync
+// with MOBILE_SCALE in CharacterDot.
+const MOBILE_MARKER_SCALE = 4.6;
 
 // Sea/region labels rendered as text only — no castle marker.
 const LABEL_ONLY_LOCATIONS = new Set(['stepstones', 'the-gullet']);
@@ -26,6 +30,7 @@ const LABEL_ONLY_LOCATIONS = new Set(['stepstones', 'the-gullet']);
 export default function LocationMarker({ id, name, x, y, labelDx, labelDy, importance, wikiUrl, onHoverChange, mode = 'hover', focused = false }: LocationMarkerProps) {
   const setFocusedEntity = useStore((s) => s.setFocusedEntity);
   const isTap = mode === 'tap';
+  const m = isTap ? MOBILE_MARKER_SCALE : 1;
   const [hovered, setHovered] = useState(false);
   const [textWidth, setTextWidth] = useState(0);
   const fillTextRef = useRef<SVGTextElement>(null);
@@ -53,12 +58,12 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
   const markerCore = (
     <>
       <polygon
-        points={`${x},${y - 30} ${x + 25},${y} ${x},${y + 30} ${x - 25},${y}`}
+        points={`${x},${y - 30 * m} ${x + 25 * m},${y} ${x},${y + 30 * m} ${x - 25 * m},${y}`}
         fill="rgba(0,0,0,0.75)"
         stroke="rgba(255,255,255,0.6)"
-        strokeWidth={6}
+        strokeWidth={6 * m}
       />
-      <circle cx={x} cy={y} r={30} fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.7)" strokeWidth={6} />
+      <circle cx={x} cy={y} r={30 * m} fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.7)" strokeWidth={6 * m} />
     </>
   );
 
@@ -94,7 +99,7 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
         }}
         onClick={isTap ? undefined : () => wikiUrl && window.open(wikiUrl, '_blank', 'noopener,noreferrer')}
       >
-        <g transform={`translate(${x + labelDx}, ${y + labelDy})`}>
+        <g transform={`translate(${x + labelDx * m}, ${y + labelDy * m})`}>
           {/* Text — CSS transform is more reliable than Framer Motion scale in SVG */}
           <g
             style={{
@@ -105,10 +110,10 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
           >
             <text
               x={0} y={0}
-              fontSize={100}
+              fontSize={100 * m}
               fill="none"
               stroke="#000"
-              strokeWidth={15}
+              strokeWidth={15 * m}
               fontFamily="Cinzel, serif"
               fontWeight={600}
               style={{ pointerEvents: 'none' }}
@@ -119,7 +124,7 @@ export default function LocationMarker({ id, name, x, y, labelDx, labelDy, impor
             <text
               ref={fillTextRef}
               x={0} y={0}
-              fontSize={100}
+              fontSize={100 * m}
               fill="rgba(255,240,180,0.95)"
               fontFamily="Cinzel, serif"
               fontWeight={600}
