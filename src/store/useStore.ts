@@ -11,7 +11,8 @@ const useStore = create<AppState>((set) => ({
   currentStepIndex: 0,
   isPlaying: false,
   spoilersRevealed: false,
-  trailMode: 'episodes',
+  trailsEnabled: true,
+  trailMode: 'all',
   trailEpisodes: 3,
 
   toggleCharacter: (id) =>
@@ -33,11 +34,13 @@ const useStore = create<AppState>((set) => ({
     set({ spoilersRevealed: revealed });
   },
 
+  setTrailsEnabled: (enabled) => set({ trailsEnabled: enabled }),
+
   setTrailMode: (mode) => set({ trailMode: mode }),
 
   adjustTrailEpisodes: (delta) =>
     set((state) => ({
-      trailEpisodes: Math.min(TOTAL_EPISODES, Math.max(0, state.trailEpisodes + delta)),
+      trailEpisodes: Math.min(TOTAL_EPISODES, Math.max(1, state.trailEpisodes + delta)),
     })),
 }));
 

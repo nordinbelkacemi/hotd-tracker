@@ -11,11 +11,11 @@ const trailChipClass = (active: boolean) =>
   }`;
 
 export default function EpisodeSlider() {
-  const { currentStepIndex, isPlaying, setStep, togglePlaying, trailMode, trailEpisodes, setTrailMode, adjustTrailEpisodes } = useStore();
+  const { currentStepIndex, isPlaying, setStep, togglePlaying, trailsEnabled, trailMode, trailEpisodes, setTrailsEnabled, setTrailMode, adjustTrailEpisodes } = useStore();
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const step = timelineSteps[currentStepIndex] || timelineSteps[0];
-  const windowStartIndex = getWindowStartIndex(trailMode, trailEpisodes, currentStepIndex);
+  const windowStartIndex = trailsEnabled ? getWindowStartIndex(trailMode, trailEpisodes, currentStepIndex) : currentStepIndex + 1;
 
   useEffect(() => {
     if (isPlaying) {
@@ -130,18 +130,39 @@ export default function EpisodeSlider() {
         }}
       />
 
-      {/* Trail window control */}
-      <div className="flex items-center justify-between">
-        <span className="text-[10px] uppercase tracking-widest text-white/40">Trails</span>
+      {/* Trail control */}
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] uppercase tracking-widest text-white/40">Trails</span>
+          {/* On/off toggle */}
+          <button
+            role="switch"
+            aria-checked={trailsEnabled}
+            aria-label="Toggle trails"
+            onClick={() => setTrailsEnabled(!trailsEnabled)}
+            className="relative w-9 h-5 rounded-full transition-colors cursor-pointer shrink-0"
+            style={{ backgroundColor: trailsEnabled ? '#C4A44A' : 'rgba(255,255,255,0.15)' }}
+          >
+            <span
+              className="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform"
+              style={{ transform: trailsEnabled ? 'translateX(16px)' : 'translateX(0)' }}
+            />
+          </button>
+        </div>
+
+        {/* Window settings — disabled when trails are off */}
         <div
           role="radiogroup"
           aria-label="Trail window"
-          className="flex items-center gap-0.5 p-0.5 rounded-full bg-white/5 border border-white/10"
+          aria-disabled={!trailsEnabled}
+          className={`flex items-center gap-0.5 p-0.5 rounded-full bg-white/5 border border-white/10 transition-opacity ${
+            trailsEnabled ? '' : 'opacity-40 pointer-events-none'
+          }`}
         >
           {trailMode === 'episodes' && (
             <button
               aria-label="Shorter trail"
-              disabled={trailEpisodes <= 0}
+              disabled={trailEpisodes <= 1}
               onClick={() => adjustTrailEpisodes(-1)}
               className="w-5 h-5 flex items-center justify-center rounded-full text-white/50 hover:text-white/90 hover:bg-white/10 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
             >
@@ -152,14 +173,10 @@ export default function EpisodeSlider() {
             role="radio"
             aria-checked={trailMode === 'episodes'}
             onClick={() => setTrailMode('episodes')}
-            title={
-              trailEpisodes === 0
-                ? 'Trails hidden'
-                : `Trails cover the last ${trailEpisodes} episode${trailEpisodes === 1 ? '' : 's'}, ending at the current step`
-            }
+            title={`Trails cover the last ${trailEpisodes} episode${trailEpisodes === 1 ? '' : 's'}, ending at the current step`}
             className={trailChipClass(trailMode === 'episodes')}
           >
-            {trailEpisodes === 0 ? 'off' : `${trailEpisodes} ep`}
+            {trailEpisodes} ep
           </button>
           {trailMode === 'episodes' && (
             <button

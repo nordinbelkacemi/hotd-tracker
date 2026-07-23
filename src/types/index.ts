@@ -68,6 +68,7 @@ export interface AppState {
   currentStepIndex: number;
   isPlaying: boolean;
   spoilersRevealed: boolean;
+  trailsEnabled: boolean;
   trailMode: TrailMode;
   trailEpisodes: number;
   toggleCharacter: (id: string) => void;
@@ -76,6 +77,7 @@ export interface AppState {
   setStep: (index: number) => void;
   togglePlaying: () => void;
   setSpoilersRevealed: (revealed: boolean) => void;
+  setTrailsEnabled: (enabled: boolean) => void;
   setTrailMode: (mode: TrailMode) => void;
   adjustTrailEpisodes: (delta: 1 | -1) => void;
 }

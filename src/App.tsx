@@ -10,7 +10,7 @@ import { timelineSteps, getWindowStartIndex } from './utils/timeline';
 import SpoilerOverlay from './components/SpoilerOverlay';
 
 export default function App() {
-  const { currentStepIndex, selectedCharacters, setStep, togglePlaying, spoilersRevealed, setSpoilersRevealed, trailMode, trailEpisodes } = useStore();
+  const { currentStepIndex, selectedCharacters, setStep, togglePlaying, spoilersRevealed, setSpoilersRevealed, trailsEnabled, trailMode, trailEpisodes } = useStore();
 
   const characterPositions = useMemo(
     () => getPositions(currentStepIndex, selectedCharacters),
@@ -18,8 +18,8 @@ export default function App() {
   );
 
   const windowStartIndex = useMemo(
-    () => getWindowStartIndex(trailMode, trailEpisodes, currentStepIndex),
-    [trailMode, trailEpisodes, currentStepIndex]
+    () => (trailsEnabled ? getWindowStartIndex(trailMode, trailEpisodes, currentStepIndex) : currentStepIndex + 1),
+    [trailsEnabled, trailMode, trailEpisodes, currentStepIndex]
   );
 
   const paths = useMemo(
