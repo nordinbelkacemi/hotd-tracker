@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { CharacterPosition } from '../types';
+import ClusterRoster, { type RosterMember } from './ClusterRoster';
 
 interface CharacterDotProps {
   position: CharacterPosition;
   onHoverChange?: (hovered: boolean) => void;
+  // True when this dot shares its location with the currently-hovered character.
+  inHoveredCluster?: boolean;
+  // Everyone at this dot's location — passed only to the hovered dot, to render the roster.
+  clusterMembers?: RosterMember[];
 }
 
 const DOT_RADIUS = 50;
 
-export default function CharacterDot({ position, onHoverChange }: CharacterDotProps) {
+export default function CharacterDot({ position, onHoverChange, inHoveredCluster = false, clusterMembers }: CharacterDotProps) {
   const [hovered, setHovered] = useState(false);
+  const highlighted = hovered || inHoveredCluster;
+  const isCluster = !!clusterMembers && clusterMembers.length > 1;
 
   const handleMouseEnter = () => {
     setHovered(true);
@@ -42,6 +49,7 @@ export default function CharacterDot({ position, onHoverChange }: CharacterDotPr
   return (
     <motion.g
       key={characterId}
+      data-character-id={characterId}
       initial={{ opacity: 0, scale: 0.3 }}
       animate={{ opacity: 1, scale: 1, x: tx, y: ty }}
       exit={{ opacity: 0, scale: 0.2 }}
@@ -60,7 +68,7 @@ export default function CharacterDot({ position, onHoverChange }: CharacterDotPr
               <motion.circle
                 fill={color}
                 initial={{ opacity: 0.18, r: DOT_RADIUS + 5 }}
-                animate={{ opacity: hovered ? 0.45 : 0.18, r: DOT_RADIUS + 5 }}
+                animate={{ opacity: highlighted ? 0.45 : 0.18, r: DOT_RADIUS + 5 }}
                 transition={{ duration: 0.18 }}
               />
               {/* Main dot */}
@@ -69,7 +77,7 @@ export default function CharacterDot({ position, onHoverChange }: CharacterDotPr
                 stroke="rgba(255,255,255,0.85)"
                 strokeWidth={6}
                 initial={{ r: DOT_RADIUS }}
-                animate={{ r: hovered ? DOT_RADIUS * 1.3 : DOT_RADIUS }}
+                animate={{ r: highlighted ? DOT_RADIUS * 1.3 : DOT_RADIUS }}
                 transition={{ type: 'spring', stiffness: 320, damping: 22 }}
               />
             </a>
@@ -79,7 +87,7 @@ export default function CharacterDot({ position, onHoverChange }: CharacterDotPr
               <motion.circle
                 fill={color}
                 initial={{ opacity: 0.18, r: DOT_RADIUS + 5 }}
-                animate={{ opacity: hovered ? 0.45 : 0.18, r: DOT_RADIUS + 5 }}
+                animate={{ opacity: highlighted ? 0.45 : 0.18, r: DOT_RADIUS + 5 }}
                 transition={{ duration: 0.18 }}
               />
               {/* Main dot */}
@@ -88,7 +96,7 @@ export default function CharacterDot({ position, onHoverChange }: CharacterDotPr
                 stroke="rgba(255,255,255,0.85)"
                 strokeWidth={6}
                 initial={{ r: DOT_RADIUS }}
-                animate={{ r: hovered ? DOT_RADIUS * 1.3 : DOT_RADIUS }}
+                animate={{ r: highlighted ? DOT_RADIUS * 1.3 : DOT_RADIUS }}
                 transition={{ type: 'spring', stiffness: 320, damping: 22 }}
               />
             </>
@@ -96,7 +104,19 @@ export default function CharacterDot({ position, onHoverChange }: CharacterDotPr
 
           {/* Tooltip */}
           <AnimatePresence>
-            {hovered && (
+            {hovered && isCluster && (
+              <g transform={`translate(${DOT_RADIUS + 124}, 0)`}>
+                <motion.g
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 12 }}
+                  transition={{ duration: 0.12 }}
+                >
+                  <ClusterRoster members={clusterMembers!} hoveredId={characterId} locationName={locationName} />
+                </motion.g>
+              </g>
+            )}
+            {hovered && !isCluster && (
               <g transform={`translate(${DOT_RADIUS + 124}, ${-DOT_RADIUS - 30})`}>
                 <motion.g
                   initial={{ opacity: 0, y: 12 }}

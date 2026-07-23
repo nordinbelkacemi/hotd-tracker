@@ -30,6 +30,26 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
   const [hoveredCharId, setHoveredCharId] = useState<string | null>(null);
   const [hoveredLocId, setHoveredLocId] = useState<string | null>(null);
 
+  // Characters sharing each location, and — when a character is hovered and it
+  // shares its location with others — that co-located cluster's members.
+  const { hoveredClusterLocId, clusterMembers } = useMemo(() => {
+    const byLoc = new Map<string, CharacterPosition[]>();
+    for (const pos of characterPositions) {
+      const arr = byLoc.get(pos.locationId) ?? [];
+      arr.push(pos);
+      byLoc.set(pos.locationId, arr);
+    }
+    const hoveredPos = hoveredCharId ? characterPositions.find((p) => p.characterId === hoveredCharId) : undefined;
+    const group = hoveredPos ? byLoc.get(hoveredPos.locationId) : undefined;
+    if (!hoveredPos || !group || group.length < 2) {
+      return { hoveredClusterLocId: null as string | null, clusterMembers: undefined };
+    }
+    return {
+      hoveredClusterLocId: hoveredPos.locationId,
+      clusterMembers: group.map((p) => ({ characterId: p.characterId, name: p.name, house: p.house, color: p.color })),
+    };
+  }, [characterPositions, hoveredCharId]);
+
   // We combine locations and character dots into a single flat list, sorted so that:
   // 1. Unhovered locations come first
   // 2. Unhovered characters come next
@@ -224,6 +244,8 @@ export default function WesterosMap({ characterPositions, paths }: WesterosMapPr
                           key={pos.characterId}
                           position={pos}
                           onHoverChange={(isHovered) => setHoveredCharId(isHovered ? pos.characterId : null)}
+                          inHoveredCluster={hoveredClusterLocId === pos.locationId}
+                          clusterMembers={pos.characterId === hoveredCharId ? clusterMembers : undefined}
                         />
                       );
                     }
