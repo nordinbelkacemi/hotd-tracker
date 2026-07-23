@@ -217,7 +217,7 @@ export default function CharacterDot({ position, onHoverChange, inHoveredCluster
           {hovered && isCluster && (
             <g transform={`translate(${DOT_RADIUS + 124}, 0)`}>
               <motion.g
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 1 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.12 }}
